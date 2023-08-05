@@ -1,4 +1,4 @@
-https://iahzl.github.io/project/search/index.html
-https://iahzl.github.io/project/about/index.html
-https://iahzl.github.io/project/2023/08/05/hello-world/
-https://iahzl.github.io/project
+https://iahzl.github.io/search/index.html
+https://iahzl.github.io/about/index.html
+https://iahzl.github.io/2023/08/05/hello-world/
+https://iahzl.github.io/
