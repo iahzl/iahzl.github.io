@@ -18,5 +18,5 @@ https://iahzl.github.io/tags/unserialize/
 https://iahzl.github.io/tags/buuctf/
 https://iahzl.github.io/categories/CTF/
 https://iahzl.github.io/categories/Web/
-https://iahzl.github.io/categories/CTF-BUUCTF/
 https://iahzl.github.io/categories/CTF/ctfhub/
+https://iahzl.github.io/categories/CTF-BUUCTF/
