@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="2021-第四届红帽杯网络安全大赛-Web-find_it  首先进项端口扫描dirsearch     robots.txt 文件内容    1ndexx.php 打开404 ，尝试打开备份文件.1ndexx.php.swp    查看源代码    直接访问hack.php无法访问 show_source()读取文件：  1?code&#x3D;&lt;?php show_source(__FILE__)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="find_it">
+<meta property="og:url" content="https://iahzl.github.io/find-it/index.html">
+<meta property="og:site_name" content="iah&#39;s blog">
+<meta property="og:description" content="2021-第四届红帽杯网络安全大赛-Web-find_it  首先进项端口扫描dirsearch     robots.txt 文件内容    1ndexx.php 打开404 ，尝试打开备份文件.1ndexx.php.swp    查看源代码    直接访问hack.php无法访问 show_source()读取文件：  1?code&#x3D;&lt;?php show_source(__FILE__)">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230730102906291-1691288556204-1.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230730103550756-1691288556205-2.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230730103615203-1691288556205-3.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230730103720699-1691288556205-4.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230730103951694-1691288556205-5.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230730105041270-1691288556205-6.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230730105401597-1691288556205-7.png">
+<meta property="article:published_time" content="2023-08-06T02:19:27.000Z">
+<meta property="article:modified_time" content="2023-08-06T02:23:35.792Z">
+<meta property="article:author" content="iahzl">
+<meta property="article:tag" content="web">
+<meta property="article:tag" content="备份文件泄露">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230730102906291-1691288556204-1.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>find_it</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=pjwW3MzIwiIEl1lYN-ZEbHa4nwnoXvXY4O3b-Awgio"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'pjwW3MzIwiIEl1lYN-ZEbHa4nwnoXvXY4O3b-Awgio');
+  </script>
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="iah's blog" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/categories/">categories</a></li><!--
+     --><!--
+       --><li><a href="/tags/">tags</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/iahzl">Projects</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/yet-another-mysql-injection/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/%E9%9A%8F%E4%BE%BF%E6%B3%A8-1/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://iahzl.github.io/find-it/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://iahzl.github.io/find-it/&text=find_it"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://iahzl.github.io/find-it/&title=find_it"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://iahzl.github.io/find-it/&is_video=false&description=find_it"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=find_it&body=Check out this article: https://iahzl.github.io/find-it/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://iahzl.github.io/find-it/&title=find_it"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://iahzl.github.io/find-it/&title=find_it"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://iahzl.github.io/find-it/&title=find_it"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://iahzl.github.io/find-it/&title=find_it"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://iahzl.github.io/find-it/&name=find_it&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://iahzl.github.io/find-it/&t=find_it"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2021-%E7%AC%AC%E5%9B%9B%E5%B1%8A%E7%BA%A2%E5%B8%BD%E6%9D%AF%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9B-Web-find-it"><span class="toc-number">1.</span> <span class="toc-text">2021-第四届红帽杯网络安全大赛-Web-find_it</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E4%BA%8Eshow-source"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">关于show_source()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E-swp%E7%BC%93%E5%AD%98%E6%96%87%E4%BB%B6"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">关于.swp缓存文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%98%E6%96%B9WriteUp"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">官方WriteUp</span></a></li></ol></li></ol></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        find_it
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">iahzl</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-08-06T02:19:27.000Z" class="dt-published" itemprop="datePublished">2023-08-06</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/CTF-ctfhub/">-[CTF, ctfhub]</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/web/" rel="tag">web</a>, <a class="p-category" href="/tags/%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2/" rel="tag">备份文件泄露</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="2021-第四届红帽杯网络安全大赛-Web-find-it"><a href="#2021-第四届红帽杯网络安全大赛-Web-find-it" class="headerlink" title="2021-第四届红帽杯网络安全大赛-Web-find_it"></a>2021-第四届红帽杯网络安全大赛-Web-find_it</h1><p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230730102906291-1691288556204-1.png" alt="image-20230730102906291"></p>
+<ol>
+<li>首先进项端口扫描<code>dirsearch</code></li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230730103550756-1691288556205-2.png" alt="image-20230730103550756"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230730103615203-1691288556205-3.png" alt="image-20230730103615203"></p>
+<ol>
+<li>robots.txt 文件内容</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230730103720699-1691288556205-4.png" alt="image-20230730103720699"></p>
+<ol>
+<li>1ndexx.php 打开404 ，尝试打开备份文件<code>.1ndexx.php.swp</code></li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230730103951694-1691288556205-5.png" alt="image-20230730103951694"></p>
+<ol>
+<li>查看源代码</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230730105041270-1691288556205-6.png" alt="image-20230730105041270"></p>
+<ol>
+<li>直接访问<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=hack&spm=1001.2101.3001.7020">hack</a>.php无法访问 <code>show_source()</code>读取文件：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?code=&lt;?php show_source(__FILE__);?&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>http://challenge-e1e88976b18bb969.sandbox.ctfhub.com:10800/index.php?code=&lt;?php show_source(__FILE__);?&gt;</code></li>
+<li><code>http://challenge-e1e88976b18bb969.sandbox.ctfhub.com:10800/hack.php</code></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230730105401597-1691288556205-7.png" alt="image-20230730105401597"></p>
+<h4 id="关于show-source"><a href="#关于show-source" class="headerlink" title="关于show_source()"></a>关于show_source()</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">show_source() 函数对文件进行语法高亮显示。</span><br><span class="line">本函数是 highlight_file() 的别名</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+
+<h4 id="关于-swp缓存文件"><a href="#关于-swp缓存文件" class="headerlink" title="关于.swp缓存文件"></a>关于.swp缓存文件</h4><p>文件泄露(.swp备份文件):非正常关闭vi&#x2F;<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=vim%E7%BC%96%E8%BE%91%E5%99%A8&spm=1001.2101.3001.7020">vim编辑器</a>时会生成一个.swp文件 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">调用这类的隐藏文件的时候，需要在最前面加.</span><br></pre></td></tr></table></figure>
+
+<h4 id="官方WriteUp"><a href="#官方WriteUp" class="headerlink" title="官方WriteUp"></a>官方WriteUp</h4><p><a target="_blank" rel="noopener" href="https://writeup.ctfhub.com/Challenge/2021/%E7%AC%AC%E5%9B%9B%E5%B1%8A%E7%BA%A2%E5%B8%BD%E6%9D%AF%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9B/Web/oKTHZCKnTRgZzifYg5twqZ.html">find_it | CTFHub</a></p>
+
+  </div>
+  <div>    
+    <ul class="post-copyright">
+       <li class="post-copyright-link">
+        <strong>本文作者：</strong>
+        <a href="/">iahzl</a>
+      </li>
+      <li class="post-copyright-link">
+        <strong>本文标题：</strong>
+        <a href="{{ url_for(config.permalink) }}">
+    
+        <a class="" href="/find-it/">find_it</a>
+    
+
+
+</a>
+      </li>
+      <li class="post-copyright-link">
+        <strong>本文链接：</strong>
+        <a title="find_it">https://iahzl.github.io/find-it/</a>
+      </li>
+      <li class="post-copyright-license">
+        <strong>版权声明： </strong>
+        本文由 iahzl 原创，采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" title="Attribution-NonCommercial-NoDerivatives 4.0 International" rel="license" target="_blank">CC BY-NC-ND 4.0</a>, 转载请保留以上声明信息！
+      </li>
+    </ul>
+</div>
+</article>
+<script>
+  function setClipboardText(event){
+      // clipboardData 对象是为通过编辑菜单、快捷菜单和快捷键执行的编辑操作所保留的，也就是你复制或者剪切内容
+      let clipboardData = event.clipboardData || window.clipboardData;
+      // 如果未复制或者未剪切，则return出去
+      if (!clipboardData) { return; }
+      event.preventDefault();
+      // Selection 对象，表示用户选择的文本范围或光标的当前位置。
+      //     声明一个变量接收 -- 用户输入的剪切或者复制的文本转化为字符串
+      let text = window.getSelection().toString();
+  
+      if (text) {
+          // 如果文本存在则先取消文本默认事件
+          event.preventDefault();
+          // 通过调用常clipboardData对象的 setData(format, data) 方法；来设置相关文本
+          // format: 一个DOMString 表示要添加到 drag object的拖动数据的类型。
+          // data: 一个 DOMString表示要添加到 drag object的数据。
+          var copyright = '\n\n'
+          + '——————————————————————'
+          + '\n版权声明：本文为「Ywj226」的原创文章，遵循CC BY-NC-ND 4.0版权协议，转载请附上原文出处链接及本声明。'
+          + '\n原文链接：https://iahzl.github.io/find-it/'
+  
+          clipboardData.setData('text/plain', text + copyright);
+  
+      }
+  };
+  var contents = document.getElementsByClassName("content");
+  // 监听文章内容的copy事件
+  contents[0].addEventListener('copy',function(e){
+      setClipboardText(e);
+  });
+</script>
+
+
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+    <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+    <div id="gitalk-container"></div>
+    <script type="text/javascript">
+        var gitalk = new Gitalk({
+            clientID: 'a4d73b206590627d55c0',
+            clientSecret: '68744004f2191865ab4a5e6ee2eba67c673c6795',
+            id: md5(window.location.pathname),
+            repo: 'iahzl.github.io',
+            owner: 'iahzl',
+            admin: 'iahzl',
+            distractionFreeMode: ''
+        })
+        gitalk.render('gitalk-container')
+    </script>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/categories/">categories</a></li>
+        
+          <li><a href="/tags/">tags</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/iahzl">Projects</a></li>
+        
+          <li><a href="/search/">Search</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2021-%E7%AC%AC%E5%9B%9B%E5%B1%8A%E7%BA%A2%E5%B8%BD%E6%9D%AF%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9B-Web-find-it"><span class="toc-number">1.</span> <span class="toc-text">2021-第四届红帽杯网络安全大赛-Web-find_it</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E4%BA%8Eshow-source"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">关于show_source()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E-swp%E7%BC%93%E5%AD%98%E6%96%87%E4%BB%B6"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">关于.swp缓存文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%98%E6%96%B9WriteUp"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">官方WriteUp</span></a></li></ol></li></ol></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://iahzl.github.io/find-it/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://iahzl.github.io/find-it/&text=find_it"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://iahzl.github.io/find-it/&title=find_it"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://iahzl.github.io/find-it/&is_video=false&description=find_it"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=find_it&body=Check out this article: https://iahzl.github.io/find-it/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://iahzl.github.io/find-it/&title=find_it"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://iahzl.github.io/find-it/&title=find_it"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://iahzl.github.io/find-it/&title=find_it"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://iahzl.github.io/find-it/&title=find_it"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://iahzl.github.io/find-it/&name=find_it&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://iahzl.github.io/find-it/&t=find_it"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2023
+    iahzl
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+      --><li><a href="/">Home</a></li><!--
+    --><!--
+      --><li><a href="/categories/">categories</a></li><!--
+    --><!--
+      --><li><a href="/tags/">tags</a></li><!--
+    --><!--
+      --><li><a href="/archives/">Writing</a></li><!--
+    --><!--
+      --><li><a target="_blank" rel="noopener" href="http://github.com/iahzl">Projects</a></li><!--
+    --><!--
+      --><li><a href="/search/">Search</a></li><!--
+    --><!--
+      --><li><a href="/about/">About</a></li><!--
+    -->
+      </ul>
+      <ul>
+        
+          <!-- 不蒜子统计 -->
+          <span id="busuanzi_container_site_pv">
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+          </span>
+          <span class="post-meta-divider">|</span>
+          <span id="busuanzi_container_site_uv" style='display:none'>
+                  本站访客数<span id="busuanzi_value_site_uv"></span>人
+          </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
+      </ul>
+    </nav>
+  </div>
+  
+</footer>
+
+
+
+
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+  <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?10298bb37106529e820abfbd855cea34";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

