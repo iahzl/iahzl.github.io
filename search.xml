@@ -73,7 +73,9 @@
       
       <categories>
           
-          <category> -[CTF, ctfhub] </category>
+          <category> CTF </category>
+          
+          <category> ctfhub </category>
           
       </categories>
       
@@ -100,7 +102,9 @@
       
       <categories>
           
-          <category> -[CTF, ctfhub] </category>
+          <category> CTF </category>
+          
+          <category> ctfhub </category>
           
       </categories>
       
