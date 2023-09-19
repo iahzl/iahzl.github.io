@@ -1,3 +1,4 @@
+https://iahzl.github.io/%E5%9F%BA%E4%BA%8EFlask-websocket%E5%AE%9E%E7%8E%B0%E5%9C%A8%E7%BA%BF%E8%81%8A%E5%A4%A9%E7%B3%BB%E7%BB%9F/
 https://iahzl.github.io/Linux%E5%AE%89%E5%85%A8%E5%9F%BA%E7%BA%BF%E6%A3%80%E6%9F%A5%E5%8F%8A%E5%8A%A0%E5%9B%BA/
 https://iahzl.github.io/NepCTF-2023/
 https://iahzl.github.io/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/
@@ -42,6 +43,12 @@ https://iahzl.github.io/tags/%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5/
 https://iahzl.github.io/tags/%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8/
 https://iahzl.github.io/tags/%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8/
 https://iahzl.github.io/tags/ctfhub/
+https://iahzl.github.io/tags/Python/
+https://iahzl.github.io/tags/html/
+https://iahzl.github.io/tags/javascript/
+https://iahzl.github.io/tags/css/
+https://iahzl.github.io/tags/flask/
+https://iahzl.github.io/tags/websocket/
 https://iahzl.github.io/categories/%E5%9F%BA%E7%BA%BF%E6%A3%80%E6%9F%A5/
 https://iahzl.github.io/categories/CTF/
 https://iahzl.github.io/categories/%E5%9F%BA%E7%BA%BF%E6%A3%80%E6%9F%A5/Linux/
@@ -50,3 +57,4 @@ https://iahzl.github.io/categories/python/
 https://iahzl.github.io/categories/CTF/NepCTF-2023/
 https://iahzl.github.io/categories/CTF/ctfhub/
 https://iahzl.github.io/categories/CTF/BUUCTF/
+https://iahzl.github.io/categories/Python/
