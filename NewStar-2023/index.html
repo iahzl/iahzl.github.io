@@ -37,7 +37,7 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926125148090.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926125720157.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926125430120.png">
-<meta property="og:image" content="d:\University\study\markdown\image-20230926205925939.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926205925939.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926211145829.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926211050969.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230925144213246.png">
@@ -46,7 +46,7 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230927095332177.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230927095404116.png">
 <meta property="article:published_time" content="2023-10-07T02:48:35.000Z">
-<meta property="article:modified_time" content="2023-10-07T02:53:35.725Z">
+<meta property="article:modified_time" content="2023-10-07T03:00:50.760Z">
 <meta property="article:author" content="iahzl">
 <meta property="article:tag" content="ctf">
 <meta property="article:tag" content="crypto">
@@ -307,7 +307,7 @@
 <li><p>最后得到flag：<code>flag&#123;de665d4c-3bbd-44e8-8eba-2b6cfeef881a&#125;</code></p>
 </li>
 </ol>
-<h3 id="R-C-E"><a href="#R-C-E" class="headerlink" title="R!C!E!"></a>R!C!E!</h3><p><img src="D:\University\study\markdown\image-20230926205925939.png" alt="image-20230926205925939"></p>
+<h3 id="R-C-E"><a href="#R-C-E" class="headerlink" title="R!C!E!"></a>R!C!E!</h3><p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926205925939.png" alt="image-20230926205925939"></p>
 <ol>
 <li><p>首先观察给出的php代码：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>])&amp;&amp;<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;e_v.a.l&#x27;</span>]))&#123;</span><br><span class="line">    <span class="variable">$password</span>=<span class="title function_ invoke__">md5</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>]);</span><br><span class="line">    <span class="variable">$code</span>=<span class="variable">$_POST</span>[<span class="string">&#x27;e_v.a.l&#x27;</span>];</span><br><span class="line">    <span class="keyword">if</span>(<span class="title function_ invoke__">substr</span>(<span class="variable">$password</span>,<span class="number">0</span>,<span class="number">6</span>)===<span class="string">&quot;c4d038&quot;</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/flag|system|pass|cat|ls/i&quot;</span>,<span class="variable">$code</span>))&#123;</span><br><span class="line">            <span class="keyword">eval</span>(<span class="variable">$code</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>

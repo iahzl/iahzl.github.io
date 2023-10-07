@@ -210,20 +210,6 @@
   </url>
   
   <url>
-    <loc>https://iahzl.github.io/tags/crypto/</loc>
-    <lastmod>2023-10-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://iahzl.github.io/tags/web/</loc>
-    <lastmod>2023-10-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://iahzl.github.io/tags/misc/</loc>
     <lastmod>2023-10-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -259,6 +245,20 @@
   </url>
   
   <url>
+    <loc>https://iahzl.github.io/tags/crypto/</loc>
+    <lastmod>2023-10-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://iahzl.github.io/tags/web/</loc>
+    <lastmod>2023-10-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://iahzl.github.io/tags/sql%E6%B3%A8%E5%85%A5/</loc>
     <lastmod>2023-10-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -287,13 +287,6 @@
   </url>
   
   <url>
-    <loc>https://iahzl.github.io/tags/sqlmap/</loc>
-    <lastmod>2023-10-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://iahzl.github.io/tags/%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2/</loc>
     <lastmod>2023-10-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -302,6 +295,13 @@
   
   <url>
     <loc>https://iahzl.github.io/tags/%E7%BB%95%E8%BF%87/</loc>
+    <lastmod>2023-10-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://iahzl.github.io/tags/sqlmap/</loc>
     <lastmod>2023-10-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -450,7 +450,7 @@
   </url>
   
   <url>
-    <loc>https://iahzl.github.io/categories/CTF/NewStar-2023/</loc>
+    <loc>https://iahzl.github.io/categories/CTF/NepCTF-2023/</loc>
     <lastmod>2023-10-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -464,7 +464,7 @@
   </url>
   
   <url>
-    <loc>https://iahzl.github.io/categories/CTF/NepCTF-2023/</loc>
+    <loc>https://iahzl.github.io/categories/CTF/NewStar-2023/</loc>
     <lastmod>2023-10-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
