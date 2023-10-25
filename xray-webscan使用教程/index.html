@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="xray-webscan快速使用扫描一个站点最简单的方式是直接调用，扫描一个指定的站点，如： 1.&#x2F;xray webscan --basic-crawler http:&#x2F;&#x2F;example.com&#x2F;   这可能是最简单最常用的一个功能，就是太长了，体验不太友好，建议常用的同学可以 alias xray&#x3D;&quot;&#x2F;path&#x2F;xray webscan --basic-crawler&quot;  指">
+<meta property="og:type" content="article">
+<meta property="og:title" content="xray-webscan使用教程">
+<meta property="og:url" content="https://iahzl.github.io/xray-webscan%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:site_name" content="iah&#39;s blog">
+<meta property="og:description" content="xray-webscan快速使用扫描一个站点最简单的方式是直接调用，扫描一个指定的站点，如： 1.&#x2F;xray webscan --basic-crawler http:&#x2F;&#x2F;example.com&#x2F;   这可能是最简单最常用的一个功能，就是太长了，体验不太友好，建议常用的同学可以 alias xray&#x3D;&quot;&#x2F;path&#x2F;xray webscan --basic-crawler&quot;  指">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-10-25T08:28:59.000Z">
+<meta property="article:modified_time" content="2023-10-25T08:31:15.331Z">
+<meta property="article:author" content="iahzl">
+<meta property="article:tag" content="工具">
+<meta property="article:tag" content="xray">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>xray-webscan使用教程</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=pjwW3MzIwiIEl1lYN-ZEbHa4nwnoXvXY4O3b-Awgio"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'pjwW3MzIwiIEl1lYN-ZEbHa4nwnoXvXY4O3b-Awgio');
+  </script>
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="iah's blog" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Categories</a></li><!--
+     --><!--
+       --><li><a href="/tags/">Tags</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/iahzl">Projects</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/NewStar-WriteUp-Week2/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://iahzl.github.io/xray-webscan%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://iahzl.github.io/xray-webscan%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/&text=xray-webscan使用教程"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://iahzl.github.io/xray-webscan%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/&title=xray-webscan使用教程"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://iahzl.github.io/xray-webscan%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/&is_video=false&description=xray-webscan使用教程"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=xray-webscan使用教程&body=Check out this article: https://iahzl.github.io/xray-webscan%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://iahzl.github.io/xray-webscan%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/&title=xray-webscan使用教程"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://iahzl.github.io/xray-webscan%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/&title=xray-webscan使用教程"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://iahzl.github.io/xray-webscan%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/&title=xray-webscan使用教程"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://iahzl.github.io/xray-webscan%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/&title=xray-webscan使用教程"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://iahzl.github.io/xray-webscan%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/&name=xray-webscan使用教程&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://iahzl.github.io/xray-webscan%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/&t=xray-webscan使用教程"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#xray-webscan"><span class="toc-number">1.</span> <span class="toc-text">xray-webscan</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E4%BD%BF%E7%94%A8"><span class="toc-number">1.1.</span> <span class="toc-text">快速使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%AB%E6%8F%8F%E4%B8%80%E4%B8%AA%E7%AB%99%E7%82%B9"><span class="toc-number">1.1.1.</span> <span class="toc-text">扫描一个站点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E5%AE%9A%E6%89%AB%E6%8F%8F%E8%BE%93%E5%87%BA"><span class="toc-number">1.1.2.</span> <span class="toc-text">指定扫描输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E4%BB%A3%E7%90%86%E7%9A%84%E8%A2%AB%E5%8A%A8%E6%89%AB%E6%8F%8F"><span class="toc-number">1.1.3.</span> <span class="toc-text">基于代理的被动扫描</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E5%A7%BF%E5%8A%BF"><span class="toc-number">1.2.</span> <span class="toc-text">高级姿势</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E5%AE%9A%E6%89%AB%E6%8F%8F%E6%8F%92%E4%BB%B6"><span class="toc-number">1.2.1.</span> <span class="toc-text">指定扫描插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AA%E6%89%AB%E6%8F%8F%E4%B8%80%E4%B8%AA-URL"><span class="toc-number">1.2.2.</span> <span class="toc-text">只扫描一个 URL</span></a></li></ol></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        xray-webscan使用教程
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">iahzl</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-10-25T08:28:59.000Z" class="dt-published" itemprop="datePublished">2023-10-25</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/%E5%88%A9%E5%85%B6%E5%99%A8/">利其器</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/xray/" rel="tag">xray</a>, <a class="p-category" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="xray-webscan"><a href="#xray-webscan" class="headerlink" title="xray-webscan"></a>xray-webscan</h1><h2 id="快速使用"><a href="#快速使用" class="headerlink" title="快速使用"></a>快速使用</h2><h3 id="扫描一个站点"><a href="#扫描一个站点" class="headerlink" title="扫描一个站点"></a>扫描一个站点</h3><p>最简单的方式是直接调用，扫描一个指定的站点，如：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./xray webscan --basic-crawler http://example.com/</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这可能是最简单最常用的一个功能，就是太长了，体验不太友好，建议常用的同学可以 <code>alias xray=&quot;/path/xray webscan --basic-crawler&quot;</code></p>
+</blockquote>
+<h3 id="指定扫描输出"><a href="#指定扫描输出" class="headerlink" title="指定扫描输出"></a>指定扫描输出</h3><p>不指定输出时，默认输出到控制台的标准输出中，可以做管道处理，也可以选择输出为文件，如：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./xray webscan --url http://example.com/ --json-output report.json</span><br></pre></td></tr></table></figure>
+
+<p>不同参数对应不同的输出方式：</p>
+<ul>
+<li>无参数：输出到控制台的标准输出</li>
+<li><code>--text-output</code>：输出到文本文件中</li>
+<li><code>--json-output</code>：输出到 JSON 文件中</li>
+<li><code>--html-output</code>：输出到 HTML 文件中</li>
+</ul>
+<h3 id="基于代理的被动扫描"><a href="#基于代理的被动扫描" class="headerlink" title="基于代理的被动扫描"></a>基于代理的被动扫描</h3><p>xray 可以通过类似 Burp 的方式启动，利用 HTTP 代理来抓包扫描，如：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./xray webscan --listen 127.0.0.1:7777</span><br></pre></td></tr></table></figure>
+
+<p>如果运行没报任何错就可以设置浏览器 HTTP 代理为 <code>127.0.0.1:7777</code> 了，关于如何设置浏览器代理，请打开百度搜索 “浏览器设置代理”。</p>
+<p>代理设置 OK 以后就可以启动代理扫描了，这时候我们打来浏览器尽情冲浪吧，理论上我们的鼠标点到哪 xray 就能扫到哪。</p>
+<p>需要注意一下的是，很多时候还会扫到 HTTPS 站点，可能会因为有代理而导致无法访问，或者需要手动确认安全风险。这时候需要我们导入 xray 运行目录下的 <code>ca.crt</code> 证书，关于如何导入 CA 证书，请打开百度搜索 “安装CA证书”。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜   ls</span><br><span class="line">ca.crt      ca.key      config.yaml xray</span><br></pre></td></tr></table></figure>
+
+<h2 id="高级姿势"><a href="#高级姿势" class="headerlink" title="高级姿势"></a>高级姿势</h2><h3 id="指定扫描插件"><a href="#指定扫描插件" class="headerlink" title="指定扫描插件"></a>指定扫描插件</h3><p>使用 <code>--plugins</code> 参数可以选择仅启用部分扫描插件，多个插件之间可使用逗号分隔，如：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./xray webscan --plugins cmd_injection --url http://example.com/</span><br></pre></td></tr></table></figure>
+
+<p>目前提供的插件列表如下：</p>
+<ul>
+<li>SQL 注入检测 (key: sqldet)<br>支持报错注入、布尔注入和时间盲注等</li>
+<li>XSS 检测（key: xss）<br>支持扫描反射型、存储型 XSS</li>
+<li>命令&#x2F;代码注入检测 (key: cmd_injection)<br>支持 shell 命令注入、PHP 代码执行、模板注入等</li>
+<li>目录枚举 (key: dirscan)<br>检测备份文件、临时文件、debug 页面、配置文件等10余类敏感路径和文件</li>
+<li>路径穿越检测 (key: path_traversal)<br>支持常见平台和编码</li>
+<li>XML 实体注入检测 (key: xxe)<br>支持有回显和反连平台检测</li>
+<li>POC 管理 (key: phantasm)<br>默认内置部分常用的 POC，用户可以根据需要自行构建 POC 并运行。可参考：<a href="https://link.zhihu.com/?target=https://chaitin.github.io/xray/%23/guide/poc">POC 编写文档</a></li>
+<li>文件上传检测 (key: upload)<br>支持检测常见的后端服务器语言的上传漏洞</li>
+<li>弱口令检测 (key: brute_force)<br>支持检测 HTTP 基础认证和简易表单弱口令，内置常见用户名和密码字典</li>
+<li>JSONP 检测 (key: jsonp)<br>检测包含敏感信息可以被跨域读取的 jsonp 接口</li>
+<li>SSRF 检测 (key: ssrf)<br>ssrf 检测模块，支持常见的绕过技术和反连平台检测</li>
+<li>基线检查 (key: baseline)<br>检测低 SSL 版本、缺失的或错误添加的 http 头等</li>
+<li>任意跳转检测 (key: redirect)<br>支持 HTML meta 跳转、30x 跳转等</li>
+<li>CRLF 注入 (key: crlf_injection)<br>检测 HTTP 头注入，支持 query、body 等位置的参数</li>
+<li>…</li>
+</ul>
+<h3 id="只扫描一个-URL"><a href="#只扫描一个-URL" class="headerlink" title="只扫描一个 URL"></a>只扫描一个 URL</h3><p>xray 还提供了方便的只扫描一个 URL 的方式，如：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./xray webscan --url http://example.com/ --json-output out.json</span><br></pre></td></tr></table></figure>
+
+  </div>
+  <div>    
+    <ul class="post-copyright">
+       <li class="post-copyright-link">
+        <strong>本文作者：</strong>
+        <a href="/">iahzl</a>
+      </li>
+      <li class="post-copyright-link">
+        <strong>本文标题：</strong>
+        <a href="{{ url_for(config.permalink) }}">
+    
+        <a class="" href="/xray-webscan%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">xray-webscan使用教程</a>
+    
+
+
+</a>
+      </li>
+      <li class="post-copyright-link">
+        <strong>本文链接：</strong>
+        <a title="xray-webscan使用教程">https://iahzl.github.io/xray-webscan使用教程/</a>
+      </li>
+      <li class="post-copyright-license">
+        <strong>版权声明： </strong>
+        本文由 iahzl 原创，采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" title="Attribution-NonCommercial-NoDerivatives 4.0 International" rel="license" target="_blank">CC BY-NC-ND 4.0</a>, 转载请保留以上声明信息！
+      </li>
+    </ul>
+</div>
+</article>
+<script>
+  function setClipboardText(event){
+      // clipboardData 对象是为通过编辑菜单、快捷菜单和快捷键执行的编辑操作所保留的，也就是你复制或者剪切内容
+      let clipboardData = event.clipboardData || window.clipboardData;
+      // 如果未复制或者未剪切，则return出去
+      if (!clipboardData) { return; }
+      event.preventDefault();
+      // Selection 对象，表示用户选择的文本范围或光标的当前位置。
+      //     声明一个变量接收 -- 用户输入的剪切或者复制的文本转化为字符串
+      let text = window.getSelection().toString();
+  
+      if (text) {
+          // 如果文本存在则先取消文本默认事件
+          event.preventDefault();
+          // 通过调用常clipboardData对象的 setData(format, data) 方法；来设置相关文本
+          // format: 一个DOMString 表示要添加到 drag object的拖动数据的类型。
+          // data: 一个 DOMString表示要添加到 drag object的数据。
+          var copyright = '\n\n'
+          + '——————————————————————'
+          + '\n版权声明：本文为「Ywj226」的原创文章，遵循CC BY-NC-ND 4.0版权协议，转载请附上原文出处链接及本声明。'
+          + '\n原文链接：https://iahzl.github.io/xray-webscan%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/'
+  
+          clipboardData.setData('text/plain', text + copyright);
+  
+      }
+  };
+  var contents = document.getElementsByClassName("content");
+  // 监听文章内容的copy事件
+  contents[0].addEventListener('copy',function(e){
+      setClipboardText(e);
+  });
+</script>
+
+
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+    <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+    <div id="gitalk-container"></div>
+    <script type="text/javascript">
+        var gitalk = new Gitalk({
+            clientID: 'a4d73b206590627d55c0',
+            clientSecret: '68744004f2191865ab4a5e6ee2eba67c673c6795',
+            id: md5(window.location.pathname),
+            repo: 'iahzl.github.io',
+            owner: 'iahzl',
+            admin: 'iahzl',
+            distractionFreeMode: ''
+        })
+        gitalk.render('gitalk-container')
+    </script>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/categories/">Categories</a></li>
+        
+          <li><a href="/tags/">Tags</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/iahzl">Projects</a></li>
+        
+          <li><a href="/search/">Search</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#xray-webscan"><span class="toc-number">1.</span> <span class="toc-text">xray-webscan</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E4%BD%BF%E7%94%A8"><span class="toc-number">1.1.</span> <span class="toc-text">快速使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%AB%E6%8F%8F%E4%B8%80%E4%B8%AA%E7%AB%99%E7%82%B9"><span class="toc-number">1.1.1.</span> <span class="toc-text">扫描一个站点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E5%AE%9A%E6%89%AB%E6%8F%8F%E8%BE%93%E5%87%BA"><span class="toc-number">1.1.2.</span> <span class="toc-text">指定扫描输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E4%BB%A3%E7%90%86%E7%9A%84%E8%A2%AB%E5%8A%A8%E6%89%AB%E6%8F%8F"><span class="toc-number">1.1.3.</span> <span class="toc-text">基于代理的被动扫描</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E5%A7%BF%E5%8A%BF"><span class="toc-number">1.2.</span> <span class="toc-text">高级姿势</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E5%AE%9A%E6%89%AB%E6%8F%8F%E6%8F%92%E4%BB%B6"><span class="toc-number">1.2.1.</span> <span class="toc-text">指定扫描插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AA%E6%89%AB%E6%8F%8F%E4%B8%80%E4%B8%AA-URL"><span class="toc-number">1.2.2.</span> <span class="toc-text">只扫描一个 URL</span></a></li></ol></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://iahzl.github.io/xray-webscan%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://iahzl.github.io/xray-webscan%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/&text=xray-webscan使用教程"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://iahzl.github.io/xray-webscan%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/&title=xray-webscan使用教程"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://iahzl.github.io/xray-webscan%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/&is_video=false&description=xray-webscan使用教程"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=xray-webscan使用教程&body=Check out this article: https://iahzl.github.io/xray-webscan%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://iahzl.github.io/xray-webscan%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/&title=xray-webscan使用教程"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://iahzl.github.io/xray-webscan%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/&title=xray-webscan使用教程"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://iahzl.github.io/xray-webscan%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/&title=xray-webscan使用教程"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://iahzl.github.io/xray-webscan%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/&title=xray-webscan使用教程"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://iahzl.github.io/xray-webscan%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/&name=xray-webscan使用教程&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://iahzl.github.io/xray-webscan%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/&t=xray-webscan使用教程"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2023
+    iahzl
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+      --><li><a href="/">Home</a></li><!--
+    --><!--
+      --><li><a href="/categories/">Categories</a></li><!--
+    --><!--
+      --><li><a href="/tags/">Tags</a></li><!--
+    --><!--
+      --><li><a href="/archives/">Writing</a></li><!--
+    --><!--
+      --><li><a target="_blank" rel="noopener" href="http://github.com/iahzl">Projects</a></li><!--
+    --><!--
+      --><li><a href="/search/">Search</a></li><!--
+    --><!--
+      --><li><a href="/about/">About</a></li><!--
+    -->
+      </ul>
+      <ul>
+        
+          <!-- 不蒜子统计 -->
+          <span id="busuanzi_container_site_pv">
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+          </span>
+          <span class="post-meta-divider">|</span>
+          <span id="busuanzi_container_site_uv" style='display:none'>
+                  本站访客数<span id="busuanzi_value_site_uv"></span>人
+          </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
+      </ul>
+    </nav>
+  </div>
+  
+</footer>
+
+
+
+
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+  <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?10298bb37106529e820abfbd855cea34";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
