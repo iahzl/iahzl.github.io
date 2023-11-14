@@ -9,7 +9,7 @@
     
     <title>
         
-            Tag: php |
+            Tag: PHP |
         
         S3a&#39;s blog
     </title>
@@ -189,7 +189,7 @@
 
                     <div class="fade-in-down-animation">
     <div class="tag-container border-box">
-        <div class="tag-name"><i class="fas fa-hashtag"></i>&nbsp;php
+        <div class="tag-name"><i class="fas fa-hashtag"></i>&nbsp;PHP
         </div>
         <div class="tag-post-list">
             
@@ -204,8 +204,15 @@
                     <li class="article-item border-box">
                         <span class="article-date border-box">10-30</span>
                         <a class="article-title border-box text-ellipsis"
-                           href="/PHP%E5%BA%8F%E5%88%97%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"
-                        >PHP序列化基础知识</a>
+                           href="/PHP%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%97%E7%AC%A6%E9%80%83%E9%80%B8/"
+                        >PHP序列化字符逃逸</a>
+                    </li>
+                
+                    <li class="article-item border-box">
+                        <span class="article-date border-box">08-05</span>
+                        <a class="article-title border-box text-ellipsis"
+                           href="/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"
+                        >反序列化</a>
                     </li>
                 
             </ul>
@@ -440,29 +447,6 @@
         });
 
         document.addEventListener('pjax:complete', () => {
-            KEEP.utils.pjaxProgressBarEnd()
-            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
-            KEEP.initExecute()
-        });
-    });
-</script>
-
-
-
-
-    
-        
-    
-        
-            
-<script class="custom-inject-js" src="/js/time.js" data-pjax></script>
-
-        
-    
-
-</body>
-</html>
-, () => {
             KEEP.utils.pjaxProgressBarEnd()
             window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
             KEEP.initExecute()
