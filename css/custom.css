@@ -1,0 +1,6 @@
+:root {
+    --box-border-radius: 10px;
+    --base-font-family: STKaiti;
+    --home-post-hover-scale: 1.025;
+    --page-content-max-width: 1000px;
+}
