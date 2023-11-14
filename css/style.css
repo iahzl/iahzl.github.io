@@ -1818,7 +1818,7 @@ figure.highlight .shrink-line:hover::before {
   min-height: 100vh;
   padding-top: var(--header-height);
 /*背景图片路径*/
-  background: url("https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/wallhaven-7pxqe9_1920x1080.png");
+  background: url("https://cdn.jsdelivr.net/gh/iahzl/iahzl_bed/img/wallhaven-9dkprw_1920x1080.png");
 /*背景图片不重复多次显示*/
   background-repeat: no-repeat;
 /*窗口放缩时背景图片中心始终在屏幕中心*/
