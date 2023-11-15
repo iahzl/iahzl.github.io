@@ -3,4 +3,11 @@
     --base-font-family: STKaiti;
     --home-post-hover-scale: 1.025;
     --page-content-max-width: 1000px;
+    /* 设置 Header 头部的 Title 字体样式 */
+   --header-title-font-family: Optima-Regular, Optima, PingFang SC;
+   /* 设置首屏的文字颜色（白昼模式） */
+   --first-screen-font-color-light: rgba(255, 255, 255, 0.9);
+
+   /* 设置首屏的文字颜色（暗黑模式） */
+   --first-screen-font-color-dark: rgba(255, 255, 255, 0.87);
 }
